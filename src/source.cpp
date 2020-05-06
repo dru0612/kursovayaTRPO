@@ -142,3 +142,90 @@ void fileOut(string v[4][n])
         cout << v[3][i] << endl;
     }
 }
+
+void dictionary(string v[4][n]) {
+	fileOut(v);
+	cout<<endl<<"Click any button to resume."<<endl;
+    _getch();
+    system("CLS");
+}
+
+void TestRussian(string v[4][n]) {
+	int score=0,sc=0,k,Oshibki=0;
+    int ti=clock();
+    int timer=clock()-ti;
+    int timeAll=0,u,f,j,i;
+	string t[4];
+    while(1) {
+    	k=rand()%n;
+    	f=rand()%3;
+    	j=rand()%4;
+    	t[j]=v[3][k];
+    	cout<<"Select a word translation: "<<v[f][k]<<" (this is "<< f+1 <<" formof the verb)"<<endl;
+    	for (i=0;i<4;i++){
+    		int q = rand() % n;
+    		while (q == k) {
+    			q = rand() % n;
+			}
+
+    		if (i!=j) {
+    			t[i]=v[3][q];
+			}
+
+		}
+		for (i=0;i<4;i++){
+    		cout<<i+1<<" - "<<t[i]<<endl;
+		}
+		int flag=1;
+		while(flag==1){
+
+			char a=_getch();
+			switch(a){
+				case '1': {
+					u=0;
+					flag=0;
+					break;
+				}
+				case '2':{
+					u=1;
+					flag=0;
+					break;
+				}
+				case '3':{
+					u=2;
+					flag=0;
+					break;
+				}
+				case '4':{
+					u=3;
+					flag=0;
+					break;
+				}
+				default: {
+					cout<<endl<<"Incorrect! Repeat please"<<endl;
+					Sleep(1000);
+					flag = 1;
+				}
+			}
+		}
+    	if(t[u]==v[3][k]) {
+			cout<<"Success!"<<endl;
+			score+=10;
+		}
+		else{
+			cout<<"Error!"<<endl;
+			Oshibki++;
+		}
+        timer=clock()-ti;
+        ti=clock();
+        timeAll+=timer;
+        cout << "Time spent on this verb: " << timer / 1000 << " second"
+             << endl;
+        cout << "Your account: " << score
+             << "\t Number of errors made: " << Oshibki << endl
+             << endl;
+        Sleep(2000);
+        system("CLS");
+	}
+	cout<<"Test is over";
+}
