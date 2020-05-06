@@ -112,3 +112,18 @@ void KoE(string v[4][n])
          << "Общее время выполнения задания: " << timeAll / 1000 << " секунд";
     //  ToRIn()
 }
+
+void fileIn(string v[4][n])
+{
+    ifstream file("verb+.txt");
+    if (!file) {
+        cout << "Возникла ошибка с открытием файла.\n";
+        cout << "Возможно программа установлена неправильно\n";
+        exit(0);
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < 4; j++) {
+            file >> v[j][i];
+        }
+    }
+}
