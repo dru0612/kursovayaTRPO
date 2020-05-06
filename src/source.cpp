@@ -229,3 +229,83 @@ void TestRussian(string v[4][n]) {
 	}
 	cout<<"Test is over";
 }
+
+
+void ToRIn(int score){
+	FILE *tf;
+	struct record {
+		char name[50]; int speed; int day; int month; int year; int hour; int minute;
+	} man;
+	man.speed=score;
+	tf=fopen("Table of Records","ab+");
+	cout<<endl<<"Enter your name: ";
+	cin>>man.name;
+
+	SYSTEMTIME st;
+	GetSystemTime(&st);
+	man.day=st.wDay;
+	man.month=st.wMonth;
+	man.year=st.wYear;
+	man.hour=st.wHour;
+	man.minute=st.wMinute;
+
+	fwrite(&man,sizeof(man),1,tf);
+	fclose(tf);
+}
+
+
+void ToRSort(){
+	FILE *tf;
+	int k=0,i=0;
+	system("CLS");
+	struct record {
+		char name[50]; int speed; int day; int month; int year; int hour; int minute;
+	} man;
+	tf=fopen("Table of Records","rb");
+	while(fread(&man,sizeof(man),1,tf)) {
+		k++;
+	}
+	struct record people[k],temp;
+	fclose(tf);
+	tf=fopen("Table of Records","rb");
+	while(fread(&man,sizeof(man),1,tf)) {
+			people[i]=man;
+			i++;
+	}
+	int p,q;
+	for(p=0;p<k;p++) {
+		for(q=0;q<k-1;q++) {
+			if(people[q].speed < people[q+1].speed) {
+				temp=people[q];
+				people[q]=people[q+1];
+				people[q+1]=temp;
+			}
+		}
+	}
+	fclose(tf);
+	tf=fopen("Table of Records","wb");
+	for(i=0;i<k;i++){
+		fwrite(&people[i],sizeof(people[i]),1,tf);
+	}
+	fclose(tf);
+}
+
+
+void ToROut(){
+	FILE *tf;
+	system("CLS");
+	cout<<"Records:"<<endl<<endl;
+	struct record {
+		char name[50]; int speed; int day; int month; int year; int hour; int minute;
+	} man;
+	int i=1;
+	ToRSort();
+	tf=fopen("Table of Records", "rb");
+	while(fread(&man,sizeof(man),1,tf)){
+		cout<<i<<") "<<man.name<<" "<<man.speed<<" "<<man.hour<<":"<<man.minute<<" "<<man.day<<"."<<man.month<<"."<<man.year<<endl;
+		i++;
+	}
+	_getch();
+	system("CLS");
+	fclose(tf);
+}
