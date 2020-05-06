@@ -127,3 +127,18 @@ void fileIn(string v[4][n])
         }
     }
 }
+
+void fileOut(string v[4][n])
+{
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << ") ";
+        cout.width(10);
+        cout << v[0][i];
+        cout.width(20);
+        cout << v[1][i];
+        cout.width(20);
+        cout << v[2][i];
+        cout.width(20);
+        cout << v[3][i] << endl;
+    }
+}
