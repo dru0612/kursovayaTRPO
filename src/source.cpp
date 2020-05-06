@@ -64,8 +64,8 @@ void KoE(string v[4][n])
     string vUser[3];
     for (int i = 0; score < 10; i++) {
         k = rand() % n;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
-             << endl;
+        cout << "Enter all forms of the word " << v[3][k] << " (" << v[0][k]
+             << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
             if (vUser[i] == "exit") {
@@ -83,13 +83,13 @@ void KoE(string v[4][n])
             }
         }
         if (sc == 3) {
-            cout << "Верно! Продолжайте в том же духе!";
+            cout << "Right! Keep up the good wor";
             score++;
             sc = 0;
         }
 
         else {
-            cout << "Ошибка! Правильный ответ: ";
+            cout << "Error! Correct answer: ";
             sc = 0;
             for (i = 0; i < 3; i++) {
                 cout << v[i][k] << " ";
@@ -101,15 +101,15 @@ void KoE(string v[4][n])
         timer = clock() - t;
         t = clock();
         timeAll += timer;
-        cout << "Время, которое ушло на этот глагол: " << timer / 1000
-             << " секунд" << endl;
-        cout << "Ваш счёт: " << score
-             << "\t Количество допущенных ошибок: " << Oshibki << endl
+        cout << "Time spent on this verb: " << timer / 1000 << " second"
+             << endl;
+        cout << "Your account: " << score
+             << "\t Number of errors made: " << Oshibki << endl
              << endl;
     }
 
     cout << endl
-         << "Общее время выполнения задания: " << timeAll / 1000 << " секунд";
+         << "Total task completion time: " << timeAll / 1000 << " second";
     //  ToRIn()
 }
 
@@ -117,8 +117,8 @@ void fileIn(string v[4][n])
 {
     ifstream file("verb+.txt");
     if (!file) {
-        cout << "Возникла ошибка с открытием файла.\n";
-        cout << "Возможно программа установлена неправильно\n";
+        cout << "There was an error opening the file.\n";
+        cout << "The program may not be installed correctly\n";
         exit(0);
     }
     for (int i = 0; i < n; i++) {
