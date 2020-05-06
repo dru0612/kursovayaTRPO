@@ -143,82 +143,82 @@ void fileOut(string v[4][n])
     }
 }
 
-void dictionary(string v[4][n]) {
-	fileOut(v);
-	cout<<endl<<"Click any button to resume."<<endl;
+void dictionary(string v[4][n])
+{
+    fileOut(v);
+    cout << endl << "Click any button to resume." << endl;
     _getch();
     system("CLS");
 }
 
-void TestRussian(string v[4][n]) {
-	int score=0,sc=0,k,Oshibki=0;
-    int ti=clock();
-    int timer=clock()-ti;
-    int timeAll=0,u,f,j,i;
-	string t[4];
-    while(1) {
-    	k=rand()%n;
-    	f=rand()%3;
-    	j=rand()%4;
-    	t[j]=v[3][k];
-    	cout<<"Select a word translation: "<<v[f][k]<<" (this is "<< f+1 <<" formof the verb)"<<endl;
-    	for (i=0;i<4;i++){
-    		int q = rand() % n;
-    		while (q == k) {
-    			q = rand() % n;
-			}
+void TestRussian(string v[4][n])
+{
+    int score = 0, sc = 0, k, Oshibki = 0;
+    int ti = clock();
+    int timer = clock() - ti;
+    int timeAll = 0, u, f, j, i;
+    string t[4];
+    while (1) {
+        k = rand() % n;
+        f = rand() % 3;
+        j = rand() % 4;
+        t[j] = v[3][k];
+        cout << "Select a word translation: " << v[f][k] << " (this is "
+             << f + 1 << " formof the verb)" << endl;
+        for (i = 0; i < 4; i++) {
+            int q = rand() % n;
+            while (q == k) {
+                q = rand() % n;
+            }
 
-    		if (i!=j) {
-    			t[i]=v[3][q];
-			}
-
-		}
-		for (i=0;i<4;i++){
-    		cout<<i+1<<" - "<<t[i]<<endl;
-		}
-		int flag=1;
-		while(flag==1){
-
-			char a=_getch();
-			switch(a){
-				case '1': {
-					u=0;
-					flag=0;
-					break;
-				}
-				case '2':{
-					u=1;
-					flag=0;
-					break;
-				}
-				case '3':{
-					u=2;
-					flag=0;
-					break;
-				}
-				case '4':{
-					u=3;
-					flag=0;
-					break;
-				}
-				default: {
-					cout<<endl<<"Incorrect! Repeat please"<<endl;
-					Sleep(1000);
-					flag = 1;
-				}
-			}
-		}
-    	if(t[u]==v[3][k]) {
-			cout<<"Success!"<<endl;
-			score+=10;
-		}
-		else{
-			cout<<"Error!"<<endl;
-			Oshibki++;
-		}
-        timer=clock()-ti;
-        ti=clock();
-        timeAll+=timer;
+            if (i != j) {
+                t[i] = v[3][q];
+            }
+        }
+        for (i = 0; i < 4; i++) {
+            cout << i + 1 << " - " << t[i] << endl;
+        }
+        int flag = 1;
+        while (flag == 1) {
+            char a = _getch();
+            switch (a) {
+            case '1': {
+                u = 0;
+                flag = 0;
+                break;
+            }
+            case '2': {
+                u = 1;
+                flag = 0;
+                break;
+            }
+            case '3': {
+                u = 2;
+                flag = 0;
+                break;
+            }
+            case '4': {
+                u = 3;
+                flag = 0;
+                break;
+            }
+            default: {
+                cout << endl << "Incorrect! Repeat please" << endl;
+                Sleep(1000);
+                flag = 1;
+            }
+            }
+        }
+        if (t[u] == v[3][k]) {
+            cout << "Success!" << endl;
+            score += 10;
+        } else {
+            cout << "Error!" << endl;
+            Oshibki++;
+        }
+        timer = clock() - ti;
+        ti = clock();
+        timeAll += timer;
         cout << "Time spent on this verb: " << timer / 1000 << " second"
              << endl;
         cout << "Your account: " << score
@@ -226,86 +226,106 @@ void TestRussian(string v[4][n]) {
              << endl;
         Sleep(2000);
         system("CLS");
-	}
-	cout<<"Test is over";
+    }
+    cout << "Test is over";
 }
 
+void ToRIn(int score)
+{
+    FILE* tf;
+    struct record {
+        char name[50];
+        int speed;
+        int day;
+        int month;
+        int year;
+        int hour;
+        int minute;
+    } man;
+    man.speed = score;
+    tf = fopen("Table of Records", "ab+");
+    cout << endl << "Enter your name: ";
+    cin >> man.name;
 
-void ToRIn(int score){
-	FILE *tf;
-	struct record {
-		char name[50]; int speed; int day; int month; int year; int hour; int minute;
-	} man;
-	man.speed=score;
-	tf=fopen("Table of Records","ab+");
-	cout<<endl<<"Enter your name: ";
-	cin>>man.name;
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    man.day = st.wDay;
+    man.month = st.wMonth;
+    man.year = st.wYear;
+    man.hour = st.wHour;
+    man.minute = st.wMinute;
 
-	SYSTEMTIME st;
-	GetSystemTime(&st);
-	man.day=st.wDay;
-	man.month=st.wMonth;
-	man.year=st.wYear;
-	man.hour=st.wHour;
-	man.minute=st.wMinute;
-
-	fwrite(&man,sizeof(man),1,tf);
-	fclose(tf);
+    fwrite(&man, sizeof(man), 1, tf);
+    fclose(tf);
 }
 
-
-void ToRSort(){
-	FILE *tf;
-	int k=0,i=0;
-	system("CLS");
-	struct record {
-		char name[50]; int speed; int day; int month; int year; int hour; int minute;
-	} man;
-	tf=fopen("Table of Records","rb");
-	while(fread(&man,sizeof(man),1,tf)) {
-		k++;
-	}
-	struct record people[k],temp;
-	fclose(tf);
-	tf=fopen("Table of Records","rb");
-	while(fread(&man,sizeof(man),1,tf)) {
-			people[i]=man;
-			i++;
-	}
-	int p,q;
-	for(p=0;p<k;p++) {
-		for(q=0;q<k-1;q++) {
-			if(people[q].speed < people[q+1].speed) {
-				temp=people[q];
-				people[q]=people[q+1];
-				people[q+1]=temp;
-			}
-		}
-	}
-	fclose(tf);
-	tf=fopen("Table of Records","wb");
-	for(i=0;i<k;i++){
-		fwrite(&people[i],sizeof(people[i]),1,tf);
-	}
-	fclose(tf);
+void ToRSort()
+{
+    FILE* tf;
+    int k = 0, i = 0;
+    system("CLS");
+    struct record {
+        char name[50];
+        int speed;
+        int day;
+        int month;
+        int year;
+        int hour;
+        int minute;
+    } man;
+    tf = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, tf)) {
+        k++;
+    }
+    struct record people[k], temp;
+    fclose(tf);
+    tf = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, tf)) {
+        people[i] = man;
+        i++;
+    }
+    int p, q;
+    for (p = 0; p < k; p++) {
+        for (q = 0; q < k - 1; q++) {
+            if (people[q].speed < people[q + 1].speed) {
+                temp = people[q];
+                people[q] = people[q + 1];
+                people[q + 1] = temp;
+            }
+        }
+    }
+    fclose(tf);
+    tf = fopen("Table of Records", "wb");
+    for (i = 0; i < k; i++) {
+        fwrite(&people[i], sizeof(people[i]), 1, tf);
+    }
+    fclose(tf);
 }
 
-
-void ToROut(){
-	FILE *tf;
-	system("CLS");
-	cout<<"Records:"<<endl<<endl;
-	struct record {
-		char name[50]; int speed; int day; int month; int year; int hour; int minute;
-	} man;
-	int i=1;
-	ToRSort();
-	tf=fopen("Table of Records", "rb");
-	while(fread(&man,sizeof(man),1,tf)){
-		cout<<i<<") "<<man.name<<" "<<man.speed<<" "<<man.hour<<":"<<man.minute<<" "<<man.day<<"."<<man.month<<"."<<man.year<<endl;
-		i++;
-	}
-	_getch();
-	system("CLS");
-	fclose(tf);
+void ToROut()
+{
+    FILE* tf;
+    system("CLS");
+    cout << "Records:" << endl << endl;
+    struct record {
+        char name[50];
+        int speed;
+        int day;
+        int month;
+        int year;
+        int hour;
+        int minute;
+    } man;
+    int i = 1;
+    ToRSort();
+    tf = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, tf)) {
+        cout << i << ") " << man.name << " " << man.speed << " " << man.hour
+             << ":" << man.minute << " " << man.day << "." << man.month << "."
+             << man.year << endl;
+        i++;
+    }
+    _getch();
+    system("CLS");
+    fclose(tf);
 }
