@@ -1,11 +1,14 @@
-#include <iostream>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef SOURCE_H
+#define SOURCE_H
+
 #include <conio.h>
-#include <locale.h>
-#include <time.h>
 #include <fstream>
+#include <iostream>
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <windows.h>
 
 #define n 100
@@ -23,3 +26,5 @@ void ToRSort();
 void ToROut();
 void choiceTest(string v[4][n]);
 void mainMenu(string v[4][n]);
+
+#endif
