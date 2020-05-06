@@ -28,3 +28,29 @@ void hello()
     _getch();
     system("CLS");
 }
+
+void support()
+{
+    cout << "1) Enter words in lowercase." << endl;
+    cout << "2) You must use only Latin letters to enter words "
+            "alphabet's."
+         << endl;
+    cout << "3) If you encounter a verb that contains one of the following "
+            "forms "
+            "multiple word options"
+         << endl;
+    cout << "they must be separated by commas without spaces. These words "
+            "will be marked (*)"
+         << endl;
+    cout << "\t Example: the verb to Be. Its 2 form is was/were. In response "
+            "you must write - be was, were been - "
+         << endl;
+    cout << "To pass this test, you need to score 10 points" << endl;
+    cout << endl
+         << "We wish you good luck in learning verbs! Click any button to "
+            "resume."
+         << endl
+         << endl;
+    _getch();
+    system("CLS");
+}
