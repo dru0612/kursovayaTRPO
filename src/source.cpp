@@ -405,3 +405,46 @@ void ToROut()
     system("CLS");
     fclose(tf);
 }
+
+
+void mainMenu(string v[4][n])
+{
+	cout<<"1 - Choise a test"<<endl;
+	cout<<"2 - Rating"<<endl;
+  cout<<"4 - View directory"<<endl;
+  cout<<"5 - Help"<<endl;
+  cout<<"0 - Exit"<<endl;
+
+    char uCom;
+    uCom=_getch();
+    switch(uCom){
+    	case '1': {
+    		system("CLS");
+    		choiceTest(v);
+			break;
+		}
+		case '2': {
+			system("CLS");
+			ToROut();
+			break;
+		}
+		case '4': {
+			system("CLS");
+			dictionary(v);
+			break;
+		}
+		case '5': {
+			system("CLS");
+			support();
+			break;
+		}
+		case '0': {
+			exit(0);
+		}
+		default: {
+			cout<<endl<<"Invalid mode! Please repeat input";
+			Sleep(1000);
+			system("CLS");
+		}
+	}
+}
