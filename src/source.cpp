@@ -151,6 +151,46 @@ void dictionary(string v[4][n])
     system("CLS");
 }
 
+void TestToTime(string v[4][n]){
+	long timeLimit = 30000, timeStart=clock(), timeNow=clock();
+	int score=0,sc=0,k,i;
+	string vUser[3];
+	cout<<"You have "<<timeLimit/1000<<" seconds to pass the test, good luck!."<<endl<<endl;
+	while(timeNow - timeStart < timeLimit){
+        k=rand()%n;
+        cout<<"Enter all forms of the word "<< v[3][k] << " ("<<v[0][k]<<") "<< endl;
+        for(i=0;i<3;i++) {
+        	cin >> vUser[i];
+    	    if (vUser[i]=="exit"){
+        		system("CLS");
+        		mainMenu(v);
+        		break;
+			}
+    	}
+    	for(i=0;i<3;i++) {
+    		if(v[i][k]==vUser[i]) {
+    			sc++;
+    		}
+    	}
+    	if(sc==3) {
+            score++;
+		}
+		sc=0;
+		timeNow=clock();
+		if((timeLimit-(timeNow-timeStart))/1000 > 0)
+			cout<<"You have left "<<(timeLimit-(timeNow-timeStart))/1000<<" seconds"<<endl;
+		else break;
+
+	}
+		cout<<endl<<"Time is over. Your account: "<<score<<endl;
+		cout<<"Want to add your result to the table? Press y ";
+		char ch=_getch();
+		if((ch=='Y')||(ch=='y')) {
+			ToRIn(score);
+		}
+	system("CLS");
+}
+
 void TestRussian(string v[4][n])
 {
     int score = 0, sc = 0, k, Oshibki = 0;
