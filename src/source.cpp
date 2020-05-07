@@ -230,6 +230,42 @@ void TestRussian(string v[4][n])
     cout << "Test is over";
 }
 
+void choiceTest(string v[4][n]){
+	cout<<"1 - Test for knowledge of all verbs from the reference book"<<endl;
+   	cout<<"2 - Translation Test"<<endl;
+   	cout<<"3 - Speed test"<<endl;
+   	cout<<"0 - return"<<endl;
+
+   	char a=_getch();
+   	switch(a){
+   		case '1': {
+    		system("CLS");
+    		KoE(v);
+			break;
+			}
+		case '2': {
+			system("CLS");
+			TestRussian(v);
+			break;
+			}
+		case '3': {
+			system("CLS");
+			TestToTime(v);
+			break;
+			}
+		case '0': {
+			system("CLS");
+			exit(0);
+		}
+		default: {
+			cout<<endl<<"Invalid mode! Please retype";
+				Sleep(1000);
+				system("CLS");
+				choiceTest(v);
+		}
+		}
+}
+
 void ToRIn(int score)
 {
     FILE* tf;
