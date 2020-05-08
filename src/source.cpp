@@ -193,7 +193,7 @@ void TestToTime(string v[4][n]){
 
 void TestRussian(string v[4][n])
 {
-    int score = 0, sc = 0, k, Oshibki = 0;
+    int score = 0, k, Oshibki = 0;
     int ti = clock();
     int timer = clock() - ti;
     int timeAll = 0, u, f, j, i;
