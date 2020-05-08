@@ -295,7 +295,7 @@ void choiceTest(string v[4][n]){
 			}
 		case '0': {
 			system("CLS");
-			exit(0);
+			 mainMenu(v);
 		}
 		default: {
 			cout<<endl<<"Invalid mode! Please retype";
