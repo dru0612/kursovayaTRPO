@@ -274,7 +274,7 @@ void choiceTest(string v[4][n]){
 	cout<<"1 - Test for knowledge of all verbs from the reference book"<<endl;
    	cout<<"2 - Translation Test"<<endl;
    	cout<<"3 - Speed test"<<endl;
-   	cout<<"0 - return"<<endl;
+   	cout<<"0 - Return to main menu"<<endl;
 
    	char a=_getch();
    	switch(a){
