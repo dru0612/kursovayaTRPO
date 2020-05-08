@@ -218,6 +218,7 @@ void TestRussian(string v[4][n])
         for (i = 0; i < 4; i++) {
             cout << i + 1 << " - " << t[i] << endl;
         }
+        cout<<endl<<"0 - Finish testing"<<endl;
         int flag = 1;
         while (flag == 1) {
             char a = _getch();
@@ -242,6 +243,18 @@ void TestRussian(string v[4][n])
                 flag = 0;
                 break;
             }
+            case '0': {
+                flag = 0;
+                system("CLS");
+                cout<<"Testing is finish. Your account: "<<score<<endl;
+            		cout<<"Want to add your result to the table? Press y ";
+            		char ch=_getch();
+            		if((ch=='Y')||(ch=='y')) {
+            			ToRIn(score);
+            		}
+                system("CLS");
+                mainMenu(v);
+            }
             default: {
                 cout << endl << "Incorrect! Repeat please" << endl;
                 Sleep(1000);
@@ -255,6 +268,7 @@ void TestRussian(string v[4][n])
         } else {
             cout << "Error!" << endl;
             Oshibki++;
+            if(score>=5) score-=5;
         }
         timer = clock() - ti;
         ti = clock();
