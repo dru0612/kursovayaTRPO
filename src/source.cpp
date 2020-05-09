@@ -29,7 +29,7 @@ void hello()
     system("CLS");
 }
 
-void support()
+void support(string v[4][n])
 {
     cout << "1) Enter words in lowercase." << endl;
     cout << "2) You must use only Latin letters to enter words "
@@ -53,6 +53,7 @@ void support()
          << endl;
     system("pause");
     system("CLS");
+    mainMenu(v);
 }
 
 void KoE(string v[4][n])
@@ -166,6 +167,7 @@ void dictionary(string v[4][n])
     cout << endl << "Click any button to resume." << endl;
     system("pause");
     system("CLS");
+    mainMenu(v);
 }
 
 void TestToTime(string v[4][n])
@@ -328,7 +330,7 @@ void choiceTest(string v[4][n])
     cout << "1 - Test for knowledge of all verbs from the reference book"
          << endl;
     cout << "2 - Translation Test" << endl;
-    cout << "3 - Speed test" << endl;
+    cout << "3 - Speed test" << endl << endl;
     cout << "0 - Return to main menu" << endl;
 
     char a;
@@ -453,8 +455,8 @@ void mainMenu(string v[4][n])
 {
     cout << "1 - Choise a test" << endl;
     cout << "2 - Rating" << endl;
-    cout << "4 - View directory" << endl;
-    cout << "5 - Help" << endl;
+    cout << "3 - View directory" << endl;
+    cout << "4 - Help" << endl << endl;
     cout << "0 - Exit" << endl;
 
     char uCom;
@@ -470,14 +472,14 @@ void mainMenu(string v[4][n])
         ToROut(v);
         break;
     }
-    case '4': {
+    case '3': {
         system("CLS");
         dictionary(v);
         break;
     }
-    case '5': {
+    case '4': {
         system("CLS");
-        support();
+        support(v);
         break;
     }
     case '0': {

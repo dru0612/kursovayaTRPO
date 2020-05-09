@@ -14,7 +14,7 @@
 using namespace std;
 
 void hello();
-void support();
+void support(string v[4][n]);
 void KoE(string v[4][n]);
 void fileIn(string v[4][n]);
 void fileOut(string v[4][n]);
