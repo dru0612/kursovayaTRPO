@@ -19,11 +19,11 @@ void KoE(string v[4][n]);
 void fileIn(string v[4][n]);
 void fileOut(string v[4][n]);
 void dictionary(string v[4][n]);
+void mainMenu(string v[4][n]);
 void ToRIn(int score);
 void ToRSort();
-void ToROut();
+void ToROut(string v[4][n]);
 void choiceTest(string v[4][n]);
-void mainMenu(string v[4][n]);
 void TestRussian(string v[4][n]);
 void TestToTime(string v[4][n]);
 

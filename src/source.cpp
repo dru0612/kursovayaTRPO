@@ -184,6 +184,14 @@ void TestToTime(string v[4][n])
             cin >> vUser[i];
             if (vUser[i] == "exit") {
                 system("CLS");
+                cout << "Testing is finish. Your account: " << score << endl;
+                cout << "Want to add your result to the table? Press y ";
+                char ch;
+                cin >> ch;
+                if ((ch == 'Y') || (ch == 'y')) {
+                    ToRIn(score);
+                }
+                system("CLS");
                 mainMenu(v);
                 break;
             }
@@ -205,7 +213,8 @@ void TestToTime(string v[4][n])
         else
             break;
     }
-    cout << endl << "Time is over. Your account: " << score << endl;
+    system("CLS");
+    cout << "Testing is finish. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
     char ch;
     cin >> ch;
@@ -213,6 +222,7 @@ void TestToTime(string v[4][n])
         ToRIn(score);
     }
     system("CLS");
+    mainMenu(v);
 }
 
 void TestRussian(string v[4][n])
@@ -342,6 +352,7 @@ void choiceTest(string v[4][n])
     case '0': {
         system("CLS");
         mainMenu(v);
+        break;
     }
     default: {
         cout << endl << "Invalid mode! Please retype";
@@ -414,7 +425,7 @@ void ToRSort()
     fclose(tf);
 }
 
-void ToROut()
+void ToROut(string v[4][n])
 {
     FILE* tf;
     system("CLS");
@@ -435,6 +446,7 @@ void ToROut()
     system("pause");
     system("CLS");
     fclose(tf);
+    mainMenu(v);
 }
 
 void mainMenu(string v[4][n])
@@ -455,7 +467,7 @@ void mainMenu(string v[4][n])
     }
     case '2': {
         system("CLS");
-        ToROut();
+        ToROut(v);
         break;
     }
     case '4': {
