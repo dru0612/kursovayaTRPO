@@ -1,7 +1,6 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 
-#include "conio.h"
 #include <fstream>
 #include <iostream>
 #include <locale.h>
@@ -10,6 +9,28 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
+
+#include <stdio.h>
+#ifndef __linux
+#include <conio.h>
+#else
+#include <termios.h>
+#include <unistd.h>
+int getch()
+
+{
+    int ch;
+
+    struct termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
+#endif
 
 #define n 100
 
