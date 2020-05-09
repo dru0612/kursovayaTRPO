@@ -278,7 +278,7 @@ void TestRussian(string v[4][n])
             }
             default: {
                 cout << endl << "Incorrect! Repeat please" << endl;
-                Sleep(1000);
+              for (int i=0;i<10000000;i++);
                 flag = 1;
             }
             }
@@ -300,7 +300,7 @@ void TestRussian(string v[4][n])
         cout << "Your account: " << score
              << "\t Number of errors made: " << Oshibki << endl
              << endl;
-        Sleep(2000);
+        for (i=0;i<10000000;i++);
         system("CLS");
     }
     cout << "Test is over";
@@ -337,7 +337,7 @@ void choiceTest(string v[4][n])
     }
     default: {
         cout << endl << "Invalid mode! Please retype";
-        Sleep(1000);
+        for (int i=0;i<10000000;i++);
         system("CLS");
         choiceTest(v);
     }
@@ -361,13 +361,11 @@ void ToRIn(int score)
     cout << endl << "Enter your name: ";
     cin >> man.name;
 
-    SYSTEMTIME st;
-    GetSystemTime(&st);
-    man.day = st.wDay;
-    man.month = st.wMonth;
-    man.year = st.wYear;
-    man.hour = st.wHour;
-    man.minute = st.wMinute;
+    char output[20];
+    time_t seconds = time(NULL);
+    tm* timeinfo = localtime(&seconds);
+    strcpy(output," Date:  ");
+    strcpy(output,asctime(timeinfo));
 
     fwrite(&man, sizeof(man), 1, tf);
     fclose(tf);
@@ -480,7 +478,7 @@ void mainMenu(string v[4][n])
     }
     default: {
         cout << endl << "Invalid mode! Please repeat input";
-        Sleep(1000);
+        for (int i=0;i<10000000;i++);
         system("CLS");
     }
     }
