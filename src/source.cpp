@@ -56,7 +56,7 @@ void support(string v[4][n])
     mainMenu(v);
 }
 
-bool testCheck(int sc)
+int testCheck(int sc)
 {
     if (sc == 3) {
         return 1;
