@@ -24,6 +24,7 @@ void ToRIn(int score);
 void ToRSort();
 void ToROut(string v[4][n]);
 int testCheck(int sc);
+int testCheckRus(string user, string verb);
 void choiceTest(string v[4][n]);
 void TestRussian(string v[4][n]);
 void TestToTime(string v[4][n]);
