@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <windows.h>
 
 #include <stdio.h>
 #ifndef __linux
@@ -20,7 +19,6 @@ int getch()
 
 {
     int ch;
-
     struct termios oldt, newt;
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
