@@ -67,6 +67,14 @@ int testCheck(int sc)
     }
 }
 
+int testCheckRus(string user, string verb)
+{
+    if (user == verb)
+        return 1;
+    else
+        return 0;
+}
+
 void KoE(string v[4][n])
 {
     int score = 0, sc = 0, k, Oshibki = 0;
@@ -315,7 +323,8 @@ void TestRussian(string v[4][n])
             }
             }
         }
-        if (t[u] == v[3][k]) {
+        int q = testCheckRus(t[u], v[3][k]);
+        if (q) {
             cout << "Success!" << endl;
             score += 10;
         } else {
