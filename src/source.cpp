@@ -25,7 +25,7 @@ void hello()
             "resume."
          << endl
          << endl;
-    _getch();
+    system("pause");
     system("CLS");
 }
 
@@ -51,7 +51,7 @@ void support()
             "resume."
          << endl
          << endl;
-    _getch();
+    system("pause");
     system("CLS");
 }
 
@@ -77,7 +77,8 @@ void KoE(string v[4][n])
                      << " second";
                 cout << endl << "Time is over. Your account: " << score << endl;
                 cout << "Want to add your result to the table? Press y ";
-                char ch = _getch();
+                char ch;
+                cin >> ch;
                 if ((ch == 'Y') || (ch == 'y')) {
                     ToRIn(score);
                 }
@@ -122,7 +123,8 @@ void KoE(string v[4][n])
          << "Total task completion time: " << timeAll / 1000 << " second";
     cout << endl << "Time is over. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
-    char ch = _getch();
+    char ch;
+    cin >> ch;
     if ((ch == 'Y') || (ch == 'y')) {
         ToRIn(score);
     }
@@ -162,7 +164,7 @@ void dictionary(string v[4][n])
 {
     fileOut(v);
     cout << endl << "Click any button to resume." << endl;
-    _getch();
+    system("pause");
     system("CLS");
 }
 
@@ -205,7 +207,8 @@ void TestToTime(string v[4][n])
     }
     cout << endl << "Time is over. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
-    char ch = _getch();
+    char ch;
+    cin >> ch;
     if ((ch == 'Y') || (ch == 'y')) {
         ToRIn(score);
     }
@@ -242,7 +245,8 @@ void TestRussian(string v[4][n])
         cout << endl << "0 - Finish testing" << endl;
         int flag = 1;
         while (flag == 1) {
-            char a = _getch();
+            char a;
+            cin >> a;
             switch (a) {
             case '1': {
                 u = 0;
@@ -269,7 +273,8 @@ void TestRussian(string v[4][n])
                 system("CLS");
                 cout << "Testing is finish. Your account: " << score << endl;
                 cout << "Want to add your result to the table? Press y ";
-                char ch = _getch();
+                char ch;
+                cin >> ch;
                 if ((ch == 'Y') || (ch == 'y')) {
                     ToRIn(score);
                 }
@@ -316,7 +321,8 @@ void choiceTest(string v[4][n])
     cout << "3 - Speed test" << endl;
     cout << "0 - Return to main menu" << endl;
 
-    char a = _getch();
+    char a;
+    cin >> a;
     switch (a) {
     case '1': {
         system("CLS");
@@ -353,22 +359,17 @@ void ToRIn(int score)
     struct record {
         char name[50];
         int speed;
-        int day;
-        int month;
-        int year;
-        int hour;
-        int minute;
+        char output[20];
     } man;
     man.speed = score;
     tf = fopen("Table of Records", "ab+");
     cout << endl << "Enter your name: ";
     cin >> man.name;
 
-    char output[20];
     time_t seconds = time(NULL);
     tm* timeinfo = localtime(&seconds);
-    strcpy(output, " Date:  ");
-    strcpy(output, asctime(timeinfo));
+    strcpy(man.output, " Date:  ");
+    strcpy(man.output, asctime(timeinfo));
 
     fwrite(&man, sizeof(man), 1, tf);
     fclose(tf);
@@ -382,11 +383,7 @@ void ToRSort()
     struct record {
         char name[50];
         int speed;
-        int day;
-        int month;
-        int year;
-        int hour;
-        int minute;
+        char output[20];
     } man;
     tf = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, tf)) {
@@ -425,22 +422,17 @@ void ToROut()
     struct record {
         char name[50];
         int speed;
-        int day;
-        int month;
-        int year;
-        int hour;
-        int minute;
+        char output[20];
     } man;
     int i = 1;
     ToRSort();
     tf = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, tf)) {
-        cout << i << ") " << man.name << " " << man.speed << " " << man.hour
-             << ":" << man.minute << " " << man.day << "." << man.month << "."
-             << man.year << endl;
+        cout << i << ") " << man.name << " " << man.speed << " " << man.output
+             << endl;
         i++;
     }
-    _getch();
+    system("pause");
     system("CLS");
     fclose(tf);
 }
@@ -454,7 +446,7 @@ void mainMenu(string v[4][n])
     cout << "0 - Exit" << endl;
 
     char uCom;
-    uCom = _getch();
+    cin >> uCom;
     switch (uCom) {
     case '1': {
         system("CLS");
