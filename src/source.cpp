@@ -60,17 +60,17 @@ int testCheck(int sc)
 {
     if (sc == 3) {
         return 1;
-    }
-
-    else {
+    } else {
         return 0;
     }
 }
 
-int testCheckRus(string user, string verb)
+int verbCheck(string user, string verb)
 {
     if (user == verb)
         return 1;
+    else if (user == "exit")
+        return 2;
     else
         return 0;
 }
@@ -89,13 +89,15 @@ void KoE(string v[4][n])
              << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
-            if (vUser[i] == "exit") {
+            int q = verbCheck(vUser[i], v[i][k]);
+            if (q == 2) {
                 system("cls");
                 testStatus = 1;
                 cout << endl
                      << "Total task completion time: " << timeAll / 1000
                      << " second";
-                cout << "Testing is finish. Your account: " << score << endl;
+                cout << endl
+                     << "Testing is finish. Your account: " << score << endl;
                 cout << "Want to add your result to the table? Press y ";
                 char ch;
                 cin >> ch;
@@ -104,10 +106,7 @@ void KoE(string v[4][n])
                 }
                 system("CLS");
                 mainMenu(v);
-            }
-        }
-        for (i = 0; i < 3; i++) {
-            if (v[i][k] == vUser[i]) {
+            } else if (q == 1) {
                 sc++;
             }
         }
@@ -205,7 +204,8 @@ void TestToTime(string v[4][n])
              << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
-            if (vUser[i] == "exit") {
+            int q = verbCheck(vUser[i], v[i][k]);
+            if (q == 2) {
                 system("CLS");
                 cout << "Testing is finish. Your account: " << score << endl;
                 cout << "Want to add your result to the table? Press y ";
@@ -218,9 +218,7 @@ void TestToTime(string v[4][n])
                 mainMenu(v);
                 break;
             }
-        }
-        for (i = 0; i < 3; i++) {
-            if (v[i][k] == vUser[i]) {
+            if (q == 1) {
                 sc++;
             }
         }
@@ -323,7 +321,7 @@ void TestRussian(string v[4][n])
             }
             }
         }
-        int q = testCheckRus(t[u], v[3][k]);
+        int q = verbCheck(t[u], v[3][k]);
         if (q) {
             cout << "Success!" << endl;
             score += 10;
