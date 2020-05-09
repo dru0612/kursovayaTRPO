@@ -62,7 +62,8 @@ void KoE(string v[4][n])
     int timer = clock() - t;
     int timeAll = 0;
     string vUser[3];
-    for (int i = 0; score < 10; i++) {
+    int i, testStatus = 0;
+    while ((score < 100) || (testStatus == 0)) {
         k = rand() % n;
         cout << "Enter all forms of the word " << v[3][k] << " (" << v[0][k]
              << ") " << endl;
@@ -70,11 +71,17 @@ void KoE(string v[4][n])
             cin >> vUser[i];
             if (vUser[i] == "exit") {
                 system("cls");
-                t = 0;
-                timer = 0;
-                timeAll = 0;
+                testStatus = 1;
+                cout << endl
+                     << "Total task completion time: " << timeAll / 1000
+                     << " second";
+                cout << endl << "Time is over. Your account: " << score << endl;
+                cout << "Want to add your result to the table? Press y ";
+                char ch = _getch();
+                if ((ch == 'Y') || (ch == 'y')) {
+                    ToRIn(score);
+                }
                 mainMenu(v);
-                break;
             }
         }
         for (i = 0; i < 3; i++) {
@@ -84,7 +91,7 @@ void KoE(string v[4][n])
         }
         if (sc == 3) {
             cout << "Right! Keep up the good wor";
-            score++;
+            score += 15;
             sc = 0;
         }
 
@@ -95,6 +102,8 @@ void KoE(string v[4][n])
                 cout << v[i][k] << " ";
             }
             Oshibki++;
+            if (score >= 5)
+                score -= 5;
         }
         cout << endl;
 
@@ -110,7 +119,12 @@ void KoE(string v[4][n])
 
     cout << endl
          << "Total task completion time: " << timeAll / 1000 << " second";
-    //  ToRIn()
+    cout << endl << "Time is over. Your account: " << score << endl;
+    cout << "Want to add your result to the table? Press y ";
+    char ch = _getch();
+    if ((ch == 'Y') || (ch == 'y')) {
+        ToRIn(score);
+    }
 }
 
 void fileIn(string v[4][n])
@@ -151,44 +165,50 @@ void dictionary(string v[4][n])
     system("CLS");
 }
 
-void TestToTime(string v[4][n]){
-	long timeLimit = 30000, timeStart=clock(), timeNow=clock();
-	int score=0,sc=0,k,i;
-	string vUser[3];
-	cout<<"You have "<<timeLimit/1000<<" seconds to pass the test, good luck!."<<endl<<endl;
-	while(timeNow - timeStart < timeLimit){
-        k=rand()%n;
-        cout<<"Enter all forms of the word "<< v[3][k] << " ("<<v[0][k]<<") "<< endl;
-        for(i=0;i<3;i++) {
-        	cin >> vUser[i];
-    	    if (vUser[i]=="exit"){
-        		system("CLS");
-        		mainMenu(v);
-        		break;
-			}
-    	}
-    	for(i=0;i<3;i++) {
-    		if(v[i][k]==vUser[i]) {
-    			sc++;
-    		}
-    	}
-    	if(sc==3) {
-            score++;
-		}
-		sc=0;
-		timeNow=clock();
-		if((timeLimit-(timeNow-timeStart))/1000 > 0)
-			cout<<"You have left "<<(timeLimit-(timeNow-timeStart))/1000<<" seconds"<<endl;
-		else break;
-
-	}
-		cout<<endl<<"Time is over. Your account: "<<score<<endl;
-		cout<<"Want to add your result to the table? Press y ";
-		char ch=_getch();
-		if((ch=='Y')||(ch=='y')) {
-			ToRIn(score);
-		}
-	system("CLS");
+void TestToTime(string v[4][n])
+{
+    long timeLimit = 30000, timeStart = clock(), timeNow = clock();
+    int score = 0, sc = 0, k, i;
+    string vUser[3];
+    cout << "You have " << timeLimit / 1000
+         << " seconds to pass the test, good luck!." << endl
+         << endl;
+    while (timeNow - timeStart < timeLimit) {
+        k = rand() % n;
+        cout << "Enter all forms of the word " << v[3][k] << " (" << v[0][k]
+             << ") " << endl;
+        for (i = 0; i < 3; i++) {
+            cin >> vUser[i];
+            if (vUser[i] == "exit") {
+                system("CLS");
+                mainMenu(v);
+                break;
+            }
+        }
+        for (i = 0; i < 3; i++) {
+            if (v[i][k] == vUser[i]) {
+                sc++;
+            }
+        }
+        if (sc == 3) {
+            score += 20;
+        }
+        sc = 0;
+        timeNow = clock();
+        if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
+            cout << "You have left "
+                 << (timeLimit - (timeNow - timeStart)) / 1000 << " seconds"
+                 << endl;
+        else
+            break;
+    }
+    cout << endl << "Time is over. Your account: " << score << endl;
+    cout << "Want to add your result to the table? Press y ";
+    char ch = _getch();
+    if ((ch == 'Y') || (ch == 'y')) {
+        ToRIn(score);
+    }
+    system("CLS");
 }
 
 void TestRussian(string v[4][n])
@@ -218,7 +238,7 @@ void TestRussian(string v[4][n])
         for (i = 0; i < 4; i++) {
             cout << i + 1 << " - " << t[i] << endl;
         }
-        cout<<endl<<"0 - Finish testing"<<endl;
+        cout << endl << "0 - Finish testing" << endl;
         int flag = 1;
         while (flag == 1) {
             char a = _getch();
@@ -246,12 +266,12 @@ void TestRussian(string v[4][n])
             case '0': {
                 flag = 0;
                 system("CLS");
-                cout<<"Testing is finish. Your account: "<<score<<endl;
-            		cout<<"Want to add your result to the table? Press y ";
-            		char ch=_getch();
-            		if((ch=='Y')||(ch=='y')) {
-            			ToRIn(score);
-            		}
+                cout << "Testing is finish. Your account: " << score << endl;
+                cout << "Want to add your result to the table? Press y ";
+                char ch = _getch();
+                if ((ch == 'Y') || (ch == 'y')) {
+                    ToRIn(score);
+                }
                 system("CLS");
                 mainMenu(v);
             }
@@ -268,7 +288,8 @@ void TestRussian(string v[4][n])
         } else {
             cout << "Error!" << endl;
             Oshibki++;
-            if(score>=5) score-=5;
+            if (score >= 5)
+                score -= 5;
         }
         timer = clock() - ti;
         ti = clock();
@@ -284,40 +305,42 @@ void TestRussian(string v[4][n])
     cout << "Test is over";
 }
 
-void choiceTest(string v[4][n]){
-	cout<<"1 - Test for knowledge of all verbs from the reference book"<<endl;
-   	cout<<"2 - Translation Test"<<endl;
-   	cout<<"3 - Speed test"<<endl;
-   	cout<<"0 - Return to main menu"<<endl;
+void choiceTest(string v[4][n])
+{
+    cout << "1 - Test for knowledge of all verbs from the reference book"
+         << endl;
+    cout << "2 - Translation Test" << endl;
+    cout << "3 - Speed test" << endl;
+    cout << "0 - Return to main menu" << endl;
 
-   	char a=_getch();
-   	switch(a){
-   		case '1': {
-    		system("CLS");
-    		KoE(v);
-			break;
-			}
-		case '2': {
-			system("CLS");
-			TestRussian(v);
-			break;
-			}
-		case '3': {
-			system("CLS");
-			TestToTime(v);
-			break;
-			}
-		case '0': {
-			system("CLS");
-			 mainMenu(v);
-		}
-		default: {
-			cout<<endl<<"Invalid mode! Please retype";
-				Sleep(1000);
-				system("CLS");
-				choiceTest(v);
-		}
-		}
+    char a = _getch();
+    switch (a) {
+    case '1': {
+        system("CLS");
+        KoE(v);
+        break;
+    }
+    case '2': {
+        system("CLS");
+        TestRussian(v);
+        break;
+    }
+    case '3': {
+        system("CLS");
+        TestToTime(v);
+        break;
+    }
+    case '0': {
+        system("CLS");
+        mainMenu(v);
+    }
+    default: {
+        cout << endl << "Invalid mode! Please retype";
+        Sleep(1000);
+        system("CLS");
+        choiceTest(v);
+    }
+    }
 }
 
 void ToRIn(int score)
@@ -420,45 +443,44 @@ void ToROut()
     fclose(tf);
 }
 
-
 void mainMenu(string v[4][n])
 {
-	cout<<"1 - Choise a test"<<endl;
-	cout<<"2 - Rating"<<endl;
-  cout<<"4 - View directory"<<endl;
-  cout<<"5 - Help"<<endl;
-  cout<<"0 - Exit"<<endl;
+    cout << "1 - Choise a test" << endl;
+    cout << "2 - Rating" << endl;
+    cout << "4 - View directory" << endl;
+    cout << "5 - Help" << endl;
+    cout << "0 - Exit" << endl;
 
     char uCom;
-    uCom=_getch();
-    switch(uCom){
-    	case '1': {
-    		system("CLS");
-    		choiceTest(v);
-			break;
-		}
-		case '2': {
-			system("CLS");
-			ToROut();
-			break;
-		}
-		case '4': {
-			system("CLS");
-			dictionary(v);
-			break;
-		}
-		case '5': {
-			system("CLS");
-			support();
-			break;
-		}
-		case '0': {
-			exit(0);
-		}
-		default: {
-			cout<<endl<<"Invalid mode! Please repeat input";
-			Sleep(1000);
-			system("CLS");
-		}
-	}
+    uCom = _getch();
+    switch (uCom) {
+    case '1': {
+        system("CLS");
+        choiceTest(v);
+        break;
+    }
+    case '2': {
+        system("CLS");
+        ToROut();
+        break;
+    }
+    case '4': {
+        system("CLS");
+        dictionary(v);
+        break;
+    }
+    case '5': {
+        system("CLS");
+        support();
+        break;
+    }
+    case '0': {
+        exit(0);
+    }
+    default: {
+        cout << endl << "Invalid mode! Please repeat input";
+        Sleep(1000);
+        system("CLS");
+    }
+    }
 }
