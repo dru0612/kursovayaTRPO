@@ -56,6 +56,17 @@ void support(string v[4][n])
     mainMenu(v);
 }
 
+bool testCheck(int sc)
+{
+    if (sc == 3) {
+        return 1;
+    }
+
+    else {
+        return 0;
+    }
+}
+
 void KoE(string v[4][n])
 {
     int score = 0, sc = 0, k, Oshibki = 0;
@@ -92,18 +103,12 @@ void KoE(string v[4][n])
                 sc++;
             }
         }
-        if (sc == 3) {
-            cout << "Right! Keep up the good work";
+        bool t = testCheck(sc);
+        if (t == true) {
             score += 15;
-            sc = 0;
-            if (score >= 100)
-                break;
-
-        }
-
-        else {
+            cout << "Right! Keep up the good work";
+        } else {
             cout << "Error! Correct answer: ";
-            sc = 0;
             for (i = 0; i < 3; i++) {
                 cout << v[i][k] << " ";
             }
@@ -111,6 +116,9 @@ void KoE(string v[4][n])
             if (score >= 5)
                 score -= 5;
         }
+        sc = 0;
+        if (score >= 100)
+            break;
         cout << endl;
 
         timer = clock() - t;
@@ -177,7 +185,7 @@ void dictionary(string v[4][n])
 
 void TestToTime(string v[4][n])
 {
-    long timeLimit = 30000, timeStart = clock(), timeNow = clock();
+    long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, sc = 0, k, i;
     string vUser[3];
     cout << "You have " << timeLimit / 1000
@@ -208,7 +216,8 @@ void TestToTime(string v[4][n])
                 sc++;
             }
         }
-        if (sc == 3) {
+        bool t = testCheck(sc);
+        if (t == true) {
             score += 20;
         }
         sc = 0;
