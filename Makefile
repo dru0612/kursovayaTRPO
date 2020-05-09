@@ -1,5 +1,5 @@
 g = g++
-CFLAGS = -c -Wall -std=c++14
+CFLAGS = -c -Wall -Werror
 
 .PHONY: clean run all test
 
