@@ -9,14 +9,6 @@
 #include <string.h>
 #include <time.h>
 
-#include <stdio.h>
-#ifndef __linux
-#include <conio.h>
-#else
-#include <termios.h>
-#include <unistd.h>
-#endif
-
 #define n 100
 
 using namespace std;
