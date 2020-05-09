@@ -29,7 +29,7 @@ void hello()
     system("CLS");
 }
 
-void support()
+void support(string v[4][n])
 {
     cout << "1) Enter words in lowercase." << endl;
     cout << "2) You must use only Latin letters to enter words "
@@ -53,6 +53,7 @@ void support()
          << endl;
     system("pause");
     system("CLS");
+    mainMenu(v);
 }
 
 void KoE(string v[4][n])
@@ -166,6 +167,7 @@ void dictionary(string v[4][n])
     cout << endl << "Click any button to resume." << endl;
     system("pause");
     system("CLS");
+    mainMenu(v);
 }
 
 void TestToTime(string v[4][n])
@@ -183,6 +185,14 @@ void TestToTime(string v[4][n])
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
             if (vUser[i] == "exit") {
+                system("CLS");
+                cout << "Testing is finish. Your account: " << score << endl;
+                cout << "Want to add your result to the table? Press y ";
+                char ch;
+                cin >> ch;
+                if ((ch == 'Y') || (ch == 'y')) {
+                    ToRIn(score);
+                }
                 system("CLS");
                 mainMenu(v);
                 break;
@@ -205,7 +215,8 @@ void TestToTime(string v[4][n])
         else
             break;
     }
-    cout << endl << "Time is over. Your account: " << score << endl;
+    system("CLS");
+    cout << "Testing is finish. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
     char ch;
     cin >> ch;
@@ -213,6 +224,7 @@ void TestToTime(string v[4][n])
         ToRIn(score);
     }
     system("CLS");
+    mainMenu(v);
 }
 
 void TestRussian(string v[4][n])
@@ -228,7 +240,7 @@ void TestRussian(string v[4][n])
         j = rand() % 4;
         t[j] = v[3][k];
         cout << "Select a word translation: " << v[f][k] << " (this is "
-             << f + 1 << " formof the verb)" << endl;
+             << f + 1 << " form of the verb)" << endl;
         for (i = 0; i < 4; i++) {
             int q = rand() % n;
             while (q == k) {
@@ -283,7 +295,7 @@ void TestRussian(string v[4][n])
             }
             default: {
                 cout << endl << "Incorrect! Repeat please" << endl;
-                for (int i = 0; i < 10000000; i++)
+                for (int i = 0; i < 90000000; i++)
                     ;
                 flag = 1;
             }
@@ -318,7 +330,7 @@ void choiceTest(string v[4][n])
     cout << "1 - Test for knowledge of all verbs from the reference book"
          << endl;
     cout << "2 - Translation Test" << endl;
-    cout << "3 - Speed test" << endl;
+    cout << "3 - Speed test" << endl << endl;
     cout << "0 - Return to main menu" << endl;
 
     char a;
@@ -342,6 +354,7 @@ void choiceTest(string v[4][n])
     case '0': {
         system("CLS");
         mainMenu(v);
+        break;
     }
     default: {
         cout << endl << "Invalid mode! Please retype";
@@ -409,12 +422,13 @@ void ToRSort()
     fclose(tf);
     tf = fopen("Table of Records", "wb");
     for (i = 0; i < k; i++) {
-        fwrite(&people[i], sizeof(people[i]), 1, tf);
+        if (i < 10)
+            fwrite(&people[i], sizeof(people[i]), 1, tf);
     }
     fclose(tf);
 }
 
-void ToROut()
+void ToROut(string v[4][n])
 {
     FILE* tf;
     system("CLS");
@@ -435,14 +449,15 @@ void ToROut()
     system("pause");
     system("CLS");
     fclose(tf);
+    mainMenu(v);
 }
 
 void mainMenu(string v[4][n])
 {
     cout << "1 - Choise a test" << endl;
     cout << "2 - Rating" << endl;
-    cout << "4 - View directory" << endl;
-    cout << "5 - Help" << endl;
+    cout << "3 - View directory" << endl;
+    cout << "4 - Help" << endl << endl;
     cout << "0 - Exit" << endl;
 
     char uCom;
@@ -455,17 +470,17 @@ void mainMenu(string v[4][n])
     }
     case '2': {
         system("CLS");
-        ToROut();
+        ToROut(v);
         break;
     }
-    case '4': {
+    case '3': {
         system("CLS");
         dictionary(v);
         break;
     }
-    case '5': {
+    case '4': {
         system("CLS");
-        support();
+        support(v);
         break;
     }
     case '0': {
