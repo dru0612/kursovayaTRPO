@@ -228,7 +228,7 @@ void TestRussian(string v[4][n])
         j = rand() % 4;
         t[j] = v[3][k];
         cout << "Select a word translation: " << v[f][k] << " (this is "
-             << f + 1 << " formof the verb)" << endl;
+             << f + 1 << " form of the verb)" << endl;
         for (i = 0; i < 4; i++) {
             int q = rand() % n;
             while (q == k) {
@@ -283,7 +283,7 @@ void TestRussian(string v[4][n])
             }
             default: {
                 cout << endl << "Incorrect! Repeat please" << endl;
-                for (int i = 0; i < 10000000; i++)
+                for (int i = 0; i < 90000000; i++)
                     ;
                 flag = 1;
             }
