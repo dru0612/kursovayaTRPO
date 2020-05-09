@@ -76,7 +76,7 @@ void KoE(string v[4][n])
                 cout << endl
                      << "Total task completion time: " << timeAll / 1000
                      << " second";
-                cout << endl << "Time is over. Your account: " << score << endl;
+                cout << "Testing is finish. Your account: " << score << endl;
                 cout << "Want to add your result to the table? Press y ";
                 char ch;
                 cin >> ch;
@@ -122,7 +122,7 @@ void KoE(string v[4][n])
 
     cout << endl
          << "Total task completion time: " << timeAll / 1000 << " second";
-    cout << endl << "Time is over. Your account: " << score << endl;
+    cout << endl << "Testing is finish. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
     char ch;
     cin >> ch;
