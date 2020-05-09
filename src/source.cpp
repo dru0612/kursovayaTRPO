@@ -422,7 +422,8 @@ void ToRSort()
     fclose(tf);
     tf = fopen("Table of Records", "wb");
     for (i = 0; i < k; i++) {
-        fwrite(&people[i], sizeof(people[i]), 1, tf);
+        if (i < 10)
+            fwrite(&people[i], sizeof(people[i]), 1, tf);
     }
     fclose(tf);
 }
