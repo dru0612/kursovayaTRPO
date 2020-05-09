@@ -93,9 +93,12 @@ void KoE(string v[4][n])
             }
         }
         if (sc == 3) {
-            cout << "Right! Keep up the good wor";
+            cout << "Right! Keep up the good work";
             score += 15;
             sc = 0;
+            if (score >= 100)
+                break;
+
         }
 
         else {
@@ -120,8 +123,8 @@ void KoE(string v[4][n])
              << endl;
     }
 
-    cout << endl
-         << "Total task completion time: " << timeAll / 1000 << " second";
+    system("CLS");
+    cout << "Total task completion time: " << timeAll / 1000 << " second";
     cout << endl << "Testing is finish. Your account: " << score << endl;
     cout << "Want to add your result to the table? Press y ";
     char ch;
@@ -129,6 +132,8 @@ void KoE(string v[4][n])
     if ((ch == 'Y') || (ch == 'y')) {
         ToRIn(score);
     }
+    system("CLS");
+    mainMenu(v);
 }
 
 void fileIn(string v[4][n])
