@@ -81,6 +81,7 @@ void KoE(string v[4][n])
                 if ((ch == 'Y') || (ch == 'y')) {
                     ToRIn(score);
                 }
+                system("CLS");
                 mainMenu(v);
             }
         }
