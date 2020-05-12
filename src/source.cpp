@@ -46,7 +46,7 @@ void support(string v[4][n])
             "you must write - be was, were been - "
          << endl;
     cout << "Test for knowledge of all forms goes until you score 100 points" << endl;
-    сщге << "15 points are given for the correct answer, and 5 points are taken for the wrong answer"<<endl;
+    cout << "15 points are given for the correct answer, and 5 points are taken for the wrong answer"<<endl;
     cout << endl
          << "We wish you good luck in learning verbs! Click any button to "
             "resume."
