@@ -53,7 +53,7 @@ void support(string v[4][n])
     cout << "For the correct answer is given 20 points." <<endl;
     cout << endl;
     cout << "In the translation knowledge test, 4 translations are proposed, one of which is correct." <<endl;
-    cout << "For the correct answer +10 points, for the wrong - 5 points" <<endl;
+    cout << "For the right choise +10 points, for the wrong - 5 points" <<endl;
     cout << endl
          << "We wish you good luck in learning verbs! Click any button to "
             "resume."
