@@ -45,7 +45,8 @@ void support(string v[4][n])
     cout << "\t Example: the verb to Be. Its 2 form is was/were. In response "
             "you must write - be was, were been - "
          << endl;
-    cout << "To pass this test, you need to score 10 points" << endl;
+    cout << "Test for knowledge of all forms goes until you score 100 points" << endl;
+    сщге << "15 points are given for the correct answer, and 5 points are taken for the wrong answer"<<endl;
     cout << endl
          << "We wish you good luck in learning verbs! Click any button to "
             "resume."
