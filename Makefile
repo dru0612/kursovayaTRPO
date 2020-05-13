@@ -5,13 +5,19 @@ CFLAGS = -c -Wall -Werror
 
 all: bin/source
 
-bin/source: build/src/main.o build/src/source.o
+bin/source: build/src/main.o build/src/source.o build/src/hello.o build/src/test.o
 		$(g) $^ -o $@
 
 build/src/main.o: src/main.cpp
 		$(g) $(CFLAGS) $^ -o $@
 
 build/src/source.o: src/source.cpp
+		$(g) $(CFLAGS) $^ -o $@
+
+build/src/hello.o: src/hello.cpp
+		$(g) $(CFLAGS) $^ -o $@
+
+build/src/test.o: src/test.cpp
 		$(g) $(CFLAGS) $^ -o $@
 
 GTEST_DIR = thirdparty/googletest
