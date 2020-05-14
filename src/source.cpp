@@ -11,10 +11,8 @@ int testCheck(int sc)
     }
 }
 
-int yesCheck()
+int yesCheck(char ch)
 {
-    char ch;
-    cin >> ch;
     if ((ch == 'Y') || (ch == 'y'))
         return 1;
     else

@@ -29,7 +29,9 @@ void KoE(string v[4][n])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                if (yesCheck())
+                char ch;
+                cin >> ch;
+                if (yesCheck(ch))
                     ToRIn(score);
                 system("CLS");
                 mainMenu(v);
@@ -37,8 +39,7 @@ void KoE(string v[4][n])
                 sc++;
             }
         }
-        bool t = testCheck(sc);
-        if (t == true) {
+        if (testCheck(sc)) {
             score += 15;
             cout << "Правильно! Продолжайте в том же духе";
         } else {
@@ -70,7 +71,9 @@ void KoE(string v[4][n])
     cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
-    if (yesCheck())
+    char ch;
+    cin >> ch;
+    if (yesCheck(ch))
         ToRIn(score);
     system("CLS");
     mainMenu(v);
@@ -99,7 +102,9 @@ void TestToTime(string v[4][n])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                if (yesCheck())
+                char ch;
+                cin >> ch;
+                if (yesCheck(ch))
                     ToRIn(score);
                 system("CLS");
                 mainMenu(v);
@@ -126,7 +131,9 @@ void TestToTime(string v[4][n])
     cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
-    if (yesCheck())
+    char ch;
+    cin >> ch;
+    if (yesCheck(ch))
         ToRIn(score);
     system("CLS");
     mainMenu(v);
@@ -194,7 +201,9 @@ void TestRussian(string v[4][n])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                if (yesCheck())
+                char ch;
+                cin >> ch;
+                if (yesCheck(ch))
                     ToRIn(score);
                 system("CLS");
                 mainMenu(v);
