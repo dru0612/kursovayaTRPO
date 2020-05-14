@@ -88,8 +88,8 @@ void TestToTime(string v[4][n])
          << endl;
     while (timeNow - timeStart < timeLimit) {
         k = rand() % n;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k]
-             << ") " << endl;
+        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k]<< ") "
+             << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
             int q = verbCheck(vUser[i], v[i][k]);
@@ -147,8 +147,8 @@ void TestRussian(string v[4][n])
         f = rand() % 3;
         j = rand() % 4;
         t[j] = v[3][k];
-        cout << "Выберите перевод слова: " << v[f][k] << " (это "
-             << f + 1 << " форма глагола)" << endl;
+        cout << "Выберите перевод слова: " << v[f][k] << " (это "<< f + 1
+             << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
             int q = rand() % n;
             while (q == k) {
