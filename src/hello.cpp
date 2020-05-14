@@ -30,39 +30,37 @@ void hello()
 
 void support(string v[4][n])
 {
-    cout << "1) Enter words in lowercase." << endl;
-    cout << "2) You must use only Latin letters to enter words "
-            "alphabet's."
+    cout << "1) Вводите слова в нижнем регистре." << endl;
+    cout << "2) Вы должны использовать только Латинские буквы для ввода слов "
          << endl;
-    cout << "3) If you encounter a verb that contains one of the following "
-            "forms "
-            "multiple word options"
+    cout << "3) Если вы встретите глагол, который имеет несколько вариантов "
+            "одной формы"
          << endl;
-    cout << "they must be separated by commas without spaces. These words "
-            "will be marked (*)"
+    cout << "Они должны быть разделены запятыми без пробелов. Эти слова "
+            "будут помечены (*)"
          << endl;
-    cout << "\t Example: the verb to Be. Its 2 form is was/were. In response "
-            "you must write - be was, were been - "
+    cout << "\t Пример: глагол быть. Его 2 формы это was/were. В ответе "
+            "вы должны написать - be was, were been - "
          << endl;
     cout << endl;
-    cout << "Test for knowledge of all forms goes until you score 100 points"
+    cout << "Тест на знание всех форм глаголов идет до набора 100 очков"
          << endl;
-    cout << "15 points are given for the correct answer, and 5 points are "
-            "taken for the wrong answer"
+    cout << "15 очков дается за правильный ответ, и 5 очков отнимается "
+            "за неправильный ответ"
          << endl
          << endl;
-    cout << "In the test for time, the task is to score the maximum number of "
-            "points in 60 seconds, the user must enter 3 forms of the word."
+    cout << "В тесте на время, необходимо набрать максимальное количество "
+            "очков за 60 секунд, пользователь вводит все три формы глагола"
          << endl;
-    cout << "For the correct answer is given 20 points." << endl;
+    cout << "За правильный ответ дается 20 очков" << endl;
     cout << endl;
-    cout << "In the translation knowledge test, 4 translations are proposed, "
-            "one of which is correct."
+    cout << "В тесте на знание перевода предлагается 4 варианта перевода, "
+            "один из которых верный."
          << endl;
-    cout << "For the right choise +10 points, for the wrong - 5 points" << endl;
+    cout << "За правильный выбор +10 очков, за неправильный -5 очков" << endl;
     cout << endl
-         << "We wish you good luck in learning verbs! Click any button to "
-            "resume."
+         << "Желаем вам удачи в изучении глаголов! Нажмите любую кнопку, чтобы "
+            "продолжить."
          << endl
          << endl;
     system("pause");
