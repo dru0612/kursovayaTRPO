@@ -11,6 +11,10 @@ int testCheck(int sc)
     }
 }
 
+int yesCheck(int score)
+{
+}
+
 int verbCheck(string user, string verb)
 {
     if (user == verb)
