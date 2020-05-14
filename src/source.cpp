@@ -54,7 +54,7 @@ void fileOut(string v[4][n])
 void dictionary(string v[4][n])
 {
     fileOut(v);
-    cout << endl << "Click any button to resume." << endl;
+    cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
     system("pause");
     system("CLS");
     mainMenu(v);
