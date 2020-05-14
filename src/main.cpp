@@ -2,7 +2,7 @@
 
 int main()
 {
-    setlocale(LC_ALL, "RUS");
+    setlocale(LC_ALL, "Russian");
     srand(time(NULL));
     string v[4][n];
     hello();
