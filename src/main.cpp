@@ -7,8 +7,6 @@ int main()
     string v[4][n];
     hello();
     fileIn(v);
-    while (1) {
-        mainMenu(v);
-    }
+    mainMenu(v);
     return 0;
 }
