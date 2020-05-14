@@ -12,7 +12,7 @@ void KoE(string v[4][n])
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
         k = rand() % n;
-        cout << "Enter all forms of the word " << v[3][k] << " (" << v[0][k]
+        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k]
              << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
@@ -21,11 +21,11 @@ void KoE(string v[4][n])
                 system("cls");
                 testStatus = 1;
                 cout << endl
-                     << "Total task completion time: " << timeAll / 1000
-                     << " second";
+                     << "Общее время прохождения: " << timeAll / 1000
+                     << "секунд";
                 cout << endl
-                     << "Testing is finish. Your account: " << score << endl;
-                cout << "Want to add your result to the table? Press y ";
+                     << "Тестирование завершено. Ваш счет: " << score << endl;
+                cout << "Хотите добавить результат в таблицу? Нажмите y ";
                 char ch;
                 cin >> ch;
                 if ((ch == 'Y') || (ch == 'y')) {
@@ -40,9 +40,9 @@ void KoE(string v[4][n])
         bool t = testCheck(sc);
         if (t == true) {
             score += 15;
-            cout << "Right! Keep up the good work";
+            cout << "Правильно! Продолжайте в том же духе";
         } else {
-            cout << "Error! Correct answer: ";
+            cout << "Ошибка! Правильный ответ: ";
             for (i = 0; i < 3; i++) {
                 cout << v[i][k] << " ";
             }
@@ -58,10 +58,10 @@ void KoE(string v[4][n])
         timer = clock() - t;
         t = clock();
         timeAll += timer;
-        cout << "Time spent on this verb: " << timer / 1000 << " second"
+        cout << "Время, потраченное на глагол: " << timer / 1000 << " секунд"
              << endl;
-        cout << "Your account: " << score
-             << "\t Number of errors made: " << Oshibki << endl
+        cout << "Ваш счет: " << score
+             << "\t Количетсво допущенных ошибок: " << Oshibki << endl
              << endl;
     }
 
