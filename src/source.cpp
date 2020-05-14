@@ -166,7 +166,7 @@ void ToROut(string v[4][n])
 {
     FILE* tf;
     system("CLS");
-    cout << "Records:" << endl << endl;
+    cout << "Результаты:" << endl << endl;
     struct record {
         char name[50];
         int speed;
