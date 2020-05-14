@@ -62,11 +62,11 @@ void dictionary(string v[4][n])
 
 void choiceTest(string v[4][n])
 {
-    cout << "1 - Test for knowledge of all verbs from the reference book"
+    cout << "1 - Тест на знание всех глаголов из справочника"
          << endl;
-    cout << "2 - Translation Test" << endl;
-    cout << "3 - Speed test" << endl << endl;
-    cout << "0 - Return to main menu" << endl;
+    cout << "2 - Тест на знание перевода" << endl;
+    cout << "3 - Тест на скорость" << endl << endl;
+    cout << "0 - Вернуться в главное меню" << endl;
 
     char a;
     cin >> a;
