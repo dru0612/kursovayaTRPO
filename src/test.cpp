@@ -12,8 +12,8 @@ void KoE(string v[4][n])
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
         k = rand() % n;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k]
-             << ") " << endl;
+        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
+             << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
             int q = verbCheck(vUser[i], v[i][k]);
