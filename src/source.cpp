@@ -114,7 +114,7 @@ void ToRIn(int score)
         char output[20];
     } man;
     man.speed = score;
-    tf = fopen("Table of Records", "ab+");
+    tf = fopen("Table of Records", "ab");
     cout << endl << "Введите ваше имя: ";
     cin >> man.name;
 
