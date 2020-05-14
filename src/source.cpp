@@ -13,6 +13,7 @@ int testCheck(int sc)
 
 int yesCheck(int score)
 {
+    return 1;
 }
 
 int verbCheck(string user, string verb)
@@ -192,43 +193,45 @@ void ToROut(string v[4][n])
 
 void mainMenu(string v[4][n])
 {
-    cout << "1 - Выбор теста" << endl;
-    cout << "2 - Результаты" << endl;
-    cout << "3 - Показать словарь глаголов" << endl;
-    cout << "4 - Помощь" << endl << endl;
-    cout << "0 - Выход" << endl;
+    while (1) {
+        cout << "1 - Выбор теста" << endl;
+        cout << "2 - Результаты" << endl;
+        cout << "3 - Показать словарь глаголов" << endl;
+        cout << "4 - Помощь" << endl << endl;
+        cout << "0 - Выход" << endl;
 
-    char uCom;
-    cin >> uCom;
-    switch (uCom) {
-    case '1': {
-        system("CLS");
-        choiceTest(v);
-        break;
-    }
-    case '2': {
-        system("CLS");
-        ToROut(v);
-        break;
-    }
-    case '3': {
-        system("CLS");
-        dictionary(v);
-        break;
-    }
-    case '4': {
-        system("CLS");
-        support(v);
-        break;
-    }
-    case '0': {
-        exit(0);
-    }
-    default: {
-        cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-        for (int i = 0; i < 10000000; i++)
-            ;
-        system("CLS");
-    }
+        char uCom;
+        cin >> uCom;
+        switch (uCom) {
+        case '1': {
+            system("CLS");
+            choiceTest(v);
+            break;
+        }
+        case '2': {
+            system("CLS");
+            ToROut(v);
+            break;
+        }
+        case '3': {
+            system("CLS");
+            dictionary(v);
+            break;
+        }
+        case '4': {
+            system("CLS");
+            support(v);
+            break;
+        }
+        case '0': {
+            exit(0);
+        }
+        default: {
+            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
+            for (int i = 0; i < 10000000; i++)
+                ;
+            system("CLS");
+        }
+        }
     }
 }
