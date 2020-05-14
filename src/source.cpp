@@ -188,11 +188,11 @@ void ToROut(string v[4][n])
 
 void mainMenu(string v[4][n])
 {
-    cout << "1 - Choise a test" << endl;
-    cout << "2 - Rating" << endl;
-    cout << "3 - View directory" << endl;
-    cout << "4 - Help" << endl << endl;
-    cout << "0 - Exit" << endl;
+    cout << "1 - Выбор теста" << endl;
+    cout << "2 - Результаты" << endl;
+    cout << "3 - Показать словарь глаголов" << endl;
+    cout << "4 - Помощь" << endl << endl;
+    cout << "0 - Выход" << endl;
 
     char uCom;
     cin >> uCom;
@@ -221,7 +221,7 @@ void mainMenu(string v[4][n])
         exit(0);
     }
     default: {
-        cout << endl << "Invalid mode! Please repeat input";
+        cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
         for (int i = 0; i < 10000000; i++)
             ;
         system("CLS");
