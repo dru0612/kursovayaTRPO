@@ -4,25 +4,24 @@ using namespace std;
 
 void hello()
 {
-    cout << "Hello, dear user! You have problems with "
-            "English and want to learn irregular verbs?"
+    cout << "Здравствуй, дорогой пользователь! У вас проблемы с "
+            "английским и хотите выучить неправильные глаголы?"
          << endl;
-    cout << "Welcome to the A. A. A. team!" << endl;
-    cout << "We, Ageev Anatoly, Tverdokhleb Anton and tsikunov Andrey, "
-            "students "
-            "Sibguti group IP-913."
+    cout << "Добро пожаловать в команду A. A. A.!" << endl;
+    cout << "Мы, Агеев Анатолий, Твердохлеб Антон и Цикунов Андрей, "
+            "студенты "
+            "СИБГУТИ группа ИП-913."
          << endl;
-    cout << "We have volunteered to help you brighten up your evening studying "
-            "English "
-            "language!"
-         << endl;
-    cout << endl
-         << "This program is designed to hone your knowledge "
-            "irregular verb."
+    cout << "Мы вызвались помочь вам скрасить вечерние занятия английским"
+            "языком!"
          << endl;
     cout << endl
-         << "We wish you good luck in learning verbs! Click any button to "
-            "resume."
+         << "Эта программа предназначена для оттачивания ваших знаний "
+            "неправильных глаголов."
+         << endl;
+    cout << endl
+         << "Желаем вам удачи в изучении глаголов! Нажмите любую кнопку, чтобы "
+            "продолжить."
          << endl
          << endl;
     system("pause");
