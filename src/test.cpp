@@ -147,8 +147,8 @@ void TestRussian(string v[4][n])
         f = rand() % 3;
         j = rand() % 4;
         t[j] = v[3][k];
-        cout << "Select a word translation: " << v[f][k] << " (this is "
-             << f + 1 << " form of the verb)" << endl;
+        cout << "Выберите перевод слова: " << v[f][k] << " (это "
+             << f + 1 << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
             int q = rand() % n;
             while (q == k) {
@@ -162,7 +162,7 @@ void TestRussian(string v[4][n])
         for (i = 0; i < 4; i++) {
             cout << i + 1 << " - " << t[i] << endl;
         }
-        cout << endl << "0 - Finish testing" << endl;
+        cout << endl << "0 - Закончить тест" << endl;
         int flag = 1;
         while (flag == 1) {
             char a;
@@ -191,8 +191,8 @@ void TestRussian(string v[4][n])
             case '0': {
                 flag = 0;
                 system("CLS");
-                cout << "Testing is finish. Your account: " << score << endl;
-                cout << "Want to add your result to the table? Press y ";
+                cout << "Тестированеи завершено. Ваш счет: " << score << endl;
+                cout << "Хотите добавить результат в таблицу? Нажмите y ";
                 char ch;
                 cin >> ch;
                 if ((ch == 'Y') || (ch == 'y')) {
@@ -202,7 +202,7 @@ void TestRussian(string v[4][n])
                 mainMenu(v);
             }
             default: {
-                cout << endl << "Incorrect! Repeat please" << endl;
+                cout << endl << "Некорректно! Повторите пожалуйста" << endl;
                 for (int i = 0; i < 90000000; i++)
                     ;
                 flag = 1;
@@ -211,10 +211,10 @@ void TestRussian(string v[4][n])
         }
         int q = verbCheck(t[u], v[3][k]);
         if (q) {
-            cout << "Success!" << endl;
+            cout << "Правильно!" << endl;
             score += 10;
         } else {
-            cout << "Error!" << endl;
+            cout << "Ошибка!" << endl;
             Oshibki++;
             if (score >= 5)
                 score -= 5;
@@ -222,14 +222,14 @@ void TestRussian(string v[4][n])
         timer = clock() - ti;
         ti = clock();
         timeAll += timer;
-        cout << "Time spent on this verb: " << timer / 1000 << " second"
+        cout << "Время, потраченное на на глагол: " << timer / 1000 << " секунд"
              << endl;
-        cout << "Your account: " << score
-             << "\t Number of errors made: " << Oshibki << endl
+        cout << "Ваш счет: " << score
+             << "\t Количество допущенных ошибок: " << Oshibki << endl
              << endl;
         for (i = 0; i < 10000000; i++)
             ;
         system("CLS");
     }
-    cout << "Test is over";
+    cout << "Тестирвоание завершено";
 }
