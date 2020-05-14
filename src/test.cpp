@@ -66,9 +66,9 @@ void KoE(string v[4][n])
     }
 
     system("CLS");
-    cout << "Total task completion time: " << timeAll / 1000 << " second";
-    cout << endl << "Testing is finish. Your account: " << score << endl;
-    cout << "Want to add your result to the table? Press y ";
+    cout << "Общее время прохождения: " << timeAll / 1000 << " second";
+    cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
+    cout << "Хотите добавить результат в таблицу? Нажмите y ";
     char ch;
     cin >> ch;
     if ((ch == 'Y') || (ch == 'y')) {
@@ -83,20 +83,20 @@ void TestToTime(string v[4][n])
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, sc = 0, k, i;
     string vUser[3];
-    cout << "You have " << timeLimit / 1000
-         << " seconds to pass the test, good luck!." << endl
+    cout << "У вас есть " << timeLimit / 1000
+         << " секунд чтобы пройти тест, удачи!." << endl
          << endl;
     while (timeNow - timeStart < timeLimit) {
         k = rand() % n;
-        cout << "Enter all forms of the word " << v[3][k] << " (" << v[0][k]
+        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k]
              << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
             int q = verbCheck(vUser[i], v[i][k]);
             if (q == 2) {
                 system("CLS");
-                cout << "Testing is finish. Your account: " << score << endl;
-                cout << "Want to add your result to the table? Press y ";
+                cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
+                cout << "Хотите добавить результат в таблицу? Нажмите y ";
                 char ch;
                 cin >> ch;
                 if ((ch == 'Y') || (ch == 'y')) {
@@ -117,15 +117,15 @@ void TestToTime(string v[4][n])
         sc = 0;
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
-            cout << "You have left "
-                 << (timeLimit - (timeNow - timeStart)) / 1000 << " seconds"
+            cout << "У вас осталось "
+                 << (timeLimit - (timeNow - timeStart)) / 1000 << " секунд"
                  << endl;
         else
             break;
     }
     system("CLS");
-    cout << "Testing is finish. Your account: " << score << endl;
-    cout << "Want to add your result to the table? Press y ";
+    cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
+    cout << "Хотите добавить результат в таблицу? Нажмите y ";
     char ch;
     cin >> ch;
     if ((ch == 'Y') || (ch == 'y')) {
