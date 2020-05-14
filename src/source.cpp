@@ -91,7 +91,7 @@ void choiceTest(string v[4][n])
         break;
     }
     default: {
-        cout << endl << "Invalid mode! Please retype";
+        cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
         for (int i = 0; i < 10000000; i++)
             ;
         system("CLS");
@@ -110,7 +110,7 @@ void ToRIn(int score)
     } man;
     man.speed = score;
     tf = fopen("Table of Records", "ab+");
-    cout << endl << "Enter your name: ";
+    cout << endl << "Введите ваше имя: ";
     cin >> man.name;
 
     time_t seconds = time(NULL);
