@@ -20,8 +20,7 @@ void KoE(string v[4][n])
             if (q == 2) {
                 system("cls");
                 testStatus = 1;
-                cout << endl
-                     << "Общее время прохождения: " << timeAll / 1000
+                cout << "Общее время прохождения: " << timeAll / 1000
                      << "секунд";
                 cout << endl
                      << "Тестирование завершено. Ваш счет: " << score << endl;
@@ -30,11 +29,8 @@ void KoE(string v[4][n])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                char ch;
-                cin >> ch;
-                if ((ch == 'Y') || (ch == 'y')) {
+                if (yesCheck())
                     ToRIn(score);
-                }
                 system("CLS");
                 mainMenu(v);
             } else if (q == 1) {

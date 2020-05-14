@@ -11,9 +11,14 @@ int testCheck(int sc)
     }
 }
 
-int yesCheck(int score)
+int yesCheck()
 {
-    return 1;
+    char ch;
+    cin >> ch;
+    if ((ch == 'Y') || (ch == 'y'))
+        return 1;
+    else
+        return 0;
 }
 
 int verbCheck(string user, string verb)
