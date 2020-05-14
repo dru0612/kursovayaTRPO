@@ -25,8 +25,8 @@ void fileIn(string v[4][n])
 {
     ifstream file("verb+.txt");
     if (!file) {
-        cout << "There was an error opening the file.\n";
-        cout << "The program may not be installed correctly\n";
+        cout << "При открытии файла произошла ошибка.\n";
+        cout << "Программа может быть установлена неправильно\n";
         exit(0);
     }
     for (int i = 0; i < n; i++) {
