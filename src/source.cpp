@@ -223,7 +223,7 @@ void mainMenu(string v[4][100])
         }
         case '4': {
             system("CLS");
-            //support(v);
+            support(v);
             break;
         }
         case '0': {
