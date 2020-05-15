@@ -29,7 +29,7 @@ testlib:
     -pthread -c ${GTEST_DIR}/src/gtest-all.cc -o build/test/gtest-all.o
 	ar -rv build/test/libgtest.a build/test/gtest-all.o
 
-bin/source-test: build/test/main.o build/src/source.o
+bin/source-test: build/test/main.o build/src/test.o build/src/source.o
 	g++ -std=c++11 -isystem ${GTEST_DIR}/include -pthread $^ \
 	build/test/libgtest.a -o $@
 
