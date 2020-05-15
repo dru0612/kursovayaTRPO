@@ -13,11 +13,8 @@
 
 using namespace std;
 
-void hello();
-void support(string v[4][100]);
 void fileIn(string v[4][100]);
 void fileOut(string v[4][100]);
-void dictionary(string v[4][100]);
 void mainMenu(string v[4][100]);
 void ToRIn(int score);
 void ToRSort();
