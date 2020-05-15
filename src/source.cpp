@@ -29,7 +29,7 @@ int verbCheck(string user, string verb)
         return 0;
 }
 
-void fileIn(string v[4][n])
+void fileIn(string v[4][100])
 {
     ifstream file("verb+.txt");
     if (!file) {
@@ -37,16 +37,16 @@ void fileIn(string v[4][n])
         cout << "Программа может быть установлена неправильно\n";
         exit(0);
     }
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 4; j++) {
             file >> v[j][i];
         }
     }
 }
 
-void fileOut(string v[4][n])
+void fileOut(string v[4][100])
 {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 100; i++) {
         cout << i + 1 << ") ";
         cout.width(10);
         cout << v[0][i];
@@ -59,7 +59,7 @@ void fileOut(string v[4][n])
     }
 }
 
-void dictionary(string v[4][n])
+void dictionary(string v[4][100])
 {
     fileOut(v);
     cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
@@ -68,7 +68,7 @@ void dictionary(string v[4][n])
     mainMenu(v);
 }
 
-void choiceTest(string v[4][n])
+void choiceTest(string v[4][100])
 {
     cout << "1 - Тест на знание всех глаголов из справочника" << endl;
     cout << "2 - Тест на знание перевода" << endl;
@@ -170,7 +170,7 @@ void ToRSort()
     fclose(tf);
 }
 
-void ToROut(string v[4][n])
+void ToROut(string v[4][100])
 {
     FILE* tf;
     system("CLS");
@@ -194,7 +194,7 @@ void ToROut(string v[4][n])
     mainMenu(v);
 }
 
-void mainMenu(string v[4][n])
+void mainMenu(string v[4][100])
 {
     while (1) {
         cout << "1 - Выбор теста" << endl;
@@ -223,7 +223,7 @@ void mainMenu(string v[4][n])
         }
         case '4': {
             system("CLS");
-            support(v);
+            //support(v);
             break;
         }
         case '0': {
