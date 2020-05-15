@@ -28,7 +28,7 @@ void hello()
     system("CLS");
 }
 
-void support(string v[4][n])
+void support(string v[4][100])
 {
     cout << "1) Вводите слова в нижнем регистре." << endl;
     cout << "2) Вы должны использовать только Латинские буквы для ввода слов "
