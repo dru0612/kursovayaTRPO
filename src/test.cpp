@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void KoE(string v[4][n])
+void KoE(string v[4][100])
 {
     int score = 0, sc = 0, k, Oshibki = 0;
     int t = clock();
@@ -11,7 +11,7 @@ void KoE(string v[4][n])
     string vUser[3];
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
-        k = rand() % n;
+        k = rand() % 100;
         cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
              << endl;
         for (i = 0; i < 3; i++) {
@@ -79,7 +79,7 @@ void KoE(string v[4][n])
     mainMenu(v);
 }
 
-void TestToTime(string v[4][n])
+void TestToTime(string v[4][100])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, sc = 0, k, i;
@@ -88,7 +88,7 @@ void TestToTime(string v[4][n])
          << " секунд чтобы пройти тест, удачи!." << endl
          << endl;
     while (timeNow - timeStart < timeLimit) {
-        k = rand() % n;
+        k = rand() % 100;
         cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
              << endl;
         for (i = 0; i < 3; i++) {
@@ -139,7 +139,7 @@ void TestToTime(string v[4][n])
     mainMenu(v);
 }
 
-void TestRussian(string v[4][n])
+void TestRussian(string v[4][100])
 {
     int score = 0, k, Oshibki = 0;
     int ti = clock();
@@ -147,16 +147,16 @@ void TestRussian(string v[4][n])
     int timeAll = 0, u, f, j, i;
     string t[4];
     while (1) {
-        k = rand() % n;
+        k = rand() % 100;
         f = rand() % 3;
         j = rand() % 4;
         t[j] = v[3][k];
         cout << "Выберите перевод слова: " << v[f][k] << " (это " << f + 1
              << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
-            int q = rand() % n;
+            int q = rand() % 100;
             while (q == k) {
-                q = rand() % n;
+                q = rand() % 100;
             }
 
             if (i != j) {
