@@ -1,10 +1,9 @@
 #include "../src/source.h"
 #include "gtest/gtest.h"
 
-
 TEST(TestCheck, WrongInputBellow)
 {
-	int rand = 2;
+    int rand = 2;
     int result = testCheck(rand);
     int expected = 0;
     EXPECT_EQ(expected, result);
@@ -12,7 +11,7 @@ TEST(TestCheck, WrongInputBellow)
 
 TEST(TestCheck, WrongInputAbove)
 {
-	int rand = 4;
+    int rand = 4;
     int result = testCheck(rand);
     int expected = 0;
     EXPECT_EQ(expected, result);
@@ -27,7 +26,7 @@ TEST(TestCheckt, ValidInput)
 
 TEST(YesCheck, WrongInput)
 {
-	char sym = 'W';
+    char sym = 'W';
     int result = yesCheck(sym);
     int expected = 0;
     EXPECT_EQ(expected, result);
@@ -35,7 +34,7 @@ TEST(YesCheck, WrongInput)
 
 TEST(YesCheck, ValidInputUpCase)
 {
-	char sym = 'Y';
+    char sym = 'Y';
     int result = yesCheck(sym);
     int expected = 1;
     EXPECT_EQ(expected, result);
@@ -43,7 +42,7 @@ TEST(YesCheck, ValidInputUpCase)
 
 TEST(YesCheck, ValidInputLowCase)
 {
-	char sym = 'y';
+    char sym = 'y';
     int result = yesCheck(sym);
     int expected = 1;
     EXPECT_EQ(expected, result);
@@ -51,8 +50,8 @@ TEST(YesCheck, ValidInputLowCase)
 
 TEST(VerbCheck, SameInput)
 {
-	string user = "Valid";
-	string verb = "Valid";
+    string user = "Valid";
+    string verb = "Valid";
     int result = verbCheck(user, verb);
     int expected = 1;
     EXPECT_EQ(expected, result);
@@ -60,8 +59,8 @@ TEST(VerbCheck, SameInput)
 
 TEST(VerbCheck, ExitUserInput)
 {
-	string user = "exit";
-	string verb = "Valid";
+    string user = "exit";
+    string verb = "Valid";
     int result = verbCheck(user, verb);
     int expected = 2;
     EXPECT_EQ(expected, result);
@@ -69,8 +68,8 @@ TEST(VerbCheck, ExitUserInput)
 
 TEST(VerbCheck, DifferentInput)
 {
-	string user = "Valid";
-	string verb = "Invalid";
+    string user = "Valid";
+    string verb = "Invalid";
     int result = verbCheck(user, verb);
     int expected = 0;
     EXPECT_EQ(expected, result);
