@@ -100,8 +100,7 @@ void choiceTest(string v[4][100])
     }
     default: {
         cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-        for (int i = 0; i < 10000000; i++)
-            ;
+        sleep_ms(2000);
         system("CLS");
         choiceTest(v);
     }
@@ -231,8 +230,7 @@ void mainMenu(string v[4][100])
         }
         default: {
             cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-            for (int i = 0; i < 10000000; i++)
-                ;
+            sleep_ms(2000);
             system("CLS");
         }
         }

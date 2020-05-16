@@ -210,8 +210,7 @@ void TestRussian(string v[4][100])
             }
             default: {
                 cout << endl << "Некорректно! Повторите пожалуйста" << endl;
-                for (int i = 0; i < 90000000; i++)
-                    ;
+                sleep_ms(2000);
                 flag = 1;
             }
             }
@@ -234,8 +233,7 @@ void TestRussian(string v[4][100])
         cout << "Ваш счет: " << score
              << "\t Количество допущенных ошибок: " << Oshibki << endl
              << endl;
-        for (i = 0; i < 10000000; i++)
-            ;
+        sleep_ms(2000);
         system("CLS");
     }
     cout << "Тестирвоание завершено";
