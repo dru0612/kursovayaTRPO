@@ -11,6 +11,12 @@
 #include <string.h>
 #include <time.h>
 
+#ifdef WIN32
+#include <windows.h>
+#else
+#include <unistd.h> // for usleep
+#endif
+
 using namespace std;
 
 void fileIn(string v[4][100]);
@@ -22,5 +28,6 @@ void ToROut(string v[4][100]);
 int testCheck(int sc);
 int verbCheck(string user, string verb);
 int yesCheck(char ch);
+void sleep_ms(int milliseconds);
 
 #endif
