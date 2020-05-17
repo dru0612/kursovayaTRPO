@@ -29,10 +29,11 @@ void KoE(string v[4][100])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                char ch;
-                cin >> ch;
-                if (yesCheck(ch))
-                    ToRIn(score);
+                char sym[50];
+                cin >> sym;
+                if (strlen(sym) == 1)
+                    if (yesCheck(sym[0]))
+                        ToRIn(score);
                 system("CLS");
                 mainMenu(v);
             } else if (q == 1) {
@@ -103,10 +104,11 @@ void TestToTime(string v[4][100])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                char ch;
-                cin >> ch;
-                if (yesCheck(ch))
-                    ToRIn(score);
+                char sym[50];
+                cin >> sym;
+                if (strlen(sym) == 1)
+                    if (yesCheck(sym[0]))
+                        ToRIn(score);
                 system("CLS");
                 mainMenu(v);
                 break;
