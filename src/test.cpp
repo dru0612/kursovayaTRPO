@@ -71,10 +71,11 @@ void KoE(string v[4][100])
     cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
-    char ch;
-    cin >> ch;
-    if (yesCheck(ch))
-        ToRIn(score);
+    char sym[50];
+    cin >> sym;
+    if (strlen(sym) == 1)
+        if (yesCheck(sym[0]))
+            ToRIn(score);
     system("CLS");
     mainMenu(v);
 }
@@ -131,10 +132,11 @@ void TestToTime(string v[4][100])
     cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
-    char ch;
-    cin >> ch;
-    if (yesCheck(ch))
-        ToRIn(score);
+    char sym[50];
+    cin >> sym;
+    if (strlen(sym) == 1)
+        if (yesCheck(sym[0]))
+            ToRIn(score);
     system("CLS");
     mainMenu(v);
 }
@@ -201,10 +203,11 @@ void TestRussian(string v[4][100])
                 cout << "Нажмите любую другую клавишу для выхода в главное "
                         "меню."
                      << endl;
-                char ch;
-                cin >> ch;
-                if (yesCheck(ch))
-                    ToRIn(score);
+                char sym[50];
+                cin >> sym;
+                if (strlen(sym) == 1)
+                    if (yesCheck(sym[0]))
+                        ToRIn(score);
                 system("CLS");
                 mainMenu(v);
             }
