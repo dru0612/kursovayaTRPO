@@ -75,35 +75,42 @@ void choiceTest(string v[4][100])
     cout << "3 - Тест на скорость" << endl << endl;
     cout << "0 - Вернуться в главное меню" << endl;
 
-    char a;
-    cin >> a;
-    switch (a) {
-    case '1': {
-        system("CLS");
-        KoE(v);
-        break;
-    }
-    case '2': {
-        system("CLS");
-        TestRussian(v);
-        break;
-    }
-    case '3': {
-        system("CLS");
-        TestToTime(v);
-        break;
-    }
-    case '0': {
-        system("CLS");
-        mainMenu(v);
-        break;
-    }
-    default: {
+    char sym[50];
+    cin >> sym;
+    if (strlen(sym) == 1)
+        switch (sym[0]) {
+        case '1': {
+            system("CLS");
+            KoE(v);
+            break;
+        }
+        case '2': {
+            system("CLS");
+            TestRussian(v);
+            break;
+        }
+        case '3': {
+            system("CLS");
+            TestToTime(v);
+            break;
+        }
+        case '0': {
+            system("CLS");
+            mainMenu(v);
+            break;
+        }
+        default: {
+            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
+            sleep_ms(2000);
+            system("CLS");
+            choiceTest(v);
+        }
+        }
+    else {
         cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
         sleep_ms(2000);
         system("CLS");
         choiceTest(v);
-    }
     }
 }
 
@@ -202,37 +209,43 @@ void mainMenu(string v[4][100])
         cout << "4 - Помощь" << endl << endl;
         cout << "0 - Выход" << endl;
 
-        char uCom;
-        cin >> uCom;
-        switch (uCom) {
-        case '1': {
-            system("CLS");
-            choiceTest(v);
-            break;
-        }
-        case '2': {
-            system("CLS");
-            ToROut(v);
-            break;
-        }
-        case '3': {
-            system("CLS");
-            dictionary(v);
-            break;
-        }
-        case '4': {
-            system("CLS");
-            support(v);
-            break;
-        }
-        case '0': {
-            exit(0);
-        }
-        default: {
+        char sym[50];
+        cin >> sym;
+        if (strlen(sym) == 1)
+            switch (sym[0]) {
+            case '1': {
+                system("CLS");
+                choiceTest(v);
+                break;
+            }
+            case '2': {
+                system("CLS");
+                ToROut(v);
+                break;
+            }
+            case '3': {
+                system("CLS");
+                dictionary(v);
+                break;
+            }
+            case '4': {
+                system("CLS");
+                support(v);
+                break;
+            }
+            case '0': {
+                exit(0);
+            }
+            default: {
+                cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
+                sleep_ms(2000);
+                system("CLS");
+            }
+            }
+        else {
             cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
             sleep_ms(2000);
             system("CLS");
-        }
         }
     }
 }
