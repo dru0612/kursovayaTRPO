@@ -1,6 +1,8 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 
+#include "hello.h"
+#include "test.h"
 #include <fstream>
 #include <iostream>
 #include <locale.h>
@@ -9,22 +11,23 @@
 #include <string.h>
 #include <time.h>
 
-#define n 100
+#ifdef WIN32
+#include <windows.h>
+#else
+#include <unistd.h> // for usleep
+#endif
 
 using namespace std;
 
-void hello();
-void support();
-void KoE(string v[4][n]);
-void fileIn(string v[4][n]);
-void fileOut(string v[4][n]);
-void dictionary(string v[4][n]);
+void fileIn(string v[4][100]);
+void fileOut(string v[4][100]);
+void mainMenu(string v[4][100]);
 void ToRIn(int score);
 void ToRSort();
-void ToROut();
-void choiceTest(string v[4][n]);
-void mainMenu(string v[4][n]);
-void TestRussian(string v[4][n]);
-void TestToTime(string v[4][n]);
+void ToROut(string v[4][100]);
+int testCheck(int sc);
+int verbCheck(string user, string verb);
+int yesCheck(char ch);
+void sleep_ms(int milliseconds);
 
 #endif
