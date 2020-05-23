@@ -29,7 +29,7 @@ int verbCheck(string user, string verb)
         return 0;
 }
 
-void fileIn(string v[4][100])
+void fileIn(string IrregularVerbs[4][100])
 {
     ifstream file("verb+.txt");
     if (!file) {
@@ -39,36 +39,36 @@ void fileIn(string v[4][100])
     }
     for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 4; j++) {
-            file >> v[j][i];
+            file >> IrregularVerbs[j][i];
         }
     }
 }
 
-void fileOut(string v[4][100])
+void fileOut(string IrregularVerbs[4][100])
 {
     for (int i = 0; i < 100; i++) {
         cout << i + 1 << ") ";
         cout.width(10);
-        cout << v[0][i];
+        cout << IrregularVerbs[0][i];
         cout.width(20);
-        cout << v[1][i];
+        cout << IrregularVerbs[1][i];
         cout.width(20);
-        cout << v[2][i];
+        cout << IrregularVerbs[2][i];
         cout.width(20);
-        cout << v[3][i] << endl;
+        cout << IrregularVerbs[3][i] << endl;
     }
 }
 
-void dictionary(string v[4][100])
+void dictionary(string IrregularVerbs[4][100])
 {
-    fileOut(v);
+    fileOut(IrregularVerbs);
     cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
     system("pause");
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void choiceTest(string v[4][100])
+void choiceTest(string IrregularVerbs[4][100])
 {
     cout << "1 - Тест на знание всех глаголов из справочника" << endl;
     cout << "2 - Тест на знание перевода" << endl;
@@ -81,22 +81,22 @@ void choiceTest(string v[4][100])
         switch (sym[0]) {
         case '1': {
             system("CLS");
-            KoE(v);
+            KoE(IrregularVerbs);
             break;
         }
         case '2': {
             system("CLS");
-            TestRussian(v);
+            TestRussian(IrregularVerbs);
             break;
         }
         case '3': {
             system("CLS");
-            TestToTime(v);
+            TestToTime(IrregularVerbs);
             break;
         }
         case '0': {
             system("CLS");
-            mainMenu(v);
+            mainMenu(IrregularVerbs);
             break;
         }
         default: {
@@ -104,7 +104,7 @@ void choiceTest(string v[4][100])
             cout << endl;
             sleep_ms(2000);
             system("CLS");
-            choiceTest(v);
+            choiceTest(IrregularVerbs);
         }
         }
     else {
@@ -112,7 +112,7 @@ void choiceTest(string v[4][100])
         cout << endl;
         sleep_ms(2000);
         system("CLS");
-        choiceTest(v);
+        choiceTest(IrregularVerbs);
     }
 }
 
@@ -202,7 +202,7 @@ void Table_of_Record_Output(string v[4][100])
     mainMenu(v);
 }
 
-void mainMenu(string v[4][100])
+void mainMenu(string IrregularVerbs[4][100])
 {
     while (1) {
         cout << "1 - Выбор теста" << endl;
@@ -217,22 +217,22 @@ void mainMenu(string v[4][100])
             switch (sym[0]) {
             case '1': {
                 system("CLS");
-                choiceTest(v);
+                choiceTest(IrregularVerbs);
                 break;
             }
             case '2': {
                 system("CLS");
-                Table_of_Record_Output(v);
+                Table_of_Record_Output(IrregularVerbs);
                 break;
             }
             case '3': {
                 system("CLS");
-                dictionary(v);
+                dictionary(IrregularVerbs);
                 break;
             }
             case '4': {
                 system("CLS");
-                support(v);
+                support(IrregularVerbs);
                 break;
             }
             case '0': {
