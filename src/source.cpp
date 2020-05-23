@@ -116,7 +116,7 @@ void choiceTest(string v[4][100])
     }
 }
 
-void ToRIn(int score)
+void Table_of_Record_Input(int score)
 {
     FILE* tf;
     struct record {
@@ -138,7 +138,7 @@ void ToRIn(int score)
     fclose(tf);
 }
 
-void ToRSort()
+void Table_of_Record_Sort()
 {
     FILE* tf;
     int k = 0, i = 0;
@@ -178,7 +178,7 @@ void ToRSort()
     fclose(tf);
 }
 
-void ToROut(string v[4][100])
+void Table_of_Record_Output(string v[4][100])
 {
     FILE* tf;
     system("CLS");
@@ -189,7 +189,7 @@ void ToROut(string v[4][100])
         char output[20];
     } man;
     int i = 1;
-    ToRSort();
+    Table_of_Record_Sort();
     tf = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, tf)) {
         cout << i << ") " << man.name << " " << man.speed << " " << man.output
@@ -222,7 +222,7 @@ void mainMenu(string v[4][100])
             }
             case '2': {
                 system("CLS");
-                ToROut(v);
+                Table_of_Record_Output(v);
                 break;
             }
             case '3': {
