@@ -4,7 +4,7 @@ using namespace std;
 
 void KoE(string v[4][100])
 {
-    int score = 0, sc = 0, k, Oshibki = 0;
+    int score = 0, sc = 0, k, mistakes = 0;
     int t = clock();
     int timer = clock() - t;
     int timeAll = 0;
@@ -48,7 +48,7 @@ void KoE(string v[4][100])
             for (i = 0; i < 3; i++) {
                 cout << v[i][k] << " ";
             }
-            Oshibki++;
+            mistakes++;
             if (score >= 5)
                 score -= 5;
         }
@@ -63,7 +63,7 @@ void KoE(string v[4][100])
         cout << "Время, потраченное на глагол: " << timer / 1000 << " секунд"
              << endl;
         cout << "Ваш счет: " << score
-             << "\t Количетсво допущенных ошибок: " << Oshibki << endl
+             << "\t Количетсво допущенных ошибок: " << mistakes << endl
              << endl;
     }
 
@@ -145,7 +145,7 @@ void TestToTime(string v[4][100])
 
 void TestRussian(string v[4][100])
 {
-    int score = 0, k, Oshibki = 0;
+    int score = 0, k, mistakes = 0;
     int ti = clock();
     int timer = clock() - ti;
     int timeAll = 0, u, f, j, i;
@@ -226,7 +226,7 @@ void TestRussian(string v[4][100])
             score += 10;
         } else {
             cout << "Ошибка!" << endl;
-            Oshibki++;
+            mistakes++;
             if (score >= 5)
                 score -= 5;
         }
@@ -236,7 +236,7 @@ void TestRussian(string v[4][100])
         cout << "Время, потраченное на на глагол: " << timer / 1000 << " секунд"
              << endl;
         cout << "Ваш счет: " << score
-             << "\t Количество допущенных ошибок: " << Oshibki << endl
+             << "\t Количество допущенных ошибок: " << mistakes << endl
              << endl;
         sleep_ms(2000);
         system("CLS");
