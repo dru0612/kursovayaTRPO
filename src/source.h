@@ -19,12 +19,12 @@
 
 using namespace std;
 
-void fileIn(string v[4][100]);
-void fileOut(string v[4][100]);
-void mainMenu(string v[4][100]);
+void fileIn(string IrregularVerbs[4][100]);
+void fileOut(string IrregularVerbs[4][100]);
+void mainMenu(string IrregularVerbs[4][100]);
 void Table_of_Record_Input(int score);
 void Table_of_Record_Input();
-void Table_of_Record_Input(string v[4][100]);
+void Table_of_Record_Input(string IrregularVerbs[4][100]);
 int testCheck(int sc);
 int verbCheck(string user, string verb);
 int yesCheck(char ch);
