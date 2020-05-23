@@ -33,7 +33,7 @@ void KoE(string v[4][100])
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
                 mainMenu(v);
             } else if (q == 1) {
@@ -76,7 +76,7 @@ void KoE(string v[4][100])
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
-            ToRIn(score);
+            Table_of_Record_Input(score);
     system("CLS");
     mainMenu(v);
 }
@@ -108,7 +108,7 @@ void TestToTime(string v[4][100])
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
                 mainMenu(v);
                 break;
@@ -138,7 +138,7 @@ void TestToTime(string v[4][100])
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
-            ToRIn(score);
+            Table_of_Record_Input(score);
     system("CLS");
     mainMenu(v);
 }
@@ -209,7 +209,7 @@ void TestRussian(string v[4][100])
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
                 mainMenu(v);
             }
