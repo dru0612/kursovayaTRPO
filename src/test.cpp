@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void KoE(string v[4][100])
+void KoE(string IrregularVerbs[4][100])
 {
     int score = 0, sc = 0, k, mistakes = 0;
     int t = clock();
@@ -12,11 +12,11 @@ void KoE(string v[4][100])
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
         k = rand() % 100;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
-             << endl;
+        cout << "Введите все формы слова " << IrregularVerbs[3][k] << " ("
+             << IrregularVerbs[0][k] << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
-            int q = verbCheck(vUser[i], v[i][k]);
+            int q = verbCheck(vUser[i], IrregularVerbs[i][k]);
             if (q == 2) {
                 system("cls");
                 testStatus = 1;
@@ -35,7 +35,7 @@ void KoE(string v[4][100])
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
+                mainMenu(IrregularVerbs);
             } else if (q == 1) {
                 sc++;
             }
@@ -46,7 +46,7 @@ void KoE(string v[4][100])
         } else {
             cout << "Ошибка! Правильный ответ: ";
             for (i = 0; i < 3; i++) {
-                cout << v[i][k] << " ";
+                cout << IrregularVerbs[i][k] << " ";
             }
             mistakes++;
             if (score >= 5)
@@ -78,10 +78,10 @@ void KoE(string v[4][100])
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void TestToTime(string v[4][100])
+void TestToTime(string IrregularVerbs[4][100])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, sc = 0, k, i;
@@ -91,11 +91,11 @@ void TestToTime(string v[4][100])
          << endl;
     while (timeNow - timeStart < timeLimit) {
         k = rand() % 100;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
-             << endl;
+        cout << "Введите все формы слова " << IrregularVerbs[3][k] << " ("
+             << IrregularVerbs[0][k] << ") " << endl;
         for (i = 0; i < 3; i++) {
             cin >> vUser[i];
-            int q = verbCheck(vUser[i], v[i][k]);
+            int q = verbCheck(vUser[i], IrregularVerbs[i][k]);
             if (q == 2) {
                 system("CLS");
                 cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
@@ -110,7 +110,7 @@ void TestToTime(string v[4][100])
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
+                mainMenu(IrregularVerbs);
                 break;
             }
             if (q == 1) {
@@ -140,10 +140,10 @@ void TestToTime(string v[4][100])
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void TestRussian(string v[4][100])
+void TestRussian(string IrregularVerbs[4][100])
 {
     int score = 0, k, mistakes = 0;
     int ti = clock();
@@ -154,9 +154,9 @@ void TestRussian(string v[4][100])
         k = rand() % 100;
         f = rand() % 3;
         j = rand() % 4;
-        t[j] = v[3][k];
-        cout << "Выберите перевод слова: " << v[f][k] << " (это " << f + 1
-             << " форма глагола)" << endl;
+        t[j] = IrregularVerbs[3][k];
+        cout << "Выберите перевод слова: " << IrregularVerbs[f][k] << " (это "
+             << f + 1 << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
             int q = rand() % 100;
             while (q == k) {
@@ -164,7 +164,7 @@ void TestRussian(string v[4][100])
             }
 
             if (i != j) {
-                t[i] = v[3][q];
+                t[i] = IrregularVerbs[3][q];
             }
         }
         for (i = 0; i < 4; i++) {
@@ -211,7 +211,7 @@ void TestRussian(string v[4][100])
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
+                mainMenu(IrregularVerbs);
             }
             default: {
                 cout << endl << "Некорректно! Повторите пожалуйста" << endl;
@@ -220,7 +220,7 @@ void TestRussian(string v[4][100])
             }
             }
         }
-        int q = verbCheck(t[u], v[3][k]);
+        int q = verbCheck(t[u], IrregularVerbs[3][k]);
         if (q) {
             cout << "Правильно!" << endl;
             score += 10;
