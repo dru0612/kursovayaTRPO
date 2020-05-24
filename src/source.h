@@ -29,6 +29,8 @@ void choiceTestInterface();
 void mainMenu(string IrregularVerbs[4][100]);
 void mainMenuInterface();
 
+void IncorrectInput();
+
 void Table_of_Record_Input(int score);
 void Table_of_Record_Sort();
 void Table_of_Record_Output(string IrregularVerbs[4][100]);
