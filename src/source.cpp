@@ -230,7 +230,6 @@ void mainMenu(string IrregularVerbs[4][100])
 {
     while (1) {
         mainMenuInterface();
-
         char sym[50];
         cin >> sym;
         if (strlen(sym) == 1)
