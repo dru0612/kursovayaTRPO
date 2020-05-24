@@ -2,21 +2,6 @@
 
 using namespace std;
 
-void testBeEnded(int timeStart, int score)
-{
-    cout << "Тестирование завершено. Ваш счет: " << score << endl;
-    cout << "Общее время прохождения: " << timeStart / 1000 << "секунд" << endl;
-    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
-    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
-}
-void Subtotal(int timeDelta, int score, int mistakes)
-{
-    cout << "Время, потраченное на глагол: " << timeDelta / 1000 << " секунд"
-         << endl;
-    cout << "Ваш счет: " << score
-         << "\t Количетсво допущенных ошибок: " << mistakes << endl
-         << endl;
-}
 void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
