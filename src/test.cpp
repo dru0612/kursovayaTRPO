@@ -222,4 +222,14 @@ void TestRussian(string IrregularVerbs[4][100])
         sleep_ms(2000);
         system("CLS");
     }
+
+    system("CLS");
+    testBeEnded(timeAll, score);
+    char sym[50];
+    cin >> sym;
+    if (strlen(sym) == 1)
+        if (yesCheck(sym[0]))
+            Table_of_Record_Input(score);
+    system("CLS");
+    mainMenu(IrregularVerbs);
 }
