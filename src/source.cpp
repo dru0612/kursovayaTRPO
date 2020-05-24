@@ -111,18 +111,12 @@ void choiceTest(string IrregularVerbs[4][100])
             break;
         }
         default: {
-            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-            cout << endl;
-            sleep_ms(2000);
-            system("CLS");
+            IncorrectInput();
             choiceTest(IrregularVerbs);
         }
         }
     else {
-        cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-        cout << endl;
-        sleep_ms(2000);
-        system("CLS");
+        IncorrectInput();
         choiceTest(IrregularVerbs);
     }
 }
@@ -163,7 +157,7 @@ void Table_of_Record_Sort()
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         quantily++;
     }
-    struct record people[quantily], temp;
+    struct record people[quantily], moving;
     fclose(FileWithRecords);
     FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
@@ -179,9 +173,9 @@ void Table_of_Record_Sort()
                 k = j;
         }
         if (people[k].result != people[i].result) {
-            temp = people[i];
+            moving = people[i];
             people[i] = people[k];
-            people[k] = temp;
+            people[k] = moving;
         }
     }
     fclose(FileWithRecords);
@@ -258,17 +252,11 @@ void mainMenu(string IrregularVerbs[4][100])
                 exit(0);
             }
             default: {
-                cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-                cout << endl;
-                sleep_ms(2000);
-                system("CLS");
+                IncorrectInput();
             }
             }
         else {
-            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-            cout << endl;
-            sleep_ms(2000);
-            system("CLS");
+            IncorrectInput();
         }
     }
 }
@@ -280,4 +268,12 @@ void sleep_ms(int milliseconds)
 #else
     usleep(milliseconds * 1000);
 #endif
+}
+
+void IncorrectInput()
+{
+    cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
+    cout << endl;
+    sleep_ms(2000);
+    system("CLS");
 }
