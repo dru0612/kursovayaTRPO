@@ -206,14 +206,19 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
     mainMenu(IrregularVerbs);
 }
 
+void mainMenuInterface()
+{
+    cout << "1 - Выбор теста" << endl;
+    cout << "2 - Результаты" << endl;
+    cout << "3 - Показать словарь глаголов" << endl;
+    cout << "4 - Помощь" << endl << endl;
+    cout << "0 - Выход" << endl;
+}
+
 void mainMenu(string IrregularVerbs[4][100])
 {
     while (1) {
-        cout << "1 - Выбор теста" << endl;
-        cout << "2 - Результаты" << endl;
-        cout << "3 - Показать словарь глаголов" << endl;
-        cout << "4 - Помощь" << endl << endl;
-        cout << "0 - Выход" << endl;
+        mainMenuInterface();
 
         char sym[50];
         cin >> sym;
