@@ -25,7 +25,7 @@ void mainMenu(string IrregularVerbs[4][100]);
 void Table_of_Record_Input(int score);
 void Table_of_Record_Sort();
 void Table_of_Record_Output(string IrregularVerbs[4][100]);
-int testCheck(int score);
+int testCheck(int correct);
 int verbCheck(string user, string verb);
 int yesCheck(char sym);
 void sleep_ms(int milliseconds);
