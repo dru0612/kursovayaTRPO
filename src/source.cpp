@@ -178,9 +178,9 @@ void Table_of_Record_Sort()
     fclose(tf);
 }
 
-void Table_of_Record_Output(string v[4][100])
+void Table_of_Record_Output(string IrregularVerbs[4][100])
 {
-    FILE* tf;
+    FILE* FileWithRecords;
     system("CLS");
     cout << "Результаты:" << endl << endl;
     struct record {
@@ -190,16 +190,16 @@ void Table_of_Record_Output(string v[4][100])
     } man;
     int i = 1;
     Table_of_Record_Sort();
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         cout << i << ") " << man.name << " " << man.speed << " " << man.output
              << endl;
         i++;
     }
     system("pause");
     system("CLS");
-    fclose(tf);
-    mainMenu(v);
+    fclose(FileWithRecords);
+    mainMenu(IrregularVerbs);
 }
 
 void mainMenu(string IrregularVerbs[4][100])
@@ -254,15 +254,10 @@ void mainMenu(string IrregularVerbs[4][100])
     }
 }
 
-void sleep_ms(int milliseconds) // cross-platform sleep function
+void sleep_ms(int milliseconds)
 {
 #ifdef WIN32
     Sleep(milliseconds);
-#elif _POSIX_C_SOURCE >= 199309L
-    struct timespec ts;
-    ts.tv_sec = milliseconds / 1000;
-    ts.tv_nsec = (milliseconds % 1000) * 1000000;
-    nanosleep(&ts, NULL);
 #else
     usleep(milliseconds * 1000);
 #endif
