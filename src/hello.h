@@ -13,6 +13,5 @@ using namespace std;
 
 void hello();
 void support(string IrregularVerbs[4][100]);
-void mainMenu(string IrregularVerbs[4][100]);
 
 #endif
