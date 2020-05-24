@@ -12,8 +12,7 @@ void KnowOfEveryTest(string IrregularVerbs[4][100])
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
         current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current] << " ("
-             << IrregularVerbs[0][current] << ") " << endl;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current] << endl;
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
@@ -88,19 +87,18 @@ void KnowOfEveryTest(string IrregularVerbs[4][100])
 void TestToTime(string IrregularVerbs[4][100])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
-    int score = 0, sc = 0, k, i;
-    string vUser[3];
+    int score = 0, correct = 0, current, i;
+    string userVerb[3];
     cout << "У вас есть " << timeLimit / 1000
          << " секунд чтобы пройти тест, удачи!." << endl
          << endl;
     while (timeNow - timeStart < timeLimit) {
-        k = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][k] << " ("
-             << IrregularVerbs[0][k] << ") " << endl;
+        current = rand() % 100;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current] << endl;
         for (i = 0; i < 3; i++) {
-            cin >> vUser[i];
-            int q = verbCheck(vUser[i], IrregularVerbs[i][k]);
-            if (q == 2) {
+            cin >> userVerb[i];
+            int ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            if (ResultOfCheck == 2) {
                 system("CLS");
                 cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
                 cout << "Нажмите Y ,если хотите добавить результат в таблицу."
@@ -117,8 +115,8 @@ void TestToTime(string IrregularVerbs[4][100])
                 mainMenu(IrregularVerbs);
                 break;
             }
-            if (q == 1) {
-                sc++;
+            if (ResultOfCheck == 1) {
+                correct++;
             }
         }
         bool t = testCheck(sc);
