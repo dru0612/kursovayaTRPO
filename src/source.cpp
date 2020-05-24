@@ -29,15 +29,6 @@ int verbCheck(string user, string verb)
         return 0;
 }
 
-void fileNotFound()
-{
-    cout << "При открытии файла произошла ошибка.\n\n";
-    cout << "Проверьте, пожалуйста, правильность установки программы.\n";
-    cout << "Для корректной работы программы необходимо поместить файл "
-            "verb+.txt в корневую папку программы.\n\n";
-    exit(0);
-}
-
 void fileIn(string IrregularVerbs[4][100])
 {
     ifstream file("verb+.txt");
@@ -73,14 +64,6 @@ void dictionary(string IrregularVerbs[4][100])
     system("pause");
     system("CLS");
     mainMenu(IrregularVerbs);
-}
-
-void choiceTestInterface()
-{
-    cout << "1 - Тест на знание всех глаголов из справочника" << endl;
-    cout << "2 - Тест на знание перевода" << endl;
-    cout << "3 - Тест на скорость" << endl << endl;
-    cout << "0 - Вернуться в главное меню" << endl;
 }
 
 void choiceTest(string IrregularVerbs[4][100])
@@ -209,15 +192,6 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
     system("CLS");
     fclose(FileWithRecords);
     mainMenu(IrregularVerbs);
-}
-
-void mainMenuInterface()
-{
-    cout << "1 - Выбор теста" << endl;
-    cout << "2 - Результаты" << endl;
-    cout << "3 - Показать словарь глаголов" << endl;
-    cout << "4 - Помощь" << endl << endl;
-    cout << "0 - Выход" << endl;
 }
 
 void mainMenu(string IrregularVerbs[4][100])
