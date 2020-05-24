@@ -12,7 +12,7 @@
 using namespace std;
 
 void hello();
-void support(string v[4][100]);
-void mainMenu(string v[4][100]);
+void support(string IrregularVerbs[4][100]);
+void mainMenu(string IrregularVerbs[4][100]);
 
 #endif

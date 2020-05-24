@@ -11,9 +11,9 @@
 
 using namespace std;
 
-void KoE(string v[4][100]);
-void choiceTest(string v[4][100]);
-void TestRussian(string v[4][100]);
-void TestToTime(string v[4][100]);
+void KnownOfEveryTest(string IrregularVerbs[4][100]);
+void choiceTest(string IrregularVerbs[4][100]);
+void TestRussian(string IrregularVerbs[4][100]);
+void TestToTime(string IrregularVerbs[4][100]);
 
 #endif
