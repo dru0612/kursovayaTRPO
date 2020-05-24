@@ -118,14 +118,14 @@ void choiceTest(string IrregularVerbs[4][100])
 
 void Table_of_Record_Input(int score)
 {
-    FILE* tf;
+    FILE* FileWithRecords;
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
-    man.speed = score;
-    tf = fopen("Table of Records", "ab");
+    man.result = score;
+    FileWithRecords = fopen("Table of Records", "ab");
     cout << endl << "Введите ваше имя: ";
     cin >> man.name;
 
@@ -134,8 +134,8 @@ void Table_of_Record_Input(int score)
     strcpy(man.output, " Date:  ");
     strcpy(man.output, asctime(timeinfo));
 
-    fwrite(&man, sizeof(man), 1, tf);
-    fclose(tf);
+    fwrite(&man, sizeof(man), 1, FileWithRecords);
+    fclose(FileWithRecords);
 }
 
 void Table_of_Record_Sort()
@@ -145,7 +145,7 @@ void Table_of_Record_Sort()
     system("CLS");
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
     FileWithRecords = fopen("Table of Records", "rb");
@@ -162,7 +162,7 @@ void Table_of_Record_Sort()
     int p, q;
     for (p = 0; p < quantily; p++) {
         for (q = 0; q < quantily - 1; q++) {
-            if (people[q].speed < people[q + 1].speed) {
+            if (people[q].result < people[q + 1].result) {
                 temp = people[q];
                 people[q] = people[q + 1];
                 people[q + 1] = temp;
@@ -185,14 +185,14 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
     cout << "Результаты:" << endl << endl;
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
     int i = 1;
     Table_of_Record_Sort();
     FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
-        cout << i << ") " << man.name << " " << man.speed << " " << man.output
+        cout << i << ") " << man.name << " " << man.result << " " << man.output
              << endl;
         i++;
     }
