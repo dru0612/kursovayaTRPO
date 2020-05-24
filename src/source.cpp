@@ -2,18 +2,18 @@
 
 using namespace std;
 
-int testCheck(int sc)
+int testCheck(int correct)
 {
-    if (sc == 3) {
+    if (correct == 3) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int yesCheck(char ch)
+int yesCheck(char sym)
 {
-    if ((ch == 'Y') || (ch == 'y'))
+    if ((sym == 'Y') || (sym == 'y'))
         return 1;
     else
         return 0;
