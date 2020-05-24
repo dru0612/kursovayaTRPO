@@ -9,7 +9,14 @@ void testBeEnded(int timeStart, int score)
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
 }
-
+void Subtotal(int timeDelta, int score, int mistakes)
+{
+    cout << "Время, потраченное на глагол: " << timeDelta / 1000 << " секунд"
+         << endl;
+    cout << "Ваш счет: " << score
+         << "\t Количетсво допущенных ошибок: " << mistakes << endl
+         << endl;
+}
 void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
@@ -67,11 +74,7 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
         timeDelta = clock() - timeNow;
         timeNow = clock();
         timeStart += timeDelta;
-        cout << "Время, потраченное на глагол: " << timeDelta / 1000
-             << " секунд" << endl;
-        cout << "Ваш счет: " << score
-             << "\t Количетсво допущенных ошибок: " << mistakes << endl
-             << endl;
+        Subtotal(timeDelta, score, mistakes);
     }
 
     system("CLS");
@@ -230,11 +233,7 @@ void TestRussian(string IrregularVerbs[4][100])
         timeDelta = clock() - timeNow;
         timeNow = clock();
         timeAll += timeDelta;
-        cout << "Время, потраченное на глагол: " << timeDelta / 1000
-             << " секунд" << endl;
-        cout << "Ваш счет: " << score
-             << "\t Количество допущенных ошибок: " << mistakes << endl
-             << endl;
+        Subtotal(timeDelta, score, mistakes);
         sleep_ms(2000);
         system("CLS");
     }
