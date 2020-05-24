@@ -122,8 +122,8 @@ void TestToTime(string IrregularVerbs[4][100])
                 correct++;
             }
         }
-        bool t = testCheck(correct);
-        if (t == true) {
+        bool ResultOfCheck = testCheck(correct);
+        if (ResultOfCheck == true) {
             score += 20;
         }
         correct = 0;
