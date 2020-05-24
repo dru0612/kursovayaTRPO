@@ -188,13 +188,13 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
         int result;
         char output[20];
     } man;
-    int i = 1;
+    int NumberVerb = 1;
     Table_of_Record_Sort();
     FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
-        cout << i << ") " << man.name << " " << man.result << " " << man.output
-             << endl;
-        i++;
+        cout << NumberVerb << ") " << man.name << " " << man.result << " "
+             << man.output << endl;
+        NumberVerb++;
     }
     system("pause");
     system("CLS");
