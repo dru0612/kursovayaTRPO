@@ -12,5 +12,6 @@ void choiceTestInterface();
 void mainMenuInterface();
 void testBeEnded(int timeStart, int score);
 void Subtotal(int timeDelta, int score, int mistakes);
+void IncorrectInput();
 
 #endif
