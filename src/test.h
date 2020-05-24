@@ -15,4 +15,6 @@ void KnownOfEveryTest(string IrregularVerbs[4][100]);
 void TestRussian(string IrregularVerbs[4][100]);
 void TestToTime(string IrregularVerbs[4][100]);
 
+void testBeEnded(int timeStart, int score);
+
 #endif
