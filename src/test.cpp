@@ -2,25 +2,29 @@
 
 using namespace std;
 
-void KoE(string IrregularVerbs[4][100])
+void KnowOfEveryTest(string IrregularVerbs[4][100])
 {
-    int score = 0, sc = 0, k, mistakes = 0;
-    int t = clock();
-    int timer = clock() - t;
-    int timeAll = 0;
-    string vUser[3];
+    int score = 0, correct = 0, current = 0, mistakes = 0;
+    int timeNow;
+    int timeDelta;
+    int timeStart;
+    string userVerb[3];
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
-        k = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][k] << " ("
-             << IrregularVerbs[0][k] << ") " << endl;
+        current = rand() % 100;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current] << " ("
+             << IrregularVerbs[0][current] << ") " << endl;
+        timeNow = clock();
+        timeDelta = clock() - timeNow;
+        timeStart = 0;
         for (i = 0; i < 3; i++) {
-            cin >> vUser[i];
-            int q = verbCheck(vUser[i], IrregularVerbs[i][k]);
-            if (q == 2) {
+            cin >> userVerb[i];
+            int ResultOfCheck
+                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            if (ResultOfCheck == 2) {
                 system("cls");
                 testStatus = 1;
-                cout << "Общее время прохождения: " << timeAll / 1000
+                cout << "Общее время прохождения: " << timeStart / 1000
                      << "секунд";
                 cout << endl
                      << "Тестирование завершено. Ваш счет: " << score << endl;
@@ -36,39 +40,39 @@ void KoE(string IrregularVerbs[4][100])
                         Table_of_Record_Input(score);
                 system("CLS");
                 mainMenu(IrregularVerbs);
-            } else if (q == 1) {
-                sc++;
+            } else if (ResultOfCheck == 1) {
+                correct++;
             }
         }
-        if (testCheck(sc)) {
+        if (testCheck(correct) == 1) {
             score += 15;
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
             for (i = 0; i < 3; i++) {
-                cout << IrregularVerbs[i][k] << " ";
+                cout << IrregularVerbs[i][current] << " ";
             }
             mistakes++;
             if (score >= 5)
                 score -= 5;
         }
-        sc = 0;
+        correct = 0;
         if (score >= 100)
             break;
         cout << endl;
 
-        timer = clock() - t;
-        t = clock();
-        timeAll += timer;
-        cout << "Время, потраченное на глагол: " << timer / 1000 << " секунд"
-             << endl;
+        timeDelta = clock() - timeNow;
+        timeNow = clock();
+        timeStart += timeDelta;
+        cout << "Время, потраченное на глагол: " << timeDelta / 1000
+             << " секунд" << endl;
         cout << "Ваш счет: " << score
              << "\t Количетсво допущенных ошибок: " << mistakes << endl
              << endl;
     }
 
     system("CLS");
-    cout << "Общее время прохождения: " << timeAll / 1000 << " секунд";
+    cout << "Общее время прохождения: " << timeStart / 1000 << " секунд";
     cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
