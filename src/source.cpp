@@ -68,13 +68,17 @@ void dictionary(string IrregularVerbs[4][100])
     mainMenu(IrregularVerbs);
 }
 
-void choiceTest(string IrregularVerbs[4][100])
+void choiceTestInterface()
 {
     cout << "1 - Тест на знание всех глаголов из справочника" << endl;
     cout << "2 - Тест на знание перевода" << endl;
     cout << "3 - Тест на скорость" << endl << endl;
     cout << "0 - Вернуться в главное меню" << endl;
+}
 
+void choiceTest(string IrregularVerbs[4][100])
+{
+    choiceTestInterface();
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
