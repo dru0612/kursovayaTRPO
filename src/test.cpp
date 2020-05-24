@@ -150,59 +150,60 @@ void TestToTime(string IrregularVerbs[4][100])
 
 void TestRussian(string IrregularVerbs[4][100])
 {
-    int score = 0, k, mistakes = 0;
-    int ti = clock();
-    int timer = clock() - ti;
-    int timeAll = 0, u, f, j, i;
-    string t[4];
+    int score = 0, RandomVerbTrue, mistakes = 0;
+    int timeNow = clock();
+    int timeDelta = clock() - timeNow;
+    int timeAll = 0, VerbsChoice, VerbForm, j, i;
+    string ResponseOption[4];
     while (1) {
-        k = rand() % 100;
-        f = rand() % 3;
+        RandomVerbTrue = rand() % 100;
+        VerbForm = rand() % 3;
         j = rand() % 4;
-        t[j] = IrregularVerbs[3][k];
-        cout << "Выберите перевод слова: " << IrregularVerbs[f][k] << " (это "
-             << f + 1 << " форма глагола)" << endl;
+        ResponseOption[j] = IrregularVerbs[3][RandomVerbTrue];
+        cout << "Выберите перевод слова: "
+             << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
+             << VerbForm + 1 << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
-            int q = rand() % 100;
-            while (q == k) {
-                q = rand() % 100;
+            int RandomVerbFalse = rand() % 100;
+            while (RandomVerbFalse == RandomVerbTrue) {
+                RandomVerbFalse = rand() % 100;
             }
 
             if (i != j) {
-                t[i] = IrregularVerbs[3][q];
+                ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
             }
         }
         for (i = 0; i < 4; i++) {
-            cout << i + 1 << " - " << t[i] << endl;
+            cout << i + 1 << " - " << ResponseOption[i] << endl;
         }
         cout << endl << "0 - Закончить тест" << endl;
-        int flag = 1;
-        while (flag == 1) {
-            char a;
-            cin >> a;
-            switch (a) {
+        int InvalidInput = 1;
+        while (InvalidInput == 1) {
+            char EnterSymbols;
+            cin >> EnterSymbols;
+            switch (EnterSymbols) {
             case '1': {
-                u = 0;
-                flag = 0;
+                VerbsChoice = 0;
+                InvalidInput = 0;
                 break;
             }
             case '2': {
-                u = 1;
-                flag = 0;
+                VerbsChoice = 1;
+                InvalidInput = 0;
                 break;
             }
             case '3': {
-                u = 2;
-                flag = 0;
+                VerbsChoice = 2;
+                InvalidInput = 0;
                 break;
             }
             case '4': {
-                u = 3;
-                flag = 0;
+                VerbsChoice = 3;
+                InvalidInput = 0;
                 break;
             }
             case '0': {
-                flag = 0;
+                InvalidInput = 0;
                 system("CLS");
                 cout << "Тестированеи завершено. Ваш счет: " << score << endl;
                 cout << "Нажмите Y ,если хотите добавить результат в таблицу."
@@ -221,12 +222,13 @@ void TestRussian(string IrregularVerbs[4][100])
             default: {
                 cout << endl << "Некорректно! Повторите пожалуйста" << endl;
                 sleep_ms(2000);
-                flag = 1;
+                InvalidInput = 1;
             }
             }
         }
-        int q = verbCheck(t[u], IrregularVerbs[3][k]);
-        if (q) {
+        int ResultOfCheck = verbCheck(
+                ResponseOption[VerbsChoice], IrregularVerbs[3][RandomVerbTrue]);
+        if (ResultOfCheck) {
             cout << "Правильно!" << endl;
             score += 10;
         } else {
@@ -235,16 +237,16 @@ void TestRussian(string IrregularVerbs[4][100])
             if (score >= 5)
                 score -= 5;
         }
-        timer = clock() - ti;
-        ti = clock();
-        timeAll += timer;
-        cout << "Время, потраченное на на глагол: " << timer / 1000 << " секунд"
-             << endl;
+        timeDelta = clock() - timeNow;
+        timeNow = clock();
+        timeAll += timeDelta;
+        cout << "Время, потраченное на глагол: " << timeDelta / 1000
+             << " секунд" << endl;
         cout << "Ваш счет: " << score
              << "\t Количество допущенных ошибок: " << mistakes << endl
              << endl;
         sleep_ms(2000);
         system("CLS");
     }
-    cout << "Тестирвоание завершено";
+    cout << "Тестирование завершено";
 }
