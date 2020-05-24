@@ -159,14 +159,18 @@ void Table_of_Record_Sort()
         people[i] = man;
         i++;
     }
-    int p, q;
-    for (p = 0; p < quantily; p++) {
-        for (q = 0; q < quantily - 1; q++) {
-            if (people[q].result < people[q + 1].result) {
-                temp = people[q];
-                people[q] = people[q + 1];
-                people[q + 1] = temp;
-            }
+
+    int k, j;
+    for (i = 0; i < quantily - 1; i++) {
+        k = i;
+        for (j = i + 1; j < quantily; j++) {
+            if (people[j].result < people[i].result)
+                k = j;
+        }
+        if (people[k].result != people[i].result) {
+            temp = people[i];
+            people[i] = people[k];
+            people[k] = temp;
         }
     }
     fclose(FileWithRecords);
