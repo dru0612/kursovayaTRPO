@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void KnowOfEveryTest(string IrregularVerbs[4][100])
+void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
     int timeNow;
