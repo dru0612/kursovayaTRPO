@@ -12,7 +12,8 @@ void KnowOfEveryTest(string IrregularVerbs[4][100])
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
         current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current] << endl;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current]
+             << endl;
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
@@ -94,10 +95,12 @@ void TestToTime(string IrregularVerbs[4][100])
          << endl;
     while (timeNow - timeStart < timeLimit) {
         current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current] << endl;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current]
+             << endl;
         for (i = 0; i < 3; i++) {
             cin >> userVerb[i];
-            int ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            int ResultOfCheck
+                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
                 system("CLS");
                 cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
@@ -119,11 +122,11 @@ void TestToTime(string IrregularVerbs[4][100])
                 correct++;
             }
         }
-        bool t = testCheck(sc);
+        bool t = testCheck(correct);
         if (t == true) {
             score += 20;
         }
-        sc = 0;
+        correct = 0;
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
             cout << "У вас осталось "
