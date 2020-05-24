@@ -110,3 +110,11 @@ void Subtotal(int timeDelta, int score, int mistakes)
          << "\t Количетсво допущенных ошибок: " << mistakes << endl
          << endl;
 }
+
+void IncorrectInput()
+{
+    cout << endl << "Некорректно! Повторите пожалуйста";
+    cout << endl;
+    sleep_ms(2000);
+    system("CLS");
+}

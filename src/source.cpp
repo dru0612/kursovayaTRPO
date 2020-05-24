@@ -243,11 +243,3 @@ void sleep_ms(int milliseconds)
     usleep(milliseconds * 1000);
 #endif
 }
-
-void IncorrectInput()
-{
-    cout << endl << "Некорректно! Повторите пожалуйста";
-    cout << endl;
-    sleep_ms(2000);
-    system("CLS");
-}
