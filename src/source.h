@@ -21,11 +21,8 @@ using namespace std;
 
 void fileIn(string IrregularVerbs[4][100]);
 void fileOut(string IrregularVerbs[4][100]);
-void fileNotFound();
 void choiceTest(string IrregularVerbs[4][100]);
-void choiceTestInterface();
 void mainMenu(string IrregularVerbs[4][100]);
-void mainMenuInterface();
 void IncorrectInput();
 void Table_of_Record_Input(int score);
 void Table_of_Record_Sort();
