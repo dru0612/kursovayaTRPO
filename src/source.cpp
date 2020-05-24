@@ -81,7 +81,7 @@ void choiceTest(string IrregularVerbs[4][100])
         switch (sym[0]) {
         case '1': {
             system("CLS");
-            KoE(IrregularVerbs);
+            KnowOfEveryTest(IrregularVerbs);
             break;
         }
         case '2': {
