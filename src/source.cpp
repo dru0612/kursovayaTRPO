@@ -29,13 +29,20 @@ int verbCheck(string user, string verb)
         return 0;
 }
 
+void fileNotFound()
+{
+    cout << "При открытии файла произошла ошибка.\n\n";
+    cout << "Проверьте, пожалуйста, правильность установки программы.\n";
+    cout << "Для корректной работы программы необходимо поместить файл "
+            "verb+.txt в корневую папку программы.\n\n";
+    exit(0);
+}
+
 void fileIn(string IrregularVerbs[4][100])
 {
     ifstream file("verb+.txt");
     if (!file) {
-        cout << "При открытии файла произошла ошибка.\n";
-        cout << "Программа может быть установлена неправильно\n";
-        exit(0);
+        fileNotFound();
     }
     for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 4; j++) {
