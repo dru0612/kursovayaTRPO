@@ -67,3 +67,46 @@ void support(string IrregularVerbs[4][100])
     system("CLS");
     mainMenu(IrregularVerbs);
 }
+
+void fileNotFound()
+{
+    cout << "При открытии файла произошла ошибка.\n\n";
+    cout << "Проверьте, пожалуйста, правильность установки программы.\n";
+    cout << "Для корректной работы программы необходимо поместить файл "
+            "verb+.txt в корневую папку программы.\n\n";
+    exit(0);
+}
+
+void choiceTestInterface()
+{
+    cout << "1 - Тест на знание всех глаголов из справочника" << endl;
+    cout << "2 - Тест на знание перевода" << endl;
+    cout << "3 - Тест на скорость" << endl << endl;
+    cout << "0 - Вернуться в главное меню" << endl;
+}
+
+void mainMenuInterface()
+{
+    cout << "1 - Выбор теста" << endl;
+    cout << "2 - Результаты" << endl;
+    cout << "3 - Показать словарь глаголов" << endl;
+    cout << "4 - Помощь" << endl << endl;
+    cout << "0 - Выход" << endl;
+}
+
+void testBeEnded(int timeStart, int score)
+{
+    cout << "Тестирование завершено. Ваш счет: " << score << endl;
+    cout << "Общее время прохождения: " << timeStart / 1000 << "секунд" << endl;
+    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
+    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+}
+
+void Subtotal(int timeDelta, int score, int mistakes)
+{
+    cout << "Время, потраченное на глагол: " << timeDelta / 1000 << " секунд"
+         << endl;
+    cout << "Ваш счет: " << score
+         << "\t Количетсво допущенных ошибок: " << mistakes << endl
+         << endl;
+}
