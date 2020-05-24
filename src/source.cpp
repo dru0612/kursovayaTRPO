@@ -272,7 +272,7 @@ void sleep_ms(int milliseconds)
 
 void IncorrectInput()
 {
-    cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
+    cout << endl << "Некорректно! Повторите пожалуйста";
     cout << endl;
     sleep_ms(2000);
     system("CLS");

@@ -2,6 +2,14 @@
 
 using namespace std;
 
+void testBeEnded(int timeStart, int score)
+{
+    cout << "Тестирование завершено. Ваш счет: " << score << endl;
+    cout << "Общее время прохождения: " << timeStart / 1000 << "секунд" << endl;
+    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
+    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+}
+
 void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
@@ -24,15 +32,10 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
             if (ResultOfCheck == 2) {
                 system("cls");
                 testStatus = 1;
-                cout << "Общее время прохождения: " << timeStart / 1000
-                     << "секунд";
-                cout << endl
-                     << "Тестирование завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeDelta = clock() - timeNow;
+                timeNow = clock();
+                timeStart += timeDelta;
+                testBeEnded(timeStart, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
@@ -72,10 +75,7 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
     }
 
     system("CLS");
-    cout << "Общее время прохождения: " << timeStart / 1000 << " секунд";
-    cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
-    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
-    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+    testBeEnded(timeStart, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
@@ -103,12 +103,8 @@ void TestToTime(string IrregularVerbs[4][100])
                     = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
                 system("CLS");
-                cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeNow = clock();
+                testBeEnded(timeStart - timeNow, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
@@ -136,9 +132,7 @@ void TestToTime(string IrregularVerbs[4][100])
             break;
     }
     system("CLS");
-    cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
-    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
-    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+    testBeEnded(timeLimit, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
@@ -155,7 +149,7 @@ void TestRussian(string IrregularVerbs[4][100])
     int timeDelta = clock() - timeNow;
     int timeAll = 0, VerbsChoice, VerbForm, j, i;
     string ResponseOption[4];
-    while (1) {
+    while (score < 100) {
         RandomVerbTrue = rand() % 100;
         VerbForm = rand() % 3;
         j = rand() % 4;
@@ -168,7 +162,6 @@ void TestRussian(string IrregularVerbs[4][100])
             while (RandomVerbFalse == RandomVerbTrue) {
                 RandomVerbFalse = rand() % 100;
             }
-
             if (i != j) {
                 ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
             }
@@ -205,12 +198,10 @@ void TestRussian(string IrregularVerbs[4][100])
             case '0': {
                 InvalidInput = 0;
                 system("CLS");
-                cout << "Тестированеи завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeDelta = clock() - timeNow;
+                timeNow = clock();
+                timeAll += timeDelta;
+                testBeEnded(timeAll, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
@@ -220,8 +211,7 @@ void TestRussian(string IrregularVerbs[4][100])
                 mainMenu(IrregularVerbs);
             }
             default: {
-                cout << endl << "Некорректно! Повторите пожалуйста" << endl;
-                sleep_ms(2000);
+                IncorrectInput();
                 InvalidInput = 1;
             }
             }
@@ -248,5 +238,4 @@ void TestRussian(string IrregularVerbs[4][100])
         sleep_ms(2000);
         system("CLS");
     }
-    cout << "Тестирование завершено";
 }
