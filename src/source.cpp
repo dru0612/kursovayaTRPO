@@ -140,28 +140,28 @@ void Table_of_Record_Input(int score)
 
 void Table_of_Record_Sort()
 {
-    FILE* tf;
-    int k = 0, i = 0;
+    FILE* FileWithRecords;
+    int quantily = 0, i = 0;
     system("CLS");
     struct record {
         char name[50];
         int speed;
         char output[20];
     } man;
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
-        k++;
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
+        quantily++;
     }
-    struct record people[k], temp;
-    fclose(tf);
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
+    struct record people[quantily], temp;
+    fclose(FileWithRecords);
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         people[i] = man;
         i++;
     }
     int p, q;
-    for (p = 0; p < k; p++) {
-        for (q = 0; q < k - 1; q++) {
+    for (p = 0; p < quantily; p++) {
+        for (q = 0; q < quantily - 1; q++) {
             if (people[q].speed < people[q + 1].speed) {
                 temp = people[q];
                 people[q] = people[q + 1];
@@ -169,13 +169,13 @@ void Table_of_Record_Sort()
             }
         }
     }
-    fclose(tf);
-    tf = fopen("Table of Records", "wb");
-    for (i = 0; i < k; i++) {
+    fclose(FileWithRecords);
+    FileWithRecords = fopen("Table of Records", "wb");
+    for (i = 0; i < quantily; i++) {
         if (i < 10)
-            fwrite(&people[i], sizeof(people[i]), 1, tf);
+            fwrite(&people[i], sizeof(people[i]), 1, FileWithRecords);
     }
-    fclose(tf);
+    fclose(FileWithRecords);
 }
 
 void Table_of_Record_Output(string IrregularVerbs[4][100])
