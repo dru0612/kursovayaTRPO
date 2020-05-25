@@ -2,126 +2,115 @@
 
 using namespace std;
 
-void KoE(string v[4][100])
+void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
-    int score = 0, sc = 0, k, Oshibki = 0;
-    int t = clock();
-    int timer = clock() - t;
-    int timeAll = 0;
-    string vUser[3];
+    int score = 0, correct = 0, current = 0, mistakes = 0;
+    int timeNow;
+    int timeDelta;
+    int timeStart;
+    string userVerb[3];
     int i, testStatus = 0;
     while ((score < 100) || (testStatus == 0)) {
-        k = rand() % 100;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
+        current = rand() % 100;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current]
              << endl;
+        timeNow = clock();
+        timeDelta = clock() - timeNow;
+        timeStart = 0;
         for (i = 0; i < 3; i++) {
-            cin >> vUser[i];
-            int q = verbCheck(vUser[i], v[i][k]);
-            if (q == 2) {
+            cin >> userVerb[i];
+            int ResultOfCheck
+                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            if (ResultOfCheck == 2) {
                 system("cls");
                 testStatus = 1;
-                cout << "Общее время прохождения: " << timeAll / 1000
-                     << "секунд";
-                cout << endl
-                     << "Тестирование завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeDelta = clock() - timeNow;
+                timeNow = clock();
+                timeStart += timeDelta;
+                testBeEnded(timeStart, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
-            } else if (q == 1) {
-                sc++;
+                mainMenu(IrregularVerbs);
+            } else if (ResultOfCheck == 1) {
+                correct++;
             }
         }
-        if (testCheck(sc)) {
+        if (testCheck(correct) == 1) {
             score += 15;
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
             for (i = 0; i < 3; i++) {
-                cout << v[i][k] << " ";
+                cout << IrregularVerbs[i][current] << " ";
             }
-            Oshibki++;
+            mistakes++;
             if (score >= 5)
                 score -= 5;
         }
-        sc = 0;
+        correct = 0;
         if (score >= 100)
             break;
         cout << endl;
 
-        timer = clock() - t;
-        t = clock();
-        timeAll += timer;
-        cout << "Время, потраченное на глагол: " << timer / 1000 << " секунд"
-             << endl;
-        cout << "Ваш счет: " << score
-             << "\t Количетсво допущенных ошибок: " << Oshibki << endl
-             << endl;
+        timeDelta = clock() - timeNow;
+        timeNow = clock();
+        timeStart += timeDelta;
+        Subtotal(timeDelta, score, mistakes);
     }
 
     system("CLS");
-    cout << "Общее время прохождения: " << timeAll / 1000 << " секунд";
-    cout << endl << "Тестирвоание завершено. Ваш счет: " << score << endl;
-    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
-    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+    testBeEnded(timeStart, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
-            ToRIn(score);
+            Table_of_Record_Input(score);
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void TestToTime(string v[4][100])
+void TestToTime(string IrregularVerbs[4][100])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
-    int score = 0, sc = 0, k, i;
-    string vUser[3];
+    int score = 0, correct = 0, current, i;
+    string userVerb[3];
     cout << "У вас есть " << timeLimit / 1000
          << " секунд чтобы пройти тест, удачи!." << endl
          << endl;
     while (timeNow - timeStart < timeLimit) {
-        k = rand() % 100;
-        cout << "Введите все формы слова " << v[3][k] << " (" << v[0][k] << ") "
+        current = rand() % 100;
+        cout << "Введите все формы слова " << IrregularVerbs[3][current]
              << endl;
         for (i = 0; i < 3; i++) {
-            cin >> vUser[i];
-            int q = verbCheck(vUser[i], v[i][k]);
-            if (q == 2) {
+            cin >> userVerb[i];
+            int ResultOfCheck
+                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            if (ResultOfCheck == 2) {
                 system("CLS");
-                cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeNow = clock();
+                testBeEnded(timeStart - timeNow, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
+                mainMenu(IrregularVerbs);
                 break;
             }
-            if (q == 1) {
-                sc++;
+            if (ResultOfCheck == 1) {
+                correct++;
             }
         }
-        bool t = testCheck(sc);
-        if (t == true) {
+        bool ResultOfCheck = testCheck(correct);
+        if (ResultOfCheck == true) {
             score += 20;
         }
-        sc = 0;
+        correct = 0;
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
             cout << "У вас осталось "
@@ -131,115 +120,120 @@ void TestToTime(string v[4][100])
             break;
     }
     system("CLS");
-    cout << "Тестирвоание завершено. Ваш счет: " << score << endl;
-    cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
-    cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
+    testBeEnded(timeLimit, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
-            ToRIn(score);
+            Table_of_Record_Input(score);
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void TestRussian(string v[4][100])
+void TestRussian(string IrregularVerbs[4][100])
 {
-    int score = 0, k, Oshibki = 0;
-    int ti = clock();
-    int timer = clock() - ti;
-    int timeAll = 0, u, f, j, i;
-    string t[4];
-    while (1) {
-        k = rand() % 100;
-        f = rand() % 3;
-        j = rand() % 4;
-        t[j] = v[3][k];
-        cout << "Выберите перевод слова: " << v[f][k] << " (это " << f + 1
-             << " форма глагола)" << endl;
+    int score = 0, RandomVerbTrue, mistakes = 0;
+    int timeNow = clock();
+    int timeDelta = clock() - timeNow;
+    int timeAll = 0, VerbsChoice, VerbForm, TrueAnswer, i;
+    string ResponseOption[4];
+    while (score < 100) {
+        RandomVerbTrue = rand() % 100;
+        VerbForm = rand() % 3;
+        TrueAnswer = rand() % 4;
+        ResponseOption[TrueAnswer] = IrregularVerbs[3][RandomVerbTrue];
+        cout << "Выберите перевод слова: "
+             << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
+             << VerbForm + 1 << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
-            int q = rand() % 100;
-            while (q == k) {
-                q = rand() % 100;
-            }
-
-            if (i != j) {
-                t[i] = v[3][q];
+            int RandomVerbFalse = rand() % 100;
+            for (int count = 0; count < i; count++)
+                while ((ResponseOption[count]
+                        == IrregularVerbs[3][RandomVerbFalse])
+                       && (RandomVerbFalse == RandomVerbTrue)) {
+                    RandomVerbFalse = rand() % 100;
+                    count = 0;
+                }
+            if (i != TrueAnswer) {
+                ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
             }
         }
         for (i = 0; i < 4; i++) {
-            cout << i + 1 << " - " << t[i] << endl;
+            cout << i + 1 << " - " << ResponseOption[i] << endl;
         }
         cout << endl << "0 - Закончить тест" << endl;
-        int flag = 1;
-        while (flag == 1) {
-            char a;
-            cin >> a;
-            switch (a) {
+        int InvalidInput = 1;
+        while (InvalidInput == 1) {
+            char EnterSymbols;
+            cin >> EnterSymbols;
+            switch (EnterSymbols) {
             case '1': {
-                u = 0;
-                flag = 0;
+                VerbsChoice = 0;
+                InvalidInput = 0;
                 break;
             }
             case '2': {
-                u = 1;
-                flag = 0;
+                VerbsChoice = 1;
+                InvalidInput = 0;
                 break;
             }
             case '3': {
-                u = 2;
-                flag = 0;
+                VerbsChoice = 2;
+                InvalidInput = 0;
                 break;
             }
             case '4': {
-                u = 3;
-                flag = 0;
+                VerbsChoice = 3;
+                InvalidInput = 0;
                 break;
             }
             case '0': {
-                flag = 0;
+                InvalidInput = 0;
                 system("CLS");
-                cout << "Тестированеи завершено. Ваш счет: " << score << endl;
-                cout << "Нажмите Y ,если хотите добавить результат в таблицу."
-                     << endl;
-                cout << "Нажмите любую другую клавишу для выхода в главное "
-                        "меню."
-                     << endl;
+                timeDelta = clock() - timeNow;
+                timeNow = clock();
+                timeAll += timeDelta;
+                testBeEnded(timeAll, score);
                 char sym[50];
                 cin >> sym;
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
-                        ToRIn(score);
+                        Table_of_Record_Input(score);
                 system("CLS");
-                mainMenu(v);
+                mainMenu(IrregularVerbs);
             }
             default: {
-                cout << endl << "Некорректно! Повторите пожалуйста" << endl;
-                sleep_ms(2000);
-                flag = 1;
+                IncorrectInput();
+                InvalidInput = 1;
             }
             }
         }
-        int q = verbCheck(t[u], v[3][k]);
-        if (q) {
+        int ResultOfCheck = verbCheck(
+                ResponseOption[VerbsChoice], IrregularVerbs[3][RandomVerbTrue]);
+        if (ResultOfCheck) {
             cout << "Правильно!" << endl;
             score += 10;
         } else {
             cout << "Ошибка!" << endl;
-            Oshibki++;
+            mistakes++;
             if (score >= 5)
                 score -= 5;
         }
-        timer = clock() - ti;
-        ti = clock();
-        timeAll += timer;
-        cout << "Время, потраченное на на глагол: " << timer / 1000 << " секунд"
-             << endl;
-        cout << "Ваш счет: " << score
-             << "\t Количество допущенных ошибок: " << Oshibki << endl
-             << endl;
+        timeDelta = clock() - timeNow;
+        timeNow = clock();
+        timeAll += timeDelta;
+        Subtotal(timeDelta, score, mistakes);
         sleep_ms(2000);
         system("CLS");
     }
-    cout << "Тестирвоание завершено";
+
+    system("CLS");
+    testBeEnded(timeAll, score);
+    char sym[50];
+    cin >> sym;
+    if (strlen(sym) == 1)
+        if (yesCheck(sym[0]))
+            Table_of_Record_Input(score);
+    system("CLS");
+    mainMenu(IrregularVerbs);
 }

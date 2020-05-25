@@ -2,18 +2,18 @@
 
 using namespace std;
 
-int testCheck(int sc)
+int testCheck(int correct)
 {
-    if (sc == 3) {
+    if (correct == 3) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int yesCheck(char ch)
+int yesCheck(char sym)
 {
-    if ((ch == 'Y') || (ch == 'y'))
+    if ((sym == 'Y') || (sym == 'y'))
         return 1;
     else
         return 0;
@@ -29,103 +29,91 @@ int verbCheck(string user, string verb)
         return 0;
 }
 
-void fileIn(string v[4][100])
+void fileIn(string IrregularVerbs[4][100])
 {
     ifstream file("verb+.txt");
     if (!file) {
-        cout << "При открытии файла произошла ошибка.\n";
-        cout << "Программа может быть установлена неправильно\n";
-        exit(0);
+        fileNotFound();
     }
     for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 4; j++) {
-            file >> v[j][i];
+            file >> IrregularVerbs[j][i];
         }
     }
 }
 
-void fileOut(string v[4][100])
+void fileOut(string IrregularVerbs[4][100])
 {
     for (int i = 0; i < 100; i++) {
         cout << i + 1 << ") ";
         cout.width(10);
-        cout << v[0][i];
+        cout << IrregularVerbs[0][i];
         cout.width(20);
-        cout << v[1][i];
+        cout << IrregularVerbs[1][i];
         cout.width(20);
-        cout << v[2][i];
+        cout << IrregularVerbs[2][i];
         cout.width(20);
-        cout << v[3][i] << endl;
+        cout << IrregularVerbs[3][i] << endl;
     }
 }
 
-void dictionary(string v[4][100])
+void dictionary(string IrregularVerbs[4][100])
 {
-    fileOut(v);
+    fileOut(IrregularVerbs);
     cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
     system("pause");
     system("CLS");
-    mainMenu(v);
+    mainMenu(IrregularVerbs);
 }
 
-void choiceTest(string v[4][100])
+void choiceTest(string IrregularVerbs[4][100])
 {
-    cout << "1 - Тест на знание всех глаголов из справочника" << endl;
-    cout << "2 - Тест на знание перевода" << endl;
-    cout << "3 - Тест на скорость" << endl << endl;
-    cout << "0 - Вернуться в главное меню" << endl;
-
+    choiceTestInterface();
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         switch (sym[0]) {
         case '1': {
             system("CLS");
-            KoE(v);
+            KnownOfEveryTest(IrregularVerbs);
             break;
         }
         case '2': {
             system("CLS");
-            TestRussian(v);
+            TestRussian(IrregularVerbs);
             break;
         }
         case '3': {
             system("CLS");
-            TestToTime(v);
+            TestToTime(IrregularVerbs);
             break;
         }
         case '0': {
             system("CLS");
-            mainMenu(v);
+            mainMenu(IrregularVerbs);
             break;
         }
         default: {
-            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-            cout << endl;
-            sleep_ms(2000);
-            system("CLS");
-            choiceTest(v);
+            IncorrectInput();
+            choiceTest(IrregularVerbs);
         }
         }
     else {
-        cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-        cout << endl;
-        sleep_ms(2000);
-        system("CLS");
-        choiceTest(v);
+        IncorrectInput();
+        choiceTest(IrregularVerbs);
     }
 }
 
-void ToRIn(int score)
+void Table_of_Record_Input(int score)
 {
-    FILE* tf;
+    FILE* FileWithRecords;
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
-    man.speed = score;
-    tf = fopen("Table of Records", "ab");
+    man.result = score;
+    FileWithRecords = fopen("Table of Records", "ab");
     cout << endl << "Введите ваше имя: ";
     cin >> man.name;
 
@@ -134,135 +122,123 @@ void ToRIn(int score)
     strcpy(man.output, " Date:  ");
     strcpy(man.output, asctime(timeinfo));
 
-    fwrite(&man, sizeof(man), 1, tf);
-    fclose(tf);
+    fwrite(&man, sizeof(man), 1, FileWithRecords);
+    fclose(FileWithRecords);
 }
 
-void ToRSort()
+void Table_of_Record_Sort()
 {
-    FILE* tf;
-    int k = 0, i = 0;
+    FILE* FileWithRecords;
+    int quantily = 0, i = 0;
     system("CLS");
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
-        k++;
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
+        quantily++;
     }
-    struct record people[k], temp;
-    fclose(tf);
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
+    struct record people[quantily], moving;
+    fclose(FileWithRecords);
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         people[i] = man;
         i++;
     }
-    int p, q;
-    for (p = 0; p < k; p++) {
-        for (q = 0; q < k - 1; q++) {
-            if (people[q].speed < people[q + 1].speed) {
-                temp = people[q];
-                people[q] = people[q + 1];
-                people[q + 1] = temp;
-            }
+
+    int k, j;
+    for (i = 0; i < quantily - 1; i++) {
+        k = i;
+        for (j = i + 1; j < quantily; j++) {
+            if (people[j].result > people[i].result)
+                k = j;
+        }
+        if (people[k].result != people[i].result) {
+            moving = people[i];
+            people[i] = people[k];
+            people[k] = moving;
         }
     }
-    fclose(tf);
-    tf = fopen("Table of Records", "wb");
-    for (i = 0; i < k; i++) {
+    fclose(FileWithRecords);
+    FileWithRecords = fopen("Table of Records", "wb");
+    for (i = 0; i < quantily; i++) {
         if (i < 10)
-            fwrite(&people[i], sizeof(people[i]), 1, tf);
+            fwrite(&people[i], sizeof(people[i]), 1, FileWithRecords);
     }
-    fclose(tf);
+    fclose(FileWithRecords);
 }
 
-void ToROut(string v[4][100])
+void Table_of_Record_Output(string IrregularVerbs[4][100])
 {
-    FILE* tf;
+    FILE* FileWithRecords;
     system("CLS");
     cout << "Результаты:" << endl << endl;
     struct record {
         char name[50];
-        int speed;
+        int result;
         char output[20];
     } man;
-    int i = 1;
-    ToRSort();
-    tf = fopen("Table of Records", "rb");
-    while (fread(&man, sizeof(man), 1, tf)) {
-        cout << i << ") " << man.name << " " << man.speed << " " << man.output
-             << endl;
-        i++;
+    int NumberVerb = 1;
+    Table_of_Record_Sort();
+    FileWithRecords = fopen("Table of Records", "rb");
+    while (fread(&man, sizeof(man), 1, FileWithRecords)) {
+        cout << NumberVerb << ") " << man.name << " " << man.result << " "
+             << man.output << endl;
+        NumberVerb++;
     }
     system("pause");
     system("CLS");
-    fclose(tf);
-    mainMenu(v);
+    fclose(FileWithRecords);
+    mainMenu(IrregularVerbs);
 }
 
-void mainMenu(string v[4][100])
+void mainMenu(string IrregularVerbs[4][100])
 {
     while (1) {
-        cout << "1 - Выбор теста" << endl;
-        cout << "2 - Результаты" << endl;
-        cout << "3 - Показать словарь глаголов" << endl;
-        cout << "4 - Помощь" << endl << endl;
-        cout << "0 - Выход" << endl;
-
+        mainMenuInterface();
         char sym[50];
         cin >> sym;
         if (strlen(sym) == 1)
             switch (sym[0]) {
             case '1': {
                 system("CLS");
-                choiceTest(v);
+                choiceTest(IrregularVerbs);
                 break;
             }
             case '2': {
                 system("CLS");
-                ToROut(v);
+                Table_of_Record_Output(IrregularVerbs);
                 break;
             }
             case '3': {
                 system("CLS");
-                dictionary(v);
+                dictionary(IrregularVerbs);
                 break;
             }
             case '4': {
                 system("CLS");
-                support(v);
+                support(IrregularVerbs);
                 break;
             }
             case '0': {
                 exit(0);
             }
             default: {
-                cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-                cout << endl;
-                sleep_ms(2000);
-                system("CLS");
+                IncorrectInput();
             }
             }
         else {
-            cout << endl << "Неверный режим! Пожалуйста, повторите выбор";
-            cout << endl;
-            sleep_ms(2000);
-            system("CLS");
+            IncorrectInput();
         }
     }
 }
 
-void sleep_ms(int milliseconds) // cross-platform sleep function
+void sleep_ms(int milliseconds)
 {
 #ifdef WIN32
     Sleep(milliseconds);
-#elif _POSIX_C_SOURCE >= 199309L
-    struct timespec ts;
-    ts.tv_sec = milliseconds / 1000;
-    ts.tv_nsec = (milliseconds % 1000) * 1000000;
-    nanosleep(&ts, NULL);
 #else
     usleep(milliseconds * 1000);
 #endif

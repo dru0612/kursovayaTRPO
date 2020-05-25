@@ -14,20 +14,21 @@
 #ifdef WIN32
 #include <windows.h>
 #else
-#include <unistd.h> // for usleep
+#include <unistd.h>
 #endif
 
 using namespace std;
 
-void fileIn(string v[4][100]);
-void fileOut(string v[4][100]);
-void mainMenu(string v[4][100]);
-void ToRIn(int score);
-void ToRSort();
-void ToROut(string v[4][100]);
-int testCheck(int sc);
+void fileIn(string IrregularVerbs[4][100]);
+void fileOut(string IrregularVerbs[4][100]);
+void choiceTest(string IrregularVerbs[4][100]);
+void mainMenu(string IrregularVerbs[4][100]);
+void Table_of_Record_Input(int score);
+void Table_of_Record_Sort();
+void Table_of_Record_Output(string IrregularVerbs[4][100]);
+int testCheck(int correct);
 int verbCheck(string user, string verb);
-int yesCheck(char ch);
+int yesCheck(char sym);
 void sleep_ms(int milliseconds);
 
 #endif
