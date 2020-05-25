@@ -135,22 +135,26 @@ void TestRussian(string IrregularVerbs[4][100])
     int score = 0, RandomVerbTrue, mistakes = 0;
     int timeNow = clock();
     int timeDelta = clock() - timeNow;
-    int timeAll = 0, VerbsChoice, VerbForm, j, i;
+    int timeAll = 0, VerbsChoice, VerbForm, TrueAnswer, i;
     string ResponseOption[4];
     while (score < 100) {
         RandomVerbTrue = rand() % 100;
         VerbForm = rand() % 3;
-        j = rand() % 4;
-        ResponseOption[j] = IrregularVerbs[3][RandomVerbTrue];
+        TrueAnswer = rand() % 4;
+        ResponseOption[TrueAnswer] = IrregularVerbs[3][RandomVerbTrue];
         cout << "Выберите перевод слова: "
              << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
              << VerbForm + 1 << " форма глагола)" << endl;
         for (i = 0; i < 4; i++) {
             int RandomVerbFalse = rand() % 100;
-            while (RandomVerbFalse == RandomVerbTrue) {
-                RandomVerbFalse = rand() % 100;
-            }
-            if (i != j) {
+            for (int count = 0; count < i; count++)
+                while ((ResponseOption[count]
+                        == IrregularVerbs[3][RandomVerbFalse])
+                       && (RandomVerbFalse == RandomVerbTrue)) {
+                    RandomVerbFalse = rand() % 100;
+                    count = 0;
+                }
+            if (i != TrueAnswer) {
                 ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
             }
         }
