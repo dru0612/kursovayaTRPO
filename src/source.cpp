@@ -152,7 +152,7 @@ void Table_of_Record_Sort()
     for (i = 0; i < quantily - 1; i++) {
         k = i;
         for (j = i + 1; j < quantily; j++) {
-            if (people[j].result < people[i].result)
+            if (people[j].result > people[i].result)
                 k = j;
         }
         if (people[k].result != people[i].result) {
