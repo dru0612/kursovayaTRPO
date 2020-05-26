@@ -237,3 +237,13 @@ void TestRussian(string IrregularVerbs[4][100])
     system("CLS");
     mainMenu(IrregularVerbs);
 }
+
+void ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct)
+{
+    if (correct == true) {
+        score += scorePlus;
+    } else {
+        if (score >= scoreMinus)
+            score -= scoreMinus;
+    }
+}
