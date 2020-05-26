@@ -217,7 +217,7 @@ void TestRussian(string IrregularVerbs[4][100])
             cout << "Ошибка!" << endl;
             mistakes++;
         }
-        ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         timeDelta = clock() - timeNow;
         timeNow = clock();
         timeAll += timeDelta;
@@ -237,7 +237,7 @@ void TestRussian(string IrregularVerbs[4][100])
     mainMenu(IrregularVerbs);
 }
 
-void ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct)
+int ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct)
 {
     if (correct == true) {
         score += scorePlus;
@@ -245,4 +245,5 @@ void ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct)
         if (score >= scoreMinus)
             score -= scoreMinus;
     }
+    return score;
 }

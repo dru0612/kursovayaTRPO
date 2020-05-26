@@ -30,5 +30,5 @@ int testCheck(int correct);
 int verbCheck(string user, string verb);
 int yesCheck(char sym);
 void sleep_ms(int milliseconds);
-void ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct);
+int ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct);
 #endif
