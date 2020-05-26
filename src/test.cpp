@@ -150,7 +150,7 @@ void TestRussian(string IrregularVerbs[4][100])
             for (int count = 0; count < i; count++)
                 while ((ResponseOption[count]
                         == IrregularVerbs[3][RandomVerbFalse])
-                       && (RandomVerbFalse == RandomVerbTrue)) {
+                       || (RandomVerbFalse == RandomVerbTrue)) {
                     RandomVerbFalse = rand() % 100;
                     count = 0;
                 }
