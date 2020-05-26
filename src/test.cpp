@@ -136,6 +136,7 @@ void TestRussian(string IrregularVerbs[4][100])
     int timeNow = clock();
     int timeDelta = clock() - timeNow;
     int timeAll = 0, VerbsChoice, VerbForm, TrueAnswer, i;
+    int scorePlus = 10, scoreMinus = 5;
     string ResponseOption[4];
     while (score < 100) {
         RandomVerbTrue = rand() % 100;
@@ -212,13 +213,11 @@ void TestRussian(string IrregularVerbs[4][100])
                 ResponseOption[VerbsChoice], IrregularVerbs[3][RandomVerbTrue]);
         if (ResultOfCheck) {
             cout << "Правильно!" << endl;
-            score += 10;
         } else {
             cout << "Ошибка!" << endl;
             mistakes++;
-            if (score >= 5)
-                score -= 5;
         }
+        ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         timeDelta = clock() - timeNow;
         timeNow = clock();
         timeAll += timeDelta;
