@@ -97,7 +97,8 @@ void mainMenuInterface()
 void testBeEnded(int timeStart, int score)
 {
     cout << "Тестирование завершено. Ваш счет: " << score << endl;
-    cout << "Общее время прохождения: " << timeStart / 1000 << "секунд" << endl;
+    cout << "Общее время прохождения: " << timeStart / 1000 << " секунд"
+         << endl;
     cout << "Нажмите Y ,если хотите добавить результат в таблицу." << endl;
     cout << "Нажмите любую другую клавишу для выхода в главное меню." << endl;
 }
