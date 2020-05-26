@@ -5,11 +5,10 @@ using namespace std;
 void KnownOfEveryTest(string IrregularVerbs[4][100])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
-    int timeNow;
-    int timeDelta;
-    int timeStart;
+    int timeNow, timeDelta, timeStart;
     string userVerb[3];
-    int i, testStatus = 0;
+    int i, testStatus = 0, ResultOfCheck;
+    int scorePlus = 15, scoreMinus = 5;
     while ((score < 100) || (testStatus == 0)) {
         current = rand() % 100;
         cout << "Введите все формы слова " << IrregularVerbs[3][current]
@@ -19,8 +18,7 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
         timeStart = 0;
         for (i = 0; i < 3; i++) {
             cin >> userVerb[i];
-            int ResultOfCheck
-                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
                 system("cls");
                 testStatus = 1;
@@ -39,8 +37,8 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
                 correct++;
             }
         }
-        if (testCheck(correct) == 1) {
-            score += 15;
+        ResultOfCheck = testCheck(correct);
+        if (ResultOfCheck == 1) {
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
@@ -48,9 +46,8 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
                 cout << IrregularVerbs[i][current] << " ";
             }
             mistakes++;
-            if (score >= 5)
-                score -= 5;
         }
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         correct = 0;
         if (score >= 100)
             break;
@@ -77,6 +74,7 @@ void TestToTime(string IrregularVerbs[4][100])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, correct = 0, current, i;
+    int scorePlus = 20, scoreMinus = 0;
     string userVerb[3];
     cout << "У вас есть " << timeLimit / 1000
          << " секунд чтобы пройти тест, удачи!." << endl
@@ -107,9 +105,7 @@ void TestToTime(string IrregularVerbs[4][100])
             }
         }
         bool ResultOfCheck = testCheck(correct);
-        if (ResultOfCheck == true) {
-            score += 20;
-        }
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         correct = 0;
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
