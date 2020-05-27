@@ -108,7 +108,7 @@ void Table_of_Record_Input(int score)
     } man;
     man.result = score;
     FileWithRecords = fopen("Table of Records", "ab");
-    cout << endl << "Введите ваше имя: ";
+    cout << "\nВведите ваше имя: ";
     cin >> man.name;
 
     time_t seconds = time(NULL);
