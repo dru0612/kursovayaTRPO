@@ -4,29 +4,33 @@ using namespace std;
 
 int testCheck(int correct)
 {
+    bool checkStatus = 0;
     if (correct == 3) {
-        return 1;
-    } else {
-        return 0;
+        checkStatus = 1;
     }
+    return checkStatus;
 }
 
 int yesCheck(char sym)
 {
-    if ((sym == 'Y') || (sym == 'y'))
-        return 1;
-    else
-        return 0;
+    bool checkStatus = 0;
+    if ((sym == 'Y') || (sym == 'y')) {
+        checkStatus = 1;
+    }
+    return checkStatus;
 }
 
 int verbCheck(string user, string verb)
 {
-    if (user == verb)
-        return 1;
-    else if (user == "exit")
-        return 2;
-    else
-        return 0;
+    int checkStatus = 0;
+    string exitCommand = "exit";
+    if (user == exitCommand) {
+        checkStatus = 2;
+    } else if (user == verb) {
+        checkStatus = 1;
+    } else
+        checkStatus = 0;
+    return checkStatus;
 }
 
 void fileIn(string IrregularVerbs[4][100])
