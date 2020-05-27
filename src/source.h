@@ -17,6 +17,9 @@
 #include <unistd.h>
 #endif
 
+#define LotOfIrregularVerbs = 100;
+#define LotOfForms = 4;
+
 using namespace std;
 
 void fileIn(string IrregularVerbs[4][100]);
