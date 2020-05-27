@@ -2,21 +2,23 @@
 
 using namespace std;
 
-void KnownOfEveryTest(string IrregularVerbs[4][100])
+void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
+    int RusFormIndex = 3;
     int timeNow, timeDelta, timeStart;
     string userVerb[3];
     int i, testStatus = 0, ResultOfCheck;
-    int scorePlus = 15, scoreMinus = 5;
-    while ((score < 100) || (testStatus == 0)) {
-        current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << "\n";
+    int scorePlus = 15, scoreMinus = 5, scoreLimit = 100;
+
+    while ((score < scoreLimit) || (testStatus == 0)) {
+        current = rand() % LotOfIrregularVerbs;
+        cout << "Введите все формы слова "
+             << IrregularVerbs[RusFormIndex][current] << "\n";
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < RusFormIndex; i++) {
             cin >> userVerb[i];
             ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
@@ -40,14 +42,14 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
-            for (i = 0; i < 3; i++) {
+            for (i = 0; i < RusFormIndex; i++) {
                 cout << IrregularVerbs[i][current] << " ";
             }
             mistakes++;
         }
         score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         correct = 0;
-        if (score >= 100)
+        if (score >= scoreLimit)
             break;
         cout << "\n";
 
