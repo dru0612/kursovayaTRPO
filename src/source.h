@@ -11,12 +11,6 @@
 #include <string.h>
 #include <time.h>
 
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
-
 using namespace std;
 
 void fileIn(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
@@ -30,6 +24,5 @@ void Table_of_Record_Output(
 int testCheck(int correct);
 int verbCheck(string user, string verb);
 int yesCheck(char sym);
-void sleep_ms(int milliseconds);
 
 #endif

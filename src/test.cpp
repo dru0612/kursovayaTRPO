@@ -211,7 +211,6 @@ void TestRussian(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
         timeNow = clock();
         timeAll += timeDelta;
         Subtotal(timeDelta, score, mistakes);
-        sleep_ms(2000);
     }
 
     testBeEnded(timeAll, score);

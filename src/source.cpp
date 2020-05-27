@@ -225,12 +225,3 @@ void mainMenu(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
         }
     }
 }
-
-void sleep_ms(int milliseconds)
-{
-#ifdef WIN32
-    Sleep(milliseconds);
-#else
-    usleep(milliseconds * 1000);
-#endif
-}
