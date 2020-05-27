@@ -20,7 +20,6 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
             cin >> userVerb[i];
             ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
-                system("cls");
                 testStatus = 1;
                 timeDelta = clock() - timeNow;
                 timeNow = clock();
@@ -31,7 +30,6 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
             } else if (ResultOfCheck == 1) {
                 correct++;
@@ -59,14 +57,12 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
         Subtotal(timeDelta, score, mistakes);
     }
 
-    system("CLS");
     testBeEnded(timeStart, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
@@ -88,7 +84,6 @@ void TestToTime(string IrregularVerbs[4][100])
             int ResultOfCheck
                     = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
-                system("CLS");
                 timeNow = clock();
                 testBeEnded(timeStart - timeNow, score);
                 char sym[50];
@@ -96,7 +91,6 @@ void TestToTime(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
                 break;
             }
@@ -115,14 +109,12 @@ void TestToTime(string IrregularVerbs[4][100])
         else
             break;
     }
-    system("CLS");
     testBeEnded(timeLimit, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
@@ -186,7 +178,6 @@ void TestRussian(string IrregularVerbs[4][100])
             }
             case '0': {
                 InvalidInput = 0;
-                system("CLS");
                 timeDelta = clock() - timeNow;
                 timeNow = clock();
                 timeAll += timeDelta;
@@ -196,7 +187,6 @@ void TestRussian(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
             }
             default: {
@@ -219,17 +209,14 @@ void TestRussian(string IrregularVerbs[4][100])
         timeAll += timeDelta;
         Subtotal(timeDelta, score, mistakes);
         sleep_ms(2000);
-        system("CLS");
     }
 
-    system("CLS");
     testBeEnded(timeAll, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
