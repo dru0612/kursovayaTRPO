@@ -6,7 +6,7 @@
 using namespace std;
 
 void hello();
-void support(string IrregularVerbs[4][100]);
+void support(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void fileNotFound();
 void choiceTestInterface();
 void mainMenuInterface();
