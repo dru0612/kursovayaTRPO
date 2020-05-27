@@ -1,25 +1,26 @@
 #include "../src/source.h"
 #include "gtest/gtest.h"
 
-TEST(TestCheck, WrongInputBellow)
+TEST(TestCheckUserAnswer, WrongInputBellow)
 {
-    int rand = 2;
-    int result = testCheck(rand);
+    int WrongUserAnswer = 2;
+    int result = testCheck(WrongUserAnswer);
     int expected = 0;
     EXPECT_EQ(expected, result);
 }
 
-TEST(TestCheck, WrongInputAbove)
+TEST(TestCheckUserAnswer, WrongInputAbove)
 {
-    int rand = 4;
-    int result = testCheck(rand);
+    int WrongUserAnswer = 4;
+    int result = testCheck(WrongUserAnswer);
     int expected = 0;
     EXPECT_EQ(expected, result);
 }
 
-TEST(TestCheckt, ValidInput)
+TEST(TestChecktUserAnswer, ValidInput)
 {
-    int result = testCheck(3);
+    int UserAnswer = 3;
+    int result = testCheck(UserAnswer);
     int expected = 1;
     EXPECT_EQ(expected, result);
 }
@@ -48,10 +49,28 @@ TEST(YesCheck, ValidInputLowCase)
     EXPECT_EQ(expected, result);
 }
 
-TEST(VerbCheck, SameInput)
+TEST(VerbCheck, RightInput)
 {
     string user = "Valid";
     string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputButInLowCase)
+{
+    string user = "valid";
+    string verb = "valid";
+    int result = verbCheck(user, verb);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithManyWords)
+{
+    string user = "Valid + valid";
+    string verb = "Valid + valid";
     int result = verbCheck(user, verb);
     int expected = 1;
     EXPECT_EQ(expected, result);
@@ -66,10 +85,46 @@ TEST(VerbCheck, ExitUserInput)
     EXPECT_EQ(expected, result);
 }
 
+TEST(VerbCheck, ExitUserInputButUpperCase)
+{
+    string user = "Exit";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
 TEST(VerbCheck, DifferentInput)
 {
     string user = "Valid";
     string verb = "Invalid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, DifferentInputInLowCase)
+{
+    string user = "valid";
+    string verb = "invalid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithDifferentCases)
+{
+    string user = "valid";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, DifferentInputWithManyWords)
+{
+    string user = "Valid + valid";
+    string verb = "Invalid + valid";
     int result = verbCheck(user, verb);
     int expected = 0;
     EXPECT_EQ(expected, result);
