@@ -77,11 +77,9 @@ void testBeEnded(int timeStart, int score)
 
 void Subtotal(int timeDelta, int score, int mistakes)
 {
-    cout << "Время, потраченное на глагол: " << timeDelta / 1000 << " секунд"
-         << endl;
+    cout << "Время, потраченное на глагол: " << timeDelta / 1000 << " секунд\n";
     cout << "Ваш счет: " << score
-         << "\t Количетсво допущенных ошибок: " << mistakes << endl
-         << endl;
+         << "\t Количетсво допущенных ошибок: " << mistakes << "\n\n";
 }
 
 void IncorrectInput()
