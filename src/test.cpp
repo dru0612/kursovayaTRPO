@@ -131,7 +131,7 @@ void TestRussian(string IrregularVerbs[4][100])
         ResponseOption[TrueAnswer] = IrregularVerbs[3][RandomVerbTrue];
         cout << "Выберите перевод слова: "
              << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
-             << VerbForm + 1 << " форма глагола)" << endl;
+             << VerbForm + 1 << " форма глагола)\n";
         for (i = 0; i < 4; i++) {
             int RandomVerbFalse = rand() % 100;
             for (int count = 0; count < i; count++)
@@ -146,9 +146,9 @@ void TestRussian(string IrregularVerbs[4][100])
             }
         }
         for (i = 0; i < 4; i++) {
-            cout << i + 1 << " - " << ResponseOption[i] << endl;
+            cout << i + 1 << " - " << ResponseOption[i] << "\n";
         }
-        cout << endl << "0 - Закончить тест" << endl;
+        cout << "\n0 - Закончить тест\n";
         int InvalidInput = 1;
         while (InvalidInput == 1) {
             char EnterSymbols;
@@ -196,9 +196,9 @@ void TestRussian(string IrregularVerbs[4][100])
         int ResultOfCheck = verbCheck(
                 ResponseOption[VerbsChoice], IrregularVerbs[3][RandomVerbTrue]);
         if (ResultOfCheck) {
-            cout << "Правильно!" << endl;
+            cout << "Правильно!\n";
         } else {
-            cout << "Ошибка!" << endl;
+            cout << "Ошибка!\n";
             mistakes++;
         }
         score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
