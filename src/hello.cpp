@@ -19,13 +19,7 @@ void hello()
          << "Эта программа предназначена для оттачивания ваших знаний "
             "неправильных глаголов."
          << endl;
-    cout << endl
-         << "Желаем вам удачи в изучении глаголов! Нажмите любую кнопку, чтобы "
-            "продолжить."
-         << endl
-         << endl;
-    system("pause");
-    system("CLS");
+    cout << endl << "Желаем вам удачи в изучении глаголов!" << endl << endl;
 }
 
 void support(string IrregularVerbs[4][100])
@@ -63,8 +57,6 @@ void support(string IrregularVerbs[4][100])
             "продолжить."
          << endl
          << endl;
-    system("pause");
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
@@ -117,5 +109,4 @@ void IncorrectInput()
     cout << endl << "Некорректно! Повторите пожалуйста";
     cout << endl;
     sleep_ms(2000);
-    system("CLS");
 }
