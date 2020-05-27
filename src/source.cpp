@@ -33,22 +33,22 @@ int verbCheck(string user, string verb)
     return checkStatus;
 }
 
-void fileIn(string IrregularVerbs[4][100])
+void fileIn(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     ifstream file("verb+.txt");
     if (!file) {
         fileNotFound();
     }
-    for (int i = 0; i < 100; i++) {
-        for (int j = 0; j < 4; j++) {
+    for (int i = 0; i < LotOfIrregularVerbs; i++) {
+        for (int j = 0; j < LotOfForms; j++) {
             file >> IrregularVerbs[j][i];
         }
     }
 }
 
-void fileOut(string IrregularVerbs[4][100])
+void fileOut(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < LotOfIrregularVerbs; i++) {
         cout << i + 1 << ") ";
         cout.width(10);
         cout << IrregularVerbs[0][i];
@@ -61,7 +61,7 @@ void fileOut(string IrregularVerbs[4][100])
     }
 }
 
-void dictionary(string IrregularVerbs[4][100])
+void dictionary(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     fileOut(IrregularVerbs);
     cout << "\nНажмите любую кнопку, чтобы продолжить.\n";
