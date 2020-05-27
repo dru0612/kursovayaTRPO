@@ -192,7 +192,7 @@ void Table_of_Record_Output(
     mainMenu(IrregularVerbs);
 }
 
-void mainMenu(string IrregularVerbs[4][100])
+void mainMenu(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     while (1) {
         mainMenuInterface();
