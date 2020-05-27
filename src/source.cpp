@@ -60,7 +60,7 @@ void fileOut(string IrregularVerbs[4][100])
 void dictionary(string IrregularVerbs[4][100])
 {
     fileOut(IrregularVerbs);
-    cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
+    cout << "\nНажмите любую кнопку, чтобы продолжить.\n";
     mainMenu(IrregularVerbs);
 }
 
