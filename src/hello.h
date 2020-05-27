@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+#define LotOfIrregularVerbs 100
+#define LotOfForms 4
+
 using namespace std;
 
 void hello();
