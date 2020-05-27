@@ -166,7 +166,7 @@ void Table_of_Record_Sort()
 void Table_of_Record_Output(string IrregularVerbs[4][100])
 {
     FILE* FileWithRecords;
-    cout << "Результаты:" << endl << endl;
+    cout << "Результаты:\n\n";
     struct record {
         char name[50];
         int result;
@@ -177,7 +177,7 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
     FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         cout << NumberVerb << ") " << man.name << " " << man.result << " "
-             << man.output << endl;
+             << man.output << "\n";
         NumberVerb++;
     }
     fclose(FileWithRecords);
