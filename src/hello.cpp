@@ -84,7 +84,6 @@ void Subtotal(int timeDelta, int score, int mistakes)
 
 void IncorrectInput()
 {
-    cout << endl << "Некорректно! Повторите пожалуйста";
-    cout << endl;
+    cout << "\nНекорректно! Повторите пожалуйста\n";
     sleep_ms(2000);
 }
