@@ -44,7 +44,6 @@ runtest:
 
 clean:
 		rm -rf build/src/*.o
-		rm -rf bin/*
 
 cleantest:
 		rm build/test/*.o
