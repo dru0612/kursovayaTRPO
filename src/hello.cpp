@@ -17,7 +17,7 @@ void hello()
     cout << "Желаем вам удачи в изучении глаголов!\n\n";
 }
 
-void support(string IrregularVerbs[4][100])
+void support(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     cout << "1) Вводите слова в нижнем регистре.\n";
     cout << "2) Вы должны использовать только Латинские буквы для ввода слов\n";
