@@ -60,11 +60,11 @@ void choiceTestInterface()
 
 void mainMenuInterface()
 {
-    cout << "1 - Выбор теста" << endl;
-    cout << "2 - Результаты" << endl;
-    cout << "3 - Показать словарь глаголов" << endl;
-    cout << "4 - Помощь" << endl << endl;
-    cout << "0 - Выход" << endl;
+    cout << "1 - Выбор теста\n";
+    cout << "2 - Результаты\n";
+    cout << "3 - Показать словарь глаголов\n";
+    cout << "4 - Помощь\n\n";
+    cout << "0 - Выход\n";
 }
 
 void testBeEnded(int timeStart, int score)
