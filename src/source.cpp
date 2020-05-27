@@ -61,8 +61,6 @@ void dictionary(string IrregularVerbs[4][100])
 {
     fileOut(IrregularVerbs);
     cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
-    system("pause");
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
@@ -74,22 +72,18 @@ void choiceTest(string IrregularVerbs[4][100])
     if (strlen(sym) == 1)
         switch (sym[0]) {
         case '1': {
-            system("CLS");
             KnownOfEveryTest(IrregularVerbs);
             break;
         }
         case '2': {
-            system("CLS");
             TestRussian(IrregularVerbs);
             break;
         }
         case '3': {
-            system("CLS");
             TestToTime(IrregularVerbs);
             break;
         }
         case '0': {
-            system("CLS");
             mainMenu(IrregularVerbs);
             break;
         }
@@ -130,7 +124,6 @@ void Table_of_Record_Sort()
 {
     FILE* FileWithRecords;
     int quantily = 0, i = 0;
-    system("CLS");
     struct record {
         char name[50];
         int result;
@@ -173,7 +166,6 @@ void Table_of_Record_Sort()
 void Table_of_Record_Output(string IrregularVerbs[4][100])
 {
     FILE* FileWithRecords;
-    system("CLS");
     cout << "Результаты:" << endl << endl;
     struct record {
         char name[50];
@@ -188,8 +180,6 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
              << man.output << endl;
         NumberVerb++;
     }
-    system("pause");
-    system("CLS");
     fclose(FileWithRecords);
     mainMenu(IrregularVerbs);
 }
@@ -203,22 +193,18 @@ void mainMenu(string IrregularVerbs[4][100])
         if (strlen(sym) == 1)
             switch (sym[0]) {
             case '1': {
-                system("CLS");
                 choiceTest(IrregularVerbs);
                 break;
             }
             case '2': {
-                system("CLS");
                 Table_of_Record_Output(IrregularVerbs);
                 break;
             }
             case '3': {
-                system("CLS");
                 dictionary(IrregularVerbs);
                 break;
             }
             case '4': {
-                system("CLS");
                 support(IrregularVerbs);
                 break;
             }
