@@ -73,12 +73,11 @@ void TestToTime(string IrregularVerbs[4][100])
     int scorePlus = 20, scoreMinus = 0;
     string userVerb[3];
     cout << "У вас есть " << timeLimit / 1000
-         << " секунд чтобы пройти тест, удачи!." << endl
-         << endl;
+         << " секунд чтобы пройти тест, удачи!.\n\n";
     while (timeNow - timeStart < timeLimit) {
         current = rand() % 100;
         cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << endl;
+             << "\n";
         for (i = 0; i < 3; i++) {
             cin >> userVerb[i];
             int ResultOfCheck
@@ -104,8 +103,7 @@ void TestToTime(string IrregularVerbs[4][100])
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
             cout << "У вас осталось "
-                 << (timeLimit - (timeNow - timeStart)) / 1000 << " секунд"
-                 << endl;
+                 << (timeLimit - (timeNow - timeStart)) / 1000 << " секунд\n";
         else
             break;
     }
