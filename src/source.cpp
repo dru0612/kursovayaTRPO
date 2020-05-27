@@ -53,7 +53,7 @@ void fileOut(string IrregularVerbs[4][100])
         cout.width(20);
         cout << IrregularVerbs[2][i];
         cout.width(20);
-        cout << IrregularVerbs[3][i] << endl;
+        cout << IrregularVerbs[3][i] << "\n";
     }
 }
 
