@@ -8,7 +8,7 @@ void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
     int RusFormIndex = 3;
     int timeNow, timeDelta, timeStart;
     string userVerb[3];
-    int i, testStatus = 0, ResultOfCheck;
+    int i, testStatus = 0, ResultOfCheck, LotOfEngForms = 3;
     int scorePlus = 15, scoreMinus = 5, scoreLimit = 100;
 
     while ((score < scoreLimit) || (testStatus == 0)) {
@@ -18,7 +18,7 @@ void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
-        for (i = 0; i < RusFormIndex; i++) {
+        for (i = 0; i < LotOfEngForms; i++) {
             cin >> userVerb[i];
             ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
@@ -42,7 +42,7 @@ void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
-            for (i = 0; i < RusFormIndex; i++) {
+            for (i = 0; i < LotOfEngForms; i++) {
                 cout << IrregularVerbs[i][current] << " ";
             }
             mistakes++;
