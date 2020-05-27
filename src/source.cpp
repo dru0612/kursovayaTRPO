@@ -105,14 +105,13 @@ void choiceTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 void Table_of_Record_Input(int score)
 {
     FILE* FileWithRecords;
-    string binFileName = "Table of Records";
     struct record {
         char name[50];
         int result;
         char output[20];
     } man;
     man.result = score;
-    FileWithRecords = fopen(binFileName, "ab");
+    FileWithRecords = fopen("Table of Records", "ab");
     cout << "\nВведите ваше имя: ";
     cin >> man.name;
 
@@ -128,20 +127,19 @@ void Table_of_Record_Input(int score)
 void Table_of_Record_Sort()
 {
     FILE* FileWithRecords;
-    string binFileName = "Table of Records";
     int quantily = 0, i = 0, limitOfRecords = 10;
     struct record {
         char name[50];
         int result;
         char output[20];
     } man;
-    FileWithRecords = fopen(binFileName, "rb");
+    FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         quantily++;
     }
     struct record people[quantily], moving;
     fclose(FileWithRecords);
-    FileWithRecords = fopen(binFileName, "rb");
+    FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         people[i] = man;
         i++;
@@ -161,7 +159,7 @@ void Table_of_Record_Sort()
         }
     }
     fclose(FileWithRecords);
-    FileWithRecords = fopen(binFileName, "wb");
+    FileWithRecords = fopen("Table of Records", "wb");
     for (i = 0; i < quantily; i++) {
         if (i < limitOfRecords)
             fwrite(&people[i], sizeof(people[i]), 1, FileWithRecords);
@@ -173,7 +171,6 @@ void Table_of_Record_Output(
         string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     FILE* FileWithRecords;
-    string binFileName = "Table of Records";
     cout << "Результаты:\n\n";
     struct record {
         char name[50];
@@ -182,7 +179,7 @@ void Table_of_Record_Output(
     } man;
     int NumberVerb = 1;
     Table_of_Record_Sort();
-    FileWithRecords = fopen(binFileName, "rb");
+    FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         cout << NumberVerb << ") " << man.name << " " << man.result << " "
              << man.output << "\n";
