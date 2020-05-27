@@ -12,7 +12,7 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
     while ((score < 100) || (testStatus == 0)) {
         current = rand() % 100;
         cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << endl;
+             << "\n";
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
@@ -49,7 +49,7 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
         correct = 0;
         if (score >= 100)
             break;
-        cout << endl;
+        cout << "\n";
 
         timeDelta = clock() - timeNow;
         timeNow = clock();
