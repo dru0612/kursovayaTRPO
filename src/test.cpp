@@ -68,19 +68,20 @@ void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
     mainMenu(IrregularVerbs);
 }
 
-void TestToTime(string IrregularVerbs[4][100])
+void TestToTime(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, correct = 0, current, i;
     int scorePlus = 20, scoreMinus = 0;
-    string userVerb[3];
+    int LotOfEngForms = 3, RusFormIndex = 3;
+    string userVerb[LotOfEngForms];
     cout << "У вас есть " << timeLimit / 1000
          << " секунд чтобы пройти тест, удачи!.\n\n";
     while (timeNow - timeStart < timeLimit) {
-        current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << "\n";
-        for (i = 0; i < 3; i++) {
+        current = rand() % LotOfIrregularVerbs;
+        cout << "Введите все формы слова "
+             << IrregularVerbs[RusFormIndex][current] << "\n";
+        for (i = 0; i < LotOfEngForms; i++) {
             cin >> userVerb[i];
             int ResultOfCheck
                     = verbCheck(userVerb[i], IrregularVerbs[i][current]);
