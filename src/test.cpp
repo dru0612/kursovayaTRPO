@@ -119,36 +119,38 @@ void TestToTime(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
     mainMenu(IrregularVerbs);
 }
 
-void TestRussian(string IrregularVerbs[4][100])
+void TestRussian(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
-    int score = 0, RandomVerbTrue, mistakes = 0;
-    int timeNow = clock();
-    int timeDelta = clock() - timeNow;
+    int score = 0, RandomVerbTrue, mistakes = 0, LotOfAnswers = 4;
+    int timeNow = clock(), timeDelta = clock() - timeNow;
     int timeAll = 0, VerbsChoice, VerbForm, TrueAnswer, i;
-    int scorePlus = 10, scoreMinus = 5;
-    string ResponseOption[4];
-    while (score < 100) {
-        RandomVerbTrue = rand() % 100;
-        VerbForm = rand() % 3;
-        TrueAnswer = rand() % 4;
-        ResponseOption[TrueAnswer] = IrregularVerbs[3][RandomVerbTrue];
+    int scorePlus = 10, scoreMinus = 5, scoreLimit = 100;
+    int LotOfEngForms = 3, RusFormIndex = 3;
+    string ResponseOption[LotOfAnswers];
+    while (score < scoreLimit) {
+        RandomVerbTrue = rand() % LotOfIrregularVerbs;
+        VerbForm = rand() % LotOfEngForms;
+        TrueAnswer = rand() % LotOfAnswers;
+        ResponseOption[TrueAnswer]
+                = IrregularVerbs[RusFormIndex][RandomVerbTrue];
         cout << "Выберите перевод слова: "
              << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
              << VerbForm + 1 << " форма глагола)\n";
-        for (i = 0; i < 4; i++) {
-            int RandomVerbFalse = rand() % 100;
+        for (i = 0; i < LotOfAnswers; i++) {
+            int RandomVerbFalse = rand() % LotOfIrregularVerbs;
             for (int count = 0; count < i; count++)
                 while ((ResponseOption[count]
-                        == IrregularVerbs[3][RandomVerbFalse])
+                        == IrregularVerbs[RusFormIndex][RandomVerbFalse])
                        || (RandomVerbFalse == RandomVerbTrue)) {
-                    RandomVerbFalse = rand() % 100;
+                    RandomVerbFalse = rand() % LotOfIrregularVerbs;
                     count = 0;
                 }
             if (i != TrueAnswer) {
-                ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
+                ResponseOption[i]
+                        = IrregularVerbs[RusFormIndex][RandomVerbFalse];
             }
         }
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < LotOfAnswers; i++) {
             cout << i + 1 << " - " << ResponseOption[i] << "\n";
         }
         cout << "\n0 - Закончить тест\n";
