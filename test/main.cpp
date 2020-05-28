@@ -87,7 +87,16 @@ TEST(VerbCheck, ExitUserInput)
 
 TEST(VerbCheck, ExitUserInputButUpperCase)
 {
-    string user = "Exit";
+    string user = "EXIT";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, WrongExitUserInput)
+{
+    string user = "ViidyOtsuda";
     string verb = "Valid";
     int result = verbCheck(user, verb);
     int expected = 0;
@@ -127,6 +136,68 @@ TEST(VerbCheck, DifferentInputWithManyWords)
     string verb = "Invalid + valid";
     int result = verbCheck(user, verb);
     int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithExtraNumbers)
+{
+    string user = "Valid";
+    string verb = "V123alid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithExtraSymbols)
+{
+    string user = "Valid";
+    string verb = "V./#,alid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, CorrectScoreAdd)
+{
+    int score = 0;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = true;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, CorrectScoreMinus)
+{
+    int score = 10;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = true;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 11;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, UncorrectScoreAdd)
+{
+    int score = 0;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = false;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, UncorrectScoreMinus)
+{
+    int score = 10;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = false;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 9;
     EXPECT_EQ(expected, result);
 }
 
