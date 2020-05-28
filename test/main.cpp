@@ -141,8 +141,8 @@ TEST(VerbCheck, DifferentInputWithManyWords)
 
 TEST(VerbCheck, RightInputWithExtraNumbers)
 {
-    string user = "Valid";
-    string verb = "V123alid";
+    string user = "V123alid";
+    string verb = "Valid";
     int result = verbCheck(user, verb);
     int expected = 0;
     EXPECT_EQ(expected, result);
@@ -150,8 +150,8 @@ TEST(VerbCheck, RightInputWithExtraNumbers)
 
 TEST(VerbCheck, RightInputWithExtraSymbols)
 {
-    string user = "Valid";
-    string verb = "V./#,alid";
+    string user = "V./#,alid";
+    string verb = "Valid";
     int result = verbCheck(user, verb);
     int expected = 0;
     EXPECT_EQ(expected, result);
