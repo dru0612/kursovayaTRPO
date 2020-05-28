@@ -11,24 +11,18 @@
 #include <string.h>
 #include <time.h>
 
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
-
 using namespace std;
 
-void fileIn(string IrregularVerbs[4][100]);
-void fileOut(string IrregularVerbs[4][100]);
-void choiceTest(string IrregularVerbs[4][100]);
-void mainMenu(string IrregularVerbs[4][100]);
+void fileIn(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
+void fileOut(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
+void choiceTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
+void mainMenu(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void Table_of_Record_Input(int score);
 void Table_of_Record_Sort();
-void Table_of_Record_Output(string IrregularVerbs[4][100]);
+void Table_of_Record_Output(
+        string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 int testCheck(int correct);
 int verbCheck(string user, string verb);
 int yesCheck(char sym);
-void sleep_ms(int milliseconds);
 
 #endif

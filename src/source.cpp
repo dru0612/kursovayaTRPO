@@ -4,47 +4,51 @@ using namespace std;
 
 int testCheck(int correct)
 {
+    bool checkStatus = 0;
     if (correct == 3) {
-        return 1;
-    } else {
-        return 0;
+        checkStatus = 1;
     }
+    return checkStatus;
 }
 
 int yesCheck(char sym)
 {
-    if ((sym == 'Y') || (sym == 'y'))
-        return 1;
-    else
-        return 0;
+    bool checkStatus = 0;
+    if ((sym == 'Y') || (sym == 'y')) {
+        checkStatus = 1;
+    }
+    return checkStatus;
 }
 
 int verbCheck(string user, string verb)
 {
-    if (user == verb)
-        return 1;
-    else if (user == "exit")
-        return 2;
-    else
-        return 0;
+    int checkStatus = 0;
+    string exitCommand = "exit";
+    if (user == exitCommand) {
+        checkStatus = 2;
+    } else if (user == verb) {
+        checkStatus = 1;
+    } else
+        checkStatus = 0;
+    return checkStatus;
 }
 
-void fileIn(string IrregularVerbs[4][100])
+void fileIn(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     ifstream file("verb+.txt");
     if (!file) {
         fileNotFound();
     }
-    for (int i = 0; i < 100; i++) {
-        for (int j = 0; j < 4; j++) {
+    for (int i = 0; i < LotOfIrregularVerbs; i++) {
+        for (int j = 0; j < LotOfForms; j++) {
             file >> IrregularVerbs[j][i];
         }
     }
 }
 
-void fileOut(string IrregularVerbs[4][100])
+void fileOut(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < LotOfIrregularVerbs; i++) {
         cout << i + 1 << ") ";
         cout.width(10);
         cout << IrregularVerbs[0][i];
@@ -53,20 +57,18 @@ void fileOut(string IrregularVerbs[4][100])
         cout.width(20);
         cout << IrregularVerbs[2][i];
         cout.width(20);
-        cout << IrregularVerbs[3][i] << endl;
+        cout << IrregularVerbs[3][i] << "\n";
     }
 }
 
-void dictionary(string IrregularVerbs[4][100])
+void dictionary(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     fileOut(IrregularVerbs);
-    cout << endl << "Нажмите любую кнопку, чтобы продолжить." << endl;
-    system("pause");
-    system("CLS");
+    cout << "\nНажмите любую кнопку, чтобы продолжить.\n";
     mainMenu(IrregularVerbs);
 }
 
-void choiceTest(string IrregularVerbs[4][100])
+void choiceTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     choiceTestInterface();
     char sym[50];
@@ -74,22 +76,18 @@ void choiceTest(string IrregularVerbs[4][100])
     if (strlen(sym) == 1)
         switch (sym[0]) {
         case '1': {
-            system("CLS");
             KnownOfEveryTest(IrregularVerbs);
             break;
         }
         case '2': {
-            system("CLS");
             TestRussian(IrregularVerbs);
             break;
         }
         case '3': {
-            system("CLS");
             TestToTime(IrregularVerbs);
             break;
         }
         case '0': {
-            system("CLS");
             mainMenu(IrregularVerbs);
             break;
         }
@@ -114,7 +112,7 @@ void Table_of_Record_Input(int score)
     } man;
     man.result = score;
     FileWithRecords = fopen("Table of Records", "ab");
-    cout << endl << "Введите ваше имя: ";
+    cout << "\nВведите ваше имя: ";
     cin >> man.name;
 
     time_t seconds = time(NULL);
@@ -129,8 +127,7 @@ void Table_of_Record_Input(int score)
 void Table_of_Record_Sort()
 {
     FILE* FileWithRecords;
-    int quantily = 0, i = 0;
-    system("CLS");
+    int quantily = 0, i = 0, limitOfRecords = 10;
     struct record {
         char name[50];
         int result;
@@ -164,17 +161,17 @@ void Table_of_Record_Sort()
     fclose(FileWithRecords);
     FileWithRecords = fopen("Table of Records", "wb");
     for (i = 0; i < quantily; i++) {
-        if (i < 10)
+        if (i < limitOfRecords)
             fwrite(&people[i], sizeof(people[i]), 1, FileWithRecords);
     }
     fclose(FileWithRecords);
 }
 
-void Table_of_Record_Output(string IrregularVerbs[4][100])
+void Table_of_Record_Output(
+        string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     FILE* FileWithRecords;
-    system("CLS");
-    cout << "Результаты:" << endl << endl;
+    cout << "Результаты:\n\n";
     struct record {
         char name[50];
         int result;
@@ -185,16 +182,14 @@ void Table_of_Record_Output(string IrregularVerbs[4][100])
     FileWithRecords = fopen("Table of Records", "rb");
     while (fread(&man, sizeof(man), 1, FileWithRecords)) {
         cout << NumberVerb << ") " << man.name << " " << man.result << " "
-             << man.output << endl;
+             << man.output << "\n";
         NumberVerb++;
     }
-    system("pause");
-    system("CLS");
     fclose(FileWithRecords);
     mainMenu(IrregularVerbs);
 }
 
-void mainMenu(string IrregularVerbs[4][100])
+void mainMenu(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     while (1) {
         mainMenuInterface();
@@ -203,22 +198,18 @@ void mainMenu(string IrregularVerbs[4][100])
         if (strlen(sym) == 1)
             switch (sym[0]) {
             case '1': {
-                system("CLS");
                 choiceTest(IrregularVerbs);
                 break;
             }
             case '2': {
-                system("CLS");
                 Table_of_Record_Output(IrregularVerbs);
                 break;
             }
             case '3': {
-                system("CLS");
                 dictionary(IrregularVerbs);
                 break;
             }
             case '4': {
-                system("CLS");
                 support(IrregularVerbs);
                 break;
             }
@@ -233,13 +224,4 @@ void mainMenu(string IrregularVerbs[4][100])
             IncorrectInput();
         }
     }
-}
-
-void sleep_ms(int milliseconds)
-{
-#ifdef WIN32
-    Sleep(milliseconds);
-#else
-    usleep(milliseconds * 1000);
-#endif
 }

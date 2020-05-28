@@ -2,27 +2,26 @@
 
 using namespace std;
 
-void KnownOfEveryTest(string IrregularVerbs[4][100])
+void KnownOfEveryTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     int score = 0, correct = 0, current = 0, mistakes = 0;
-    int timeNow;
-    int timeDelta;
-    int timeStart;
+    int RusFormIndex = 3;
+    int timeNow, timeDelta, timeStart;
     string userVerb[3];
-    int i, testStatus = 0;
-    while ((score < 100) || (testStatus == 0)) {
-        current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << endl;
+    int i, testStatus = 0, ResultOfCheck, LotOfEngForms = 3;
+    int scorePlus = 15, scoreMinus = 5, scoreLimit = 100;
+
+    while ((score < scoreLimit) || (testStatus == 0)) {
+        current = rand() % LotOfIrregularVerbs;
+        cout << "Введите все формы слова "
+             << IrregularVerbs[RusFormIndex][current] << "\n";
         timeNow = clock();
         timeDelta = clock() - timeNow;
         timeStart = 0;
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < LotOfEngForms; i++) {
             cin >> userVerb[i];
-            int ResultOfCheck
-                    = verbCheck(userVerb[i], IrregularVerbs[i][current]);
+            ResultOfCheck = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
-                system("cls");
                 testStatus = 1;
                 timeDelta = clock() - timeNow;
                 timeNow = clock();
@@ -33,28 +32,26 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
             } else if (ResultOfCheck == 1) {
                 correct++;
             }
         }
-        if (testCheck(correct) == 1) {
-            score += 15;
+        ResultOfCheck = testCheck(correct);
+        if (ResultOfCheck == 1) {
             cout << "Правильно! Продолжайте в том же духе";
         } else {
             cout << "Ошибка! Правильный ответ: ";
-            for (i = 0; i < 3; i++) {
+            for (i = 0; i < LotOfEngForms; i++) {
                 cout << IrregularVerbs[i][current] << " ";
             }
             mistakes++;
-            if (score >= 5)
-                score -= 5;
         }
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         correct = 0;
-        if (score >= 100)
+        if (score >= scoreLimit)
             break;
-        cout << endl;
+        cout << "\n";
 
         timeDelta = clock() - timeNow;
         timeNow = clock();
@@ -62,35 +59,33 @@ void KnownOfEveryTest(string IrregularVerbs[4][100])
         Subtotal(timeDelta, score, mistakes);
     }
 
-    system("CLS");
     testBeEnded(timeStart, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
-void TestToTime(string IrregularVerbs[4][100])
+void TestToTime(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
     long timeLimit = 60000, timeStart = clock(), timeNow = clock();
     int score = 0, correct = 0, current, i;
-    string userVerb[3];
+    int scorePlus = 20, scoreMinus = 0;
+    int LotOfEngForms = 3, RusFormIndex = 3;
+    string userVerb[LotOfEngForms];
     cout << "У вас есть " << timeLimit / 1000
-         << " секунд чтобы пройти тест, удачи!." << endl
-         << endl;
+         << " секунд чтобы пройти тест, удачи!.\n\n";
     while (timeNow - timeStart < timeLimit) {
-        current = rand() % 100;
-        cout << "Введите все формы слова " << IrregularVerbs[3][current]
-             << endl;
-        for (i = 0; i < 3; i++) {
+        current = rand() % LotOfIrregularVerbs;
+        cout << "Введите все формы слова "
+             << IrregularVerbs[RusFormIndex][current] << "\n";
+        for (i = 0; i < LotOfEngForms; i++) {
             cin >> userVerb[i];
             int ResultOfCheck
                     = verbCheck(userVerb[i], IrregularVerbs[i][current]);
             if (ResultOfCheck == 2) {
-                system("CLS");
                 timeNow = clock();
                 testBeEnded(timeStart - timeNow, score);
                 char sym[50];
@@ -98,7 +93,6 @@ void TestToTime(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
                 break;
             }
@@ -107,61 +101,59 @@ void TestToTime(string IrregularVerbs[4][100])
             }
         }
         bool ResultOfCheck = testCheck(correct);
-        if (ResultOfCheck == true) {
-            score += 20;
-        }
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         correct = 0;
         timeNow = clock();
         if ((timeLimit - (timeNow - timeStart)) / 1000 > 0)
             cout << "У вас осталось "
-                 << (timeLimit - (timeNow - timeStart)) / 1000 << " секунд"
-                 << endl;
+                 << (timeLimit - (timeNow - timeStart)) / 1000 << " секунд\n";
         else
             break;
     }
-    system("CLS");
     testBeEnded(timeLimit, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
 }
 
-void TestRussian(string IrregularVerbs[4][100])
+void TestRussian(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs])
 {
-    int score = 0, RandomVerbTrue, mistakes = 0;
-    int timeNow = clock();
-    int timeDelta = clock() - timeNow;
+    int score = 0, RandomVerbTrue, mistakes = 0, LotOfAnswers = 4;
+    int timeNow = clock(), timeDelta = clock() - timeNow;
     int timeAll = 0, VerbsChoice, VerbForm, TrueAnswer, i;
-    string ResponseOption[4];
-    while (score < 100) {
-        RandomVerbTrue = rand() % 100;
-        VerbForm = rand() % 3;
-        TrueAnswer = rand() % 4;
-        ResponseOption[TrueAnswer] = IrregularVerbs[3][RandomVerbTrue];
+    int scorePlus = 10, scoreMinus = 5, scoreLimit = 100;
+    int LotOfEngForms = 3, RusFormIndex = 3;
+    string ResponseOption[LotOfAnswers];
+    while (score < scoreLimit) {
+        RandomVerbTrue = rand() % LotOfIrregularVerbs;
+        VerbForm = rand() % LotOfEngForms;
+        TrueAnswer = rand() % LotOfAnswers;
+        ResponseOption[TrueAnswer]
+                = IrregularVerbs[RusFormIndex][RandomVerbTrue];
         cout << "Выберите перевод слова: "
              << IrregularVerbs[VerbForm][RandomVerbTrue] << " (это "
-             << VerbForm + 1 << " форма глагола)" << endl;
-        for (i = 0; i < 4; i++) {
-            int RandomVerbFalse = rand() % 100;
+             << VerbForm + 1 << " форма глагола)\n";
+        for (i = 0; i < LotOfAnswers; i++) {
+            int RandomVerbFalse = rand() % LotOfIrregularVerbs;
             for (int count = 0; count < i; count++)
                 while ((ResponseOption[count]
-                        == IrregularVerbs[3][RandomVerbFalse])
+                        == IrregularVerbs[RusFormIndex][RandomVerbFalse])
                        || (RandomVerbFalse == RandomVerbTrue)) {
-                    RandomVerbFalse = rand() % 100;
+                    RandomVerbFalse = rand() % LotOfIrregularVerbs;
                     count = 0;
                 }
             if (i != TrueAnswer) {
-                ResponseOption[i] = IrregularVerbs[3][RandomVerbFalse];
+                ResponseOption[i]
+                        = IrregularVerbs[RusFormIndex][RandomVerbFalse];
             }
         }
-        for (i = 0; i < 4; i++) {
-            cout << i + 1 << " - " << ResponseOption[i] << endl;
+        for (i = 0; i < LotOfAnswers; i++) {
+            cout << i + 1 << " - " << ResponseOption[i] << "\n";
         }
-        cout << endl << "0 - Закончить тест" << endl;
+        cout << "\n0 - Закончить тест\n";
         int InvalidInput = 1;
         while (InvalidInput == 1) {
             char EnterSymbols;
@@ -189,7 +181,6 @@ void TestRussian(string IrregularVerbs[4][100])
             }
             case '0': {
                 InvalidInput = 0;
-                system("CLS");
                 timeDelta = clock() - timeNow;
                 timeNow = clock();
                 timeAll += timeDelta;
@@ -199,7 +190,6 @@ void TestRussian(string IrregularVerbs[4][100])
                 if (strlen(sym) == 1)
                     if (yesCheck(sym[0]))
                         Table_of_Record_Input(score);
-                system("CLS");
                 mainMenu(IrregularVerbs);
             }
             default: {
@@ -211,29 +201,34 @@ void TestRussian(string IrregularVerbs[4][100])
         int ResultOfCheck = verbCheck(
                 ResponseOption[VerbsChoice], IrregularVerbs[3][RandomVerbTrue]);
         if (ResultOfCheck) {
-            cout << "Правильно!" << endl;
-            score += 10;
+            cout << "Правильно!\n";
         } else {
-            cout << "Ошибка!" << endl;
+            cout << "Ошибка!\n";
             mistakes++;
-            if (score >= 5)
-                score -= 5;
         }
+        score = ScoreBalance(score, scorePlus, scoreMinus, ResultOfCheck);
         timeDelta = clock() - timeNow;
         timeNow = clock();
         timeAll += timeDelta;
         Subtotal(timeDelta, score, mistakes);
-        sleep_ms(2000);
-        system("CLS");
     }
 
-    system("CLS");
     testBeEnded(timeAll, score);
     char sym[50];
     cin >> sym;
     if (strlen(sym) == 1)
         if (yesCheck(sym[0]))
             Table_of_Record_Input(score);
-    system("CLS");
     mainMenu(IrregularVerbs);
+}
+
+int ScoreBalance(int score, int scorePlus, int scoreMinus, bool correct)
+{
+    if (correct == true) {
+        score += scorePlus;
+    } else {
+        if (score >= scoreMinus)
+            score -= scoreMinus;
+    }
+    return score;
 }

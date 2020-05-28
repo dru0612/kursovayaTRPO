@@ -1,25 +1,26 @@
 #include "../src/source.h"
 #include "gtest/gtest.h"
 
-TEST(TestCheck, WrongInputBellow)
+TEST(TestCheckUserAnswer, WrongInputBellow)
 {
-    int rand = 2;
-    int result = testCheck(rand);
+    int WrongUserAnswer = 2;
+    int result = testCheck(WrongUserAnswer);
     int expected = 0;
     EXPECT_EQ(expected, result);
 }
 
-TEST(TestCheck, WrongInputAbove)
+TEST(TestCheckUserAnswer, WrongInputAbove)
 {
-    int rand = 4;
-    int result = testCheck(rand);
+    int WrongUserAnswer = 4;
+    int result = testCheck(WrongUserAnswer);
     int expected = 0;
     EXPECT_EQ(expected, result);
 }
 
-TEST(TestCheckt, ValidInput)
+TEST(TestChecktUserAnswer, ValidInput)
 {
-    int result = testCheck(3);
+    int UserAnswer = 3;
+    int result = testCheck(UserAnswer);
     int expected = 1;
     EXPECT_EQ(expected, result);
 }
@@ -48,10 +49,28 @@ TEST(YesCheck, ValidInputLowCase)
     EXPECT_EQ(expected, result);
 }
 
-TEST(VerbCheck, SameInput)
+TEST(VerbCheck, RightInput)
 {
     string user = "Valid";
     string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputButInLowCase)
+{
+    string user = "valid";
+    string verb = "valid";
+    int result = verbCheck(user, verb);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithManyWords)
+{
+    string user = "Valid + valid";
+    string verb = "Valid + valid";
     int result = verbCheck(user, verb);
     int expected = 1;
     EXPECT_EQ(expected, result);
@@ -66,12 +85,119 @@ TEST(VerbCheck, ExitUserInput)
     EXPECT_EQ(expected, result);
 }
 
+TEST(VerbCheck, ExitUserInputButUpperCase)
+{
+    string user = "EXIT";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, WrongExitUserInput)
+{
+    string user = "ViidyOtsuda";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
 TEST(VerbCheck, DifferentInput)
 {
     string user = "Valid";
     string verb = "Invalid";
     int result = verbCheck(user, verb);
     int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, DifferentInputInLowCase)
+{
+    string user = "valid";
+    string verb = "invalid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithDifferentCases)
+{
+    string user = "valid";
+    string verb = "Valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, DifferentInputWithManyWords)
+{
+    string user = "Valid + valid";
+    string verb = "Invalid + valid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithExtraNumbers)
+{
+    string user = "Valid";
+    string verb = "V123alid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(VerbCheck, RightInputWithExtraSymbols)
+{
+    string user = "Valid";
+    string verb = "V./#,alid";
+    int result = verbCheck(user, verb);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, CorrectScoreAdd)
+{
+    int score = 0;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = true;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, CorrectScoreMinus)
+{
+    int score = 10;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = true;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 11;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, UncorrectScoreAdd)
+{
+    int score = 0;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = false;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 0;
+    EXPECT_EQ(expected, result);
+}
+
+TEST(ScoreBalanceCheck, UncorrectScoreMinus)
+{
+    int score = 10;
+    int scoreplus = 1;
+    int scoreminus = 1;
+    bool correct = false;
+    int result = ScoreBalance(score, scoreplus, scoreminus, correct);
+    int expected = 9;
     EXPECT_EQ(expected, result);
 }
 
