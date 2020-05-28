@@ -17,6 +17,7 @@ void fileIn(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void fileOut(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void choiceTest(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void mainMenu(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
+void dictionary(string IrregularVerbs[LotOfForms][LotOfIrregularVerbs]);
 void Table_of_Record_Input(int score);
 void Table_of_Record_Sort();
 void Table_of_Record_Output(
