@@ -4,7 +4,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     srand(time(NULL));
-    string IrregularVerbs[4][100];
+    string IrregularVerbs[LotOfForms][LotOfIrregularVerbs];
     hello();
     fileIn(IrregularVerbs);
     mainMenu(IrregularVerbs);
